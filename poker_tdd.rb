@@ -64,9 +64,15 @@ class Poker_test < Minitest::Test
 		p "The adjusted black cards are #{black_added}."
 	end
 	
-	# def test_black_no_higher_than_52
-	# 	assert_equal(<= 52, blackcards_arr[0])
-	# end
+	def test_position_five_is_nil
+		black_added = [13, 14, 15, 17, 59]
+		assert_nil(black_added[5], msg = nil)
+	end
+
+	def test_position_five_is_nil_white
+		white_added = [8, 9, 10, 11, 12]
+		assert_nil(white_added[5], msg = nil)
+	end
 
 end
 
