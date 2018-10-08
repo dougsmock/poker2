@@ -64,15 +64,42 @@ class Poker_test < Minitest::Test
 		p "The adjusted black cards are #{black_added}."
 	end
 	
-	def test_position_five_is_nil
-		black_added = [13, 14, 15, 17, 59]
-		assert_nil(black_added[5], msg = nil)
-	end
+	# def test_position_five_is_nil
+	# 	black_added = [13, 14, 15, 17, 59]
+	# 	assert_nil(black_added[5], msg = nil)
+	# end
 
-	def test_position_five_is_nil_white
+	# def test_position_five_is_nil_white
+	# 	white_added = [8, 9, 10, 11, 12]
+	# 	assert_nil(white_added[5], msg = nil)
+	# end
+
+	def test_for_white_card_numbers
 		white_added = [8, 9, 10, 11, 12]
-		assert_nil(white_added[5], msg = nil)
+		w = 0
+    	y = 0
+    	white_number = []
+    	until white_added[w] == nil
+       		white_number[y] = white_added[w] / 4
+			w += 1
+			y += 1
+		end
+		p "The numbers of the white hand are #{white_number}."
 	end
+	
+	def test_for_black_card_numbers
+		black_added = [13, 14, 15, 17, 59]
+		w = 0
+    	y = 0
+    	black_number = []
+    	until black_added[w] == nil
+			black_number[y] = black_added[w] / 4
+			w += 1
+			y += 1
+		end
+		p "The numbers of the black hand are #{black_number}."
+    end
+
 
 end
 

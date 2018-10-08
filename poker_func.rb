@@ -67,3 +67,28 @@ def convert_black(blackcards_arr)
     black_added = blackcards_arr
     black_added
 end
+
+# Now, we assign numbers to cards 
+# (11, 12, 13, 14 will be renamed as late in the process as possible.)
+
+def white_numbers(white_added)
+    w = 0
+    y = 0
+    white_numbers = []
+    until white_added[w] == nil
+        white_numbers[y] = white_added[w] / 4
+        w += 1
+        y += 1
+    end
+end
+
+def black_numbers(black_added)
+    w = 0
+    y = 0
+    black_numbers = []
+    until black_added[w] == nil
+        black_numbers[y] = black_added[w] / 4
+        w += 1
+        y += 1
+    end
+end
