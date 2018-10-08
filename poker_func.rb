@@ -93,9 +93,60 @@ def black_numbers(black_added)
     end
 end
 
+#### These two functions will determine suits, using modulus
+
 def white_suits(white_added)
+	w = 0
+	y = 0
+	white_mod = []
+	white_suits = []
+	until white_added[w] == nil
+		white_mod[y] = white_added[w] % 4
+		if white_mod[y] == 0
+			white_suits << "Clubs"
+		elsif white_mod[y] == 1
+			white_suits << "Spades"
+		elsif white_mod[y] == 2
+			white_suits << "Diamonds"
+		elsif white_mod[y] == 3
+			white_suits << "Hearts"
+		else
+			puts "Out of order"	
+		end
+		w += 1
+        y += 1
+        white_suits
+    end
     
+    def black_suits(black_added)
+        w = 0
+        y = 0
+        black_mod = []
+        black_suits = []
+        until black_added[w] == nil
+            black_mod[y] = black_added[w] % 4
+            if black_mod[y] == 0
+                black_suits << "Clubs"
+            elsif black_mod[y] == 1
+                black_suits << "Spades"
+            elsif black_mod[y] == 2
+                black_suits << "Diamonds"
+            elsif black_mod[y] == 3
+                black_suits << "Hearts"
+            else
+                puts "Out of order"	
+            end
+            w += 1
+            y += 1
+            black_suits
+        end
 
 
-    
+
+
+
+
+
+
+
 end

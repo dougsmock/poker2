@@ -104,21 +104,54 @@ class Poker_test < Minitest::Test
 		white_added = [8, 9, 10, 11, 12]
 		w = 0
 		y = 0
+		white_mod = []
 		white_suits = []
 		until white_added[w] == nil
-			black_number[y] = black_added[w] / 4
+			white_mod[y] = white_added[w] % 4
+			if white_mod[y] == 0
+				white_suits << "Clubs"
+			elsif white_mod[y] == 1
+				white_suits << "Spades"
+			elsif white_mod[y] == 2
+				white_suits << "Diamonds"
+			elsif white_mod[y] == 3
+				white_suits << "Hearts"
+			else
+				puts "Out of order"	
+			end
 			w += 1
 			y += 1
 		end
+		p "White's suits are #{white_suits}."
+	end
+	
+	def test_for_black_suits
+		black_added = [13, 14, 15, 17, 59]
+		w = 0
+		y = 0
+		black_mod = []
+		black_suits = []
+		until black_added[w] == nil
+			black_mod[y] = black_added[w] % 4
+			if black_mod[y] == 0
+				black_suits << "Clubs"
+			elsif black_mod[y] == 1
+				black_suits << "Spades"
+			elsif black_mod[y] == 2
+				black_suits << "Diamonds"
+			elsif black_mod[y] == 3
+				black_suits << "Hearts"
+			else
+				puts "Out of order"	
+			end
+			w += 1
+			y += 1
+		end
+		p "Black's suits are #{black_suits}."
+    end	
 
 
 
-
-
-
-
-
-    end
 
 
 end
