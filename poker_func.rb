@@ -83,12 +83,19 @@ def white_numbers(white_added)
 end
 
 def black_numbers(black_added)
-    w = 0
-    y = 0
+    b = 0
+    c = 0
     black_numbers = []
-    until black_added[w] == nil
-        black_numbers[y] = black_added[w] / 4
-        w += 1
-        y += 1
+    until black_added[b] == nil
+        black_numbers[c] = black_added[w] / 4
+        b += 1
+        c += 1
     end
+end
+
+def white_suits(white_added)
+    
+
+
+    
 end

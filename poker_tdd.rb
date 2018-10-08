@@ -98,6 +98,26 @@ class Poker_test < Minitest::Test
 			y += 1
 		end
 		p "The numbers of the black hand are #{black_number}."
+	end
+	
+	def test_for_white_suits
+		white_added = [8, 9, 10, 11, 12]
+		w = 0
+		y = 0
+		white_suits = []
+		until white_added[w] == nil
+			black_number[y] = black_added[w] / 4
+			w += 1
+			y += 1
+		end
+
+
+
+
+
+
+
+
     end
 
 
