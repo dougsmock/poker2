@@ -42,8 +42,32 @@ class Poker_test < Minitest::Test
 		p "Black's hand is #{black}."
 	end
 
-	def test_if_plus_seven_worked_white
-		assert_equal(
+	def test_adding_seven_to_white
+		whitecards_arr = [1, 2, 3, 4, 5]
+		w = 0
+    	until whitecards_arr[w] == nil
+            whitecards_arr[w] += 7
+			w += 1
+		end
+		white_added = whitecards_arr
+		p "The adjusted white cards are #{white_added}."
 	end
+	
+	def test_adding_seven_to_black
+		blackcards_arr = [6, 7, 8, 10, 52]
+		w = 0
+    	until blackcards_arr[w] == nil
+            blackcards_arr[w] += 7
+			w += 1
+		end
+		black_added = blackcards_arr
+		p "The adjusted black cards are #{black_added}."
+	end
+	
+	# def test_black_no_higher_than_52
+	# 	assert_equal(<= 52, blackcards_arr[0])
+	# end
 
 end
+
+

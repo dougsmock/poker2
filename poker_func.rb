@@ -12,7 +12,7 @@ def shuffle(card_arr)
     shufcard_arr
 end
 
-#This pops into whitecards_arr, a global variable
+#This pops into a 5-card whitecards_arr, a global variable
 #leaves black_avail, the 47 cards available for blackcards_arr
 
 def whitehand(newcard_arr)
@@ -22,73 +22,48 @@ def whitehand(newcard_arr)
   black_avail
 end
 
-#This pops into blackcards_arr, a global variable
+#This pops into a 5-card blackcards_arr, a global variable
 
 def blackhand(black_avail)
   $blackcards_arr = []
   $blackcards_arr = black_avail.pop(5)
-  $blackcards_arr
+  black_avail
 end
 
 #this converts the dealt white cards into a modified hand (white)
+#adding 7 to all for an 8-through-59 deck
+
 #ready for division into a card number and suit
 #and limiting global variable
 
-def convert_white($whitecards_arr)
+#8 will be 2 of Clubs, or 2 modulus 0
+#59 will be 14 modulus 3, an Ace of Hearts.
+
+def convert_white(whitecards_arr)
     w = 0
-    $whitecards_arr.each do |w|
-        until $whitecards_arr[w] == nil
-            $whitecards_arr[w] += 7
+    until whitecards_arr[w] == nil
+            whitecards_arr[w] += 7
             w += 1
-        end
-    white = $whitecards_arr
-    white
+    end
+    white_added = whitecards_arr
+    white_added
 end
 
 #this converts the dealt white cards into a modified hand (black)
+#adding 7 to all for an 8-through-59 deck
+
 #ready for division into a card number and suit
 #and limiting global variable
 
-def convert_black($blackcards_arr)
+#8 will be 2 of Clubs, or 2 modulus 0
+#59 will be 14 modulus 3, an Ace of Hearts.
+
+def convert_black(blackcards_arr)
     w = 0
-    $blackcards_arr.each do |w|
-        until $blackcards_arr[w] == nil
-            $blackcards_arr[w] += 7
+    until blackcards_arr[w] == nil
+            blackcards_arr[w] += 7
             w += 1
-        end
-    black = $blackcards_arr
-    black
+    end
+    black_added = blackcards_arr
+    black_added
 end
-
-
-
-
-
-
-
-
-### test to see if this conversion to a card number works.
-
-
-#     counter = 0
-#     blackcards_arr.each do |b|
-#         whitecards_arr[b] += 7
-#         counter += 1
-#     end
-
-#     return
-#         whitecards_arr, blackcards_arr
-    
-# end
-
-
-
-
-
-
-
-
-
-#ADD 7 TO ALL cards, making 52 a 59.
-#18 would be 2 of clubs, or 2 modulus 0
-#59 would be 14 modulus 3, an Ace of Hearts.
