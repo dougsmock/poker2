@@ -43,7 +43,7 @@ class Poker_test < Minitest::Test
 	end
 
 	def test_if_plus_seven_worked_white
-		assert_equal(x
+		assert_equal(
 	end
 
 end
