@@ -33,13 +33,13 @@ class Poker_test < Minitest::Test
 
 	def test_of_shuffle_array_both_hands
 		test_arr = [*1..52]
-		p "Deal from #{test_arr}."
+		# p "Deal from #{test_arr}."
 		x_arr = test_arr.shuffle
-		p "Shuffled cards are #{x_arr}."
+		# p "Shuffled cards are #{x_arr}."
 		white = x_arr.pop(5)
-		p "White's hand is #{white}."
+		# p "White's hand is #{white}."
 		black = x_arr.pop(5)
-		p "Black's hand is #{black}."
+		# p "Black's hand is #{black}."
 	end
 
 	def test_adding_seven_to_white
@@ -50,7 +50,7 @@ class Poker_test < Minitest::Test
 			w += 1
 		end
 		white_added = whitecards_arr
-		p "The adjusted white cards are #{white_added}."
+		# p "The adjusted white cards are #{white_added}."
 	end
 	
 	def test_adding_seven_to_black
@@ -61,7 +61,7 @@ class Poker_test < Minitest::Test
 			w += 1
 		end
 		black_added = blackcards_arr
-		p "The adjusted black cards are #{black_added}."
+		# p "The adjusted black cards are #{black_added}."
 	end
 	
 	# def test_position_five_is_nil
@@ -84,7 +84,7 @@ class Poker_test < Minitest::Test
 			w += 1
 			y += 1
 		end
-		p "The numbers of the white hand are #{white_number}."
+		# p "The numbers of the white hand are #{white_number}."
 	end
 	
 	def test_for_black_card_numbers
@@ -97,7 +97,7 @@ class Poker_test < Minitest::Test
 			w += 1
 			y += 1
 		end
-		p "The numbers of the black hand are #{black_number}."
+		# p "The numbers of the black hand are #{black_number}."
 	end
 	
 	def test_for_white_suits
@@ -122,7 +122,7 @@ class Poker_test < Minitest::Test
 			w += 1
 			y += 1
 		end
-		p "White's suits are #{white_suits}."
+		# p "White's suits are #{white_suits}."
 	end
 	
 	def test_for_black_suits
@@ -147,9 +147,64 @@ class Poker_test < Minitest::Test
 			w += 1
 			y += 1
 		end
-		p "Black's suits are #{black_suits}."
-    end	
+		# p "Black's suits are #{black_suits}."
+	end	
+	
+	def test_high_card_string
+		white_number = [6, 6, 8, 12, 10]
+		p white_number
+		w_high = white_number.max
+		p "#{w_high} is white's high card."
+	end
 
+	def test_high_card
+		white_number = [6, 6, 8, 12, 10]
+		assert_equal(12, white_number.max)
+	end
+
+	def test_shuffle_high_to_low
+		white = [6, 7, 8, 12, 10]
+		p "This is white's hand #{white}."
+		temp_array = []
+		x = 0
+		y = 1
+		high = white[x]
+		while white[y] != nil && white[x] != 4
+			if white[x] < white[y]
+				high = white[y]
+				y += 1
+				x += 1
+				high = white[x]
+			elsif
+				y =+ 1
+			end
+		end
+		temp_array << high
+		p "High number is #{temp_array}."
+	end
+
+
+	
+
+
+
+
+	# def test_for_pairs
+	# 	white = [5, 5, 6, 8, 10]
+	# 	p "New #{white} for pairs."
+	# 	temp_array1 = []
+
+
+
+
+	# 	if white[0] == white[1]
+	# 		temp_array1 << white[0]
+	# 		temp_array1 << white[1]
+	# 		white.slice!(0, 2) 
+	# 		p "Temp array is #{temp_array1}."
+	# 		p "Remaining white is #{white}."
+	# 	end
+	# end
 
 
 

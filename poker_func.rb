@@ -80,6 +80,7 @@ def white_numbers(white_added)
         w += 1
         y += 1
     end
+    white_numbers
 end
 
 def black_numbers(black_added)
@@ -91,6 +92,7 @@ def black_numbers(black_added)
         b += 1
         c += 1
     end
+    black_numbers
 end
 
 #### These two functions will determine suits, using modulus
@@ -115,38 +117,70 @@ def white_suits(white_added)
 		end
 		w += 1
         y += 1
-        white_suits
     end
+    white_suits
+end    
     
-    def black_suits(black_added)
-        w = 0
-        y = 0
-        black_mod = []
-        black_suits = []
-        until black_added[w] == nil
-            black_mod[y] = black_added[w] % 4
-            if black_mod[y] == 0
-                black_suits << "Clubs"
-            elsif black_mod[y] == 1
-                black_suits << "Spades"
-            elsif black_mod[y] == 2
-                black_suits << "Diamonds"
-            elsif black_mod[y] == 3
-                black_suits << "Hearts"
-            else
-                puts "Out of order"	
-            end
-            w += 1
-            y += 1
-            black_suits
+def black_suits(black_added)
+    w = 0
+    y = 0
+    black_mod = []
+    black_suits = []
+    until black_added[w] == nil
+        black_mod[y] = black_added[w] % 4
+        if black_mod[y] == 0
+            black_suits << "Clubs"
+        elsif black_mod[y] == 1
+            black_suits << "Spades"
+        elsif black_mod[y] == 2
+            black_suits << "Diamonds"
+        elsif black_mod[y] == 3
+            black_suits << "Hearts"
+        else
+            puts "Out of order"	
         end
+        w += 1
+        y += 1
+        black_suits
+    end
+end
 
+######### We have white numbers and white suits, black numbers and black suits. 
+###Let's test for the high card only.
 
+def get_white_high(white_numbers)
+    w_high = white_number.max
+    w_high
+end
 
-
-
-
-
-
+def white_pair(white_numbers)
+    temp_array = []
+    5.times do
+        temp_array << white.number.max
+        p "White's temp array is #{temp_array}"
+    end
 
 end
+
+
+
+# def get_white_pairs(white_numbers)
+
+# end
+
+
+
+
+
+#Order of hands
+# 0 High card
+# 1 Pair
+# 2 Two pair
+# 3 Trips
+# 4 Straight
+# 5 Flush
+# 6 Full House
+# 7 Four of a kind
+# 8 Straight flush
+# 9 Royal flush
+# May need global variable to compare??
