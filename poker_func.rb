@@ -30,6 +30,137 @@ def blackhand(black_avail)
   black_avail
 end
 
+###### 
+def white_high_low(whitecards_arr)
+        high_arr = []
+
+    until white[0] == nil
+        if white[0] == white.max
+            high_arr[0] = white[0]
+            white.delete_at(0)
+        elsif
+            white[1] == white.max
+            high_arr[0] = white[1]
+            white.delete_at(1)
+        elsif
+            white[2] == white.max
+            high_arr[0] = white[2]
+            white.delete_at(2)
+        elsif
+            white[3] == white.max
+            high_arr[0] = white[3]
+            white.delete_at(3)
+        else
+            high_arr[0] = white[4]
+            white.delete_at(4)
+        end
+
+        if white[0] == white.max 
+            high_arr[1] = white[0]
+            white.delete_at(0)
+        elsif
+            white[1] == white.max
+            high_arr[1] = white[1]
+            white.delete_at(1)
+        elsif
+            white[2] == white.max
+            high_arr[1] = white[2]
+            white.delete_at(2)
+        else
+            high_arr[1] = white[3]
+            white.delete_at(3)
+    end
+
+        if white[0] == white.max 
+            high_arr[2] = white[0]
+            white.delete_at(0)
+        elsif
+            white[1] == white.max
+            high_arr[2] = white[1]
+            white.delete_at(1)
+        else
+            high_arr[2] = white[2]
+            white.delete_at(2)
+        end
+
+        if white[0] == white.max 
+            high_arr[3] = white[0]
+            white.delete_at(0)
+        else
+            high_arr[3] = white[1]
+            white.delete_at(1)
+        end
+
+    high_arr[4] = white[0]
+    white.delete_at(0)
+end
+
+###### 
+
+def white_high_low(blackcards_arr)
+    high_arr = []
+
+    until white[0] == nil
+        if white[0] == white.max
+            high_arr[0] = white[0]
+            white.delete_at(0)
+        elsif
+            white[1] == white.max
+            high_arr[0] = white[1]
+            white.delete_at(1)
+        elsif
+            white[2] == white.max
+            high_arr[0] = white[2]
+            white.delete_at(2)
+        elsif
+            white[3] == white.max
+            high_arr[0] = white[3]
+            white.delete_at(3)
+        else
+            high_arr[0] = white[4]
+            white.delete_at(4)
+        end
+
+        if white[0] == white.max 
+            high_arr[1] = white[0]
+            white.delete_at(0)
+        elsif
+            white[1] == white.max
+            high_arr[1] = white[1]
+            white.delete_at(1)
+        elsif
+            white[2] == white.max
+            high_arr[1] = white[2]
+            white.delete_at(2)
+        else
+            high_arr[1] = white[3]
+            white.delete_at(3)
+        end
+
+        if white[0] == white.max 
+            high_arr[2] = white[0]
+            white.delete_at(0)
+        elsif
+            white[1] == white.max
+            high_arr[2] = white[1]
+            white.delete_at(1)
+        else
+            high_arr[2] = white[2]
+            white.delete_at(2)
+        end
+
+        if white[0] == white.max 
+            high_arr[3] = white[0]
+            white.delete_at(0)
+        else
+            high_arr[3] = white[1]
+            white.delete_at(1)
+        end
+
+    high_arr[4] = white[0]
+    white.delete_at(0)
+end
+
 #this converts the dealt white cards into a modified hand (white)
 #adding 7 to all for an 8-through-59 deck
 
@@ -154,19 +285,10 @@ def get_white_high(white_numbers)
 end
 
 def white_pair(white_numbers)
-    temp_array = []
-    5.times do
-        temp_array << white.number.max
-        p "White's temp array is #{temp_array}"
-    end
-
+    
 end
 
 
-
-# def get_white_pairs(white_numbers)
-
-# end
 
 
 

@@ -152,9 +152,9 @@ class Poker_test < Minitest::Test
 	
 	def test_high_card_string
 		white_number = [6, 6, 8, 12, 10]
-		p white_number
+		# p white_number
 		w_high = white_number.max
-		p "#{w_high} is white's high card."
+		# p "#{w_high} is white's high card."
 	end
 
 	def test_high_card
@@ -163,24 +163,120 @@ class Poker_test < Minitest::Test
 	end
 
 	def test_shuffle_high_to_low
-		white = [6, 7, 8, 12, 10]
+		white = [18, 23, 42, 55, 54]
 		p "This is white's hand #{white}."
-		temp_array = []
-		x = 0
-		y = 1
-		high = white[x]
-		while white[y] != nil && white[x] != 4
-			if white[x] < white[y]
-				high = white[y]
-				y += 1
-				x += 1
-				high = white[x]
+		high_arr = []
+
+		until white[0] == nil
+			if white[0] == white.max
+				high_arr[0] = white[0]
+				white.delete_at(0)
 			elsif
-				y =+ 1
+				white[1] == white.max
+				high_arr[0] = white[1]
+				white.delete_at(1)
+			elsif
+				white[2] == white.max
+				high_arr[0] = white[2]
+				white.delete_at(2)
+			elsif
+				white[3] == white.max
+				high_arr[0] = white[3]
+				white.delete_at(3)
+			else
+				high_arr[0] = white[4]
+				white.delete_at(4)
 			end
+
+			if white[0] == white.max 
+				high_arr[1] = white[0]
+				white.delete_at(0)
+			elsif
+				white[1] == white.max
+				high_arr[1] = white[1]
+				white.delete_at(1)
+			elsif
+				white[2] == white.max
+				high_arr[1] = white[2]
+				white.delete_at(2)
+			else
+				high_arr[1] = white[3]
+				white.delete_at(3)
+			end
+
+			if white[0] == white.max 
+				high_arr[2] = white[0]
+				white.delete_at(0)
+			elsif
+				white[1] == white.max
+				high_arr[2] = white[1]
+				white.delete_at(1)
+			else
+				high_arr[2] = white[2]
+				white.delete_at(2)
+			end
+
+			if white[0] == white.max 
+				high_arr[3] = white[0]
+				white.delete_at(0)
+			else
+				high_arr[3] = white[1]
+				white.delete_at(1)
+			end
+
+			high_arr[4] = white[0]
+			white.delete_at(0)
+					
+			p "New white array is #{white}."
+			p "New high array is #{high_arr}."
 		end
-		temp_array << high
-		p "High number is #{temp_array}."
+
+			
+		
+
+
+
+
+
+
+
+		# p "This is ordering white #{high_arr} now."
+		# if white[3] == white.max
+		# end
+
+		# p "This is white hand #{white} now."
+
+		# high_arr << white.max
+		# p "This is ordering white #{high_arr} now."
+		# if white[3] == white.max
+		# 	white.delete_at(3)
+		# end
+
+		# p "This is white hand #{white} now."
+
+		# high_arr << white.max
+		# p "This is ordering white #{high_arr} now."
+		# if white[2] == white.max
+		# 	white.delete_at(2)
+		# end
+
+		# p "This is white hand #{white} now."
+
+		# high_arr << white.max
+		# p "This is ordering white #{high_arr} now."
+		# if white[1] == white.max
+		# 	white.delete_at(1)
+		# end
+
+		# p "This is white hand #{white} now."
+
+		# high_arr << white[0]
+		# white.delete_at(0)
+		# p "This is ordering white #{high_arr} now."
+		# p "This is white hand #{white} now."
+
+
+				
 	end
 
 
@@ -189,22 +285,6 @@ class Poker_test < Minitest::Test
 
 
 
-	# def test_for_pairs
-	# 	white = [5, 5, 6, 8, 10]
-	# 	p "New #{white} for pairs."
-	# 	temp_array1 = []
-
-
-
-
-	# 	if white[0] == white[1]
-	# 		temp_array1 << white[0]
-	# 		temp_array1 << white[1]
-	# 		white.slice!(0, 2) 
-	# 		p "Temp array is #{temp_array1}."
-	# 		p "Remaining white is #{white}."
-	# 	end
-	# end
 
 
 
