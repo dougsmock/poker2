@@ -25,140 +25,21 @@ end
 #This pops into a 5-card blackcards_arr, a global variable
 
 def blackhand(black_avail)
-  $blackcards_arr = []
-  $blackcards_arr = black_avail.pop(5)
-  black_avail
+  blackcards_arr = []
+  blackcards_arr = black_avail.pop(5)
+  blackcards_arr
 end
 
-###### 
+###### ###### This rearranges the cards in your hand from high to low before 
+#### determining number and suits
+
+
 def white_high_low(whitecards_arr)
-        high_arr = []
-
-    until white[0] == nil
-        if white[0] == white.max
-            high_arr[0] = white[0]
-            white.delete_at(0)
-        elsif
-            white[1] == white.max
-            high_arr[0] = white[1]
-            white.delete_at(1)
-        elsif
-            white[2] == white.max
-            high_arr[0] = white[2]
-            white.delete_at(2)
-        elsif
-            white[3] == white.max
-            high_arr[0] = white[3]
-            white.delete_at(3)
-        else
-            high_arr[0] = white[4]
-            white.delete_at(4)
-        end
-
-        if white[0] == white.max 
-            high_arr[1] = white[0]
-            white.delete_at(0)
-        elsif
-            white[1] == white.max
-            high_arr[1] = white[1]
-            white.delete_at(1)
-        elsif
-            white[2] == white.max
-            high_arr[1] = white[2]
-            white.delete_at(2)
-        else
-            high_arr[1] = white[3]
-            white.delete_at(3)
-    end
-
-        if white[0] == white.max 
-            high_arr[2] = white[0]
-            white.delete_at(0)
-        elsif
-            white[1] == white.max
-            high_arr[2] = white[1]
-            white.delete_at(1)
-        else
-            high_arr[2] = white[2]
-            white.delete_at(2)
-        end
-
-        if white[0] == white.max 
-            high_arr[3] = white[0]
-            white.delete_at(0)
-        else
-            high_arr[3] = white[1]
-            white.delete_at(1)
-        end
-
-    high_arr[4] = white[0]
-    white.delete_at(0)
+    whitehigh_arr = white.sort { |x,y| y <=> x }
 end
 
-###### 
-
-def white_high_low(blackcards_arr)
-    high_arr = []
-
-    until white[0] == nil
-        if white[0] == white.max
-            high_arr[0] = white[0]
-            white.delete_at(0)
-        elsif
-            white[1] == white.max
-            high_arr[0] = white[1]
-            white.delete_at(1)
-        elsif
-            white[2] == white.max
-            high_arr[0] = white[2]
-            white.delete_at(2)
-        elsif
-            white[3] == white.max
-            high_arr[0] = white[3]
-            white.delete_at(3)
-        else
-            high_arr[0] = white[4]
-            white.delete_at(4)
-        end
-
-        if white[0] == white.max 
-            high_arr[1] = white[0]
-            white.delete_at(0)
-        elsif
-            white[1] == white.max
-            high_arr[1] = white[1]
-            white.delete_at(1)
-        elsif
-            white[2] == white.max
-            high_arr[1] = white[2]
-            white.delete_at(2)
-        else
-            high_arr[1] = white[3]
-            white.delete_at(3)
-        end
-
-        if white[0] == white.max 
-            high_arr[2] = white[0]
-            white.delete_at(0)
-        elsif
-            white[1] == white.max
-            high_arr[2] = white[1]
-            white.delete_at(1)
-        else
-            high_arr[2] = white[2]
-            white.delete_at(2)
-        end
-
-        if white[0] == white.max 
-            high_arr[3] = white[0]
-            white.delete_at(0)
-        else
-            high_arr[3] = white[1]
-            white.delete_at(1)
-        end
-
-    high_arr[4] = white[0]
-    white.delete_at(0)
+def black_high_low(blackcards_arr)
+    blackhigh_arr = black.sort { |x,y| y <=> x }
 end
 
 #this converts the dealt white cards into a modified hand (white)
@@ -170,17 +51,17 @@ end
 #8 will be 2 of Clubs, or 2 modulus 0
 #59 will be 14 modulus 3, an Ace of Hearts.
 
-def convert_white(whitecards_arr)
+def convert_white(whitehigh_arr)
     w = 0
-    until whitecards_arr[w] == nil
-            whitecards_arr[w] += 7
+    until whitehigh_arr[w] == nil
+            whitehigh_arr[w] += 7
             w += 1
     end
-    white_added = whitecards_arr
+    white_added = whitehigh_arr
     white_added
 end
 
-#this converts the dealt white cards into a modified hand (black)
+#this converts the dealt black cards into a modified hand (black)
 #adding 7 to all for an 8-through-59 deck
 
 #ready for division into a card number and suit
@@ -189,13 +70,13 @@ end
 #8 will be 2 of Clubs, or 2 modulus 0
 #59 will be 14 modulus 3, an Ace of Hearts.
 
-def convert_black(blackcards_arr)
+def convert_black(blackhigh_arr)
     w = 0
-    until blackcards_arr[w] == nil
-            blackcards_arr[w] += 7
+    until blackhigh_arr[w] == nil
+            blackhigh_arr[w] += 7
             w += 1
     end
-    black_added = blackcards_arr
+    black_added = blackhigh_arr
     black_added
 end
 
@@ -280,29 +161,63 @@ end
 ###Let's test for the high card only.
 
 def get_white_high(white_numbers)
-    w_high = white_number.max
+    w_high = white_number[0]
     w_high
 end
 
-def white_pair(white_numbers)
-    
+def get_black_high(black_numbers)
+    b_high = black_number[0]
+    b_high
 end
 
+### Here is the test for one pair
+def get_white_pair
+    if (white[0] == white[1])  
+        w_pair = "Pair of #{white[0]}s, #{white[2]} high."
+    elsif (white[1] == white[2])  
+        w_pair = "Pair of #{white[1]}s, #{white[0]} high."
+    elsif (white[2] == white[3])  
+        w_pair = "Pair of #{white[2]}s, #{white[0]} high."
+    elsif (white[3] == white[4])  
+        w_pair = "Pair of #{white[3]}s, #{white[0]} high."
+    end
+    w_pair
+end
 
+def get_black_pair
+    if (black[0] == black[1])  
+        b_pair = "Pair of #{black[0]}s, #{black[2]} high."
+    elsif (white[1] == white[2])  
+        b_pair = "Pair of #{black[1]}s, #{black[0]} high."
+    elsif (white[2] == white[3])  
+        b_pair = "Pair of #{black[2]}s, #{black[0]} high."
+    elsif (white[3] == white[4])  
+        b_pair = "Pair of #{black[3]}s, #{black[0]} high."
+    end
+    b_pair
+end
 
+## Here is the test for two pair
 
+def white_two_pair
+    if (white[0] == white[1]) && (white[2] == white[3])
+        w_2pair = "Two pair, #{white[0]}s and #{white[2]}s, #{white[4]} kicker."
+    elsif (white[0] == white[1]) && (white[3] == white[4])
+        w_2pair = "Two pair, #{white[0]}s and #{white[3]}s, #{white[2]} kicker."
+    elsif (white[1] == white[2]) && (white[3] == white[4])
+        w_2pair = "Two pair, #{white[1]}s and #{white[3]}s, #{white[0]} kicker."
+    end
+end
 
+def black_two_pair
+    if (black[0] == black[1]) && (black[2] == black[3])
+        w_2pair = "Two pair, #{black[0]}s and #{black[2]}s, #{black[4]} kicker."
+    elsif (black[0] == black[1]) && (black[3] == black[4])
+        w_2pair = "Two pair, #{black[0]}s and #{black[3]}s, #{black[2]} kicker."
+    elsif (black[1] == black[2]) && (black[3] == black[4])
+        w_2pair = "Two pair, #{black[1]}s and #{black[3]}s, #{black[0]} kicker."
+    end
+end
 
+## Here is the test for three of a kind
 
-#Order of hands
-# 0 High card
-# 1 Pair
-# 2 Two pair
-# 3 Trips
-# 4 Straight
-# 5 Flush
-# 6 Full House
-# 7 Four of a kind
-# 8 Straight flush
-# 9 Royal flush
-# May need global variable to compare??

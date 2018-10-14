@@ -164,122 +164,40 @@ class Poker_test < Minitest::Test
 
 	def test_shuffle_high_to_low
 		white = [18, 23, 42, 55, 54]
-		p "This is white's hand #{white}."
-		high_arr = []
+		# p "This is white's hand #{white}."
+		high_arr = white.sort { |x,y| y <=> x }
+		# p "This is white's sorted hand #{high_arr}."
+	end
 
-		until white[0] == nil
-			if white[0] == white.max
-				high_arr[0] = white[0]
-				white.delete_at(0)
-			elsif
-				white[1] == white.max
-				high_arr[0] = white[1]
-				white.delete_at(1)
-			elsif
-				white[2] == white.max
-				high_arr[0] = white[2]
-				white.delete_at(2)
-			elsif
-				white[3] == white.max
-				high_arr[0] = white[3]
-				white.delete_at(3)
-			else
-				high_arr[0] = white[4]
-				white.delete_at(4)
-			end
-
-			if white[0] == white.max 
-				high_arr[1] = white[0]
-				white.delete_at(0)
-			elsif
-				white[1] == white.max
-				high_arr[1] = white[1]
-				white.delete_at(1)
-			elsif
-				white[2] == white.max
-				high_arr[1] = white[2]
-				white.delete_at(2)
-			else
-				high_arr[1] = white[3]
-				white.delete_at(3)
-			end
-
-			if white[0] == white.max 
-				high_arr[2] = white[0]
-				white.delete_at(0)
-			elsif
-				white[1] == white.max
-				high_arr[2] = white[1]
-				white.delete_at(1)
-			else
-				high_arr[2] = white[2]
-				white.delete_at(2)
-			end
-
-			if white[0] == white.max 
-				high_arr[3] = white[0]
-				white.delete_at(0)
-			else
-				high_arr[3] = white[1]
-				white.delete_at(1)
-			end
-
-			high_arr[4] = white[0]
-			white.delete_at(0)
-					
-			p "New white array is #{white}."
-			p "New high array is #{high_arr}."
+	def test_get_a_pair
+		white = [13, 13, 10, 7, 7]
+		if (white[0] == white[1])  
+			# p "Pair of #{white[0]}s, #{white[2]} high."
+		elsif (white[1] == white[2])  
+			# p "Pair of #{white[1]}s, #{white[0]} high."
+		elsif (white[2] == white[3])  
+			# p "Pair of #{white[2]}s, #{white[0]} high."
+		elsif (white[3] == white[4])  
+			# p "Pair of #{white[3]}s, #{white[0]} high."
 		end
+	end
 
-			
-		
-
-
-
-
-
-
-
-		# p "This is ordering white #{high_arr} now."
-		# if white[3] == white.max
-		# end
-
-		# p "This is white hand #{white} now."
-
-		# high_arr << white.max
-		# p "This is ordering white #{high_arr} now."
-		# if white[3] == white.max
-		# 	white.delete_at(3)
-		# end
-
-		# p "This is white hand #{white} now."
-
-		# high_arr << white.max
-		# p "This is ordering white #{high_arr} now."
-		# if white[2] == white.max
-		# 	white.delete_at(2)
-		# end
-
-		# p "This is white hand #{white} now."
-
-		# high_arr << white.max
-		# p "This is ordering white #{high_arr} now."
-		# if white[1] == white.max
-		# 	white.delete_at(1)
-		# end
-
-		# p "This is white hand #{white} now."
-
-		# high_arr << white[0]
-		# white.delete_at(0)
-		# p "This is ordering white #{high_arr} now."
-		# p "This is white hand #{white} now."
-
-
-				
+	def test_get_two_pair
+		white = [13, 12, 12, 7, 7]
+		if (white[0] == white[1]) && (white[2] == white[3])
+			# p "Two pair, #{white[0]}s and #{white[2]}s, #{white[4]} kicker."
+		elsif (white[0] == white[1]) && (white[3] == white[4])
+			# p "Two pair, #{white[0]}s and #{white[3]}s, #{white[2]} kicker."
+		elsif (white[1] == white[2]) && (white[3] == white[4])
+			# p "Two pair, #{white[1]}s and #{white[3]}s, #{white[0]} kicker."
+		end
 	end
 
 
+
+
+
+		
 	
 
 
