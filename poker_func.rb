@@ -228,63 +228,104 @@ end
 
 def white_three(white_numbers)
     if (white[0] == white[1]) && (white[0] == white[2])
-        white_3s = "Three of a kind, #{white[0]}s."
+        w_3s = "Three of a kind, #{white[0]}s."
     elsif (white[1] == white[2]) && (white[1] == white[3])
-        white_3s = "Three of a kind, #{white[1]}s."
+        w_3s = "Three of a kind, #{white[1]}s."
     elsif (white[2] == white[3]) && (white[2] == white[4])
-        white_3s = "Three of a kind, #{white[2]}s."
+        w_3s = "Three of a kind, #{white[2]}s."
     end
-    white_3s
+    w_3s
 end
 
 def black_three(black_numbers)
     if (white[0] == white[1]) && (white[0] == white[2])
-        black_3s = "Three of a kind, #{white[0]}s."
+        b_3s = "Three of a kind, #{white[0]}s."
     elsif (white[1] == white[2]) && (white[1] == white[3])
-        black_3s ="Three of a kind, #{white[1]}s."
+        b_3s ="Three of a kind, #{white[1]}s."
     elsif (white[2] == white[3]) && (white[2] == white[4])
-        black_3s ="Three of a kind, #{white[2]}s."
+        b_3s ="Three of a kind, #{white[2]}s."
     end
-    black_3s
+    b_3s
 end
 
-## Here is the test for four of a kind
+## Here is the tests for strights
 
-def white_four(white_numbers)
-    if (white[0] == white[1]) && (white[0] == white[2]) && (white[0] == white[3])
-        white_4s = "Four of a kind, #{white[0]}s."
-    elsif (white[1] == white[2]) && (white[1] == white[3]) && (white[1] == white[4])
-        white_4s = "Four of a kind, #{white[1]}s."
+def white_straight(white_numbers)
+    if (white[0] - 1 == white[1]) && (white[1] - 1 == white[2]) && (white[2] - 1 == white[3]) && (white[3] - 1 == white[4])
+        w_straight = "Straight, #{white[0]} high."
+    elsif (white[0] == 14) && (white[1] == 5) && (white[2] == 4) && (white[3] == 3) && (white[4] == 2)
+        w_straight = "Straight, 5 high."
     end
-    white_4s
+    w_straight
 end
 
-def black_four(black_numbers)
-    if (black[0] == black[1]) && (black[0] == black[2]) && (black[0] == black[3])
-        black_4s = "Four of a kind, #{black[0]}s."
-    elsif (black[1] == black[2]) && (black[1] == black[3]) && (black[1] == black[4])
-        black_4s = "Four of a kind, #{black[1]}s."
+def black_straight(black_numbers)
+    if (black[0] - 1 == black[1]) && (black[1] - 1 == black[2]) && (black[2] - 1 == black[3]) && (black[3] - 1 == black[4])
+        b_straight = "Straight, #{black[0]} high."
+    elsif (black[0] == 14) && (black[1] == 5) && (black[2] == 4) && (black[3] == 3) && (black[4] == 2)
+        b_straight = "Straight, 5 high."
     end
-    black_4s
+    b_straight
+end
+
+#### Testing for flushes
+def white_flush(white_suits, white_numbers)
+    if (white_suits[0] == white_suits[1]) && (white_suits[1] == white_suits[2]) && (white_suits[2] == white_suits[3]) && (white_suits[3] == white_suits[4])
+        w_flush = "Flush, #{white_numbers[0]} high."
+    end
+    w_flush
+end
+
+def black_flush(black_suits, black_numbers)
+    if (black_suits[0] == black_suits[1]) && (black_suits[1] == black_suits[2]) && (black_suits[2] == black_suits[3]) && (black_suits[3] == black_suits[4])
+        b_flush = "Flush, #{black_numbers[0]} high."
+    end
+    b_flush
 end
 
 ## Here is the test for full house
 
 def white_full_house(white_numbers)
     if ((white[0] == white[1]) && (white[0] == white[2])) && (white[3] == white[4])
-        white_full = "Full house, #{white[0]} over #{white[3]}."
+        w_full = "Full house, #{white[0]} over #{white[3]}."
     elsif (white[0] == white[1]) && ((white[2] == white[3]) && (white[2] == white[4]))
-        white_full = "Full house, #{white[2]} over #{white[0]}."
+        w_full = "Full house, #{white[2]} over #{white[0]}."
     end
+    w_full
 end
 
 def black_full_house(black_numbers)
     if ((black[0] == black[1]) && (black[0] == black[2])) && (black[3] == black[4])
-        black_full = "Full house, #{black[0]} over #{black[3]}."
+        b_full = "Full house, #{black[0]} over #{black[3]}."
     elsif (black[0] == black[1]) && ((black[2] == black[3]) && (black[2] == black[4]))
-        black_full = "Full house, #{black[2]} over #{black[0]}."
+        b_full = "Full house, #{black[2]} over #{black[0]}."
     end
+    b_full
 end
+
+## Here is the test for four of a kind
+
+def white_four(white_numbers)
+    if (white[0] == white[1]) && (white[0] == white[2]) && (white[0] == white[3])
+        w_4s = "Four of a kind, #{white[0]}s."
+    elsif (white[1] == white[2]) && (white[1] == white[3]) && (white[1] == white[4])
+        w_4s = "Four of a kind, #{white[1]}s."
+    end
+    w_4s
+end
+
+def black_four(black_numbers)
+    if (black[0] == black[1]) && (black[0] == black[2]) && (black[0] == black[3])
+        b_4s = "Four of a kind, #{black[0]}s."
+    elsif (black[1] == black[2]) && (black[1] == black[3]) && (black[1] == black[4])
+        b_4s = "Four of a kind, #{black[1]}s."
+    end
+    b_4s
+end
+
+
+
+
 
 
 

@@ -219,10 +219,53 @@ class Poker_test < Minitest::Test
 	def test_full_house
 		white = [10, 10, 10, 9, 9]
 		if ((white[0] == white[1]) && (white[0] == white[2])) && (white[3] == white[4])
-			p "Full house, #{white[0]} over #{white[3]}."
+			# p "Full house, #{white[0]} over #{white[3]}."
 		elsif (white[0] == white[1]) && ((white[2] == white[3]) && (white[2] == white[4]))
-			p "Full house, #{white[2]} over #{white[0]}."
+			# p "Full house, #{white[2]} over #{white[0]}."
 		end
+	end
+
+	def test_straight
+		white = [14, 6, 4, 3, 2]
+		if (white[0] - 1 == white[1]) && (white[1] - 1 == white[2]) && (white[2] - 1 == white[3]) && (white[3] - 1 == white[4])
+			p "Straight, #{white[0]} high."
+		elsif (white[0] == 14) && (white[1] == 5) && (white[2] == 4) && (white[3] == 3) && (white[4] == 2)
+			p "Straight, 5 high."
+		end
+	end
+
+	def test_flush
+		white_suits = [0, 0, 0, 0, 0]
+		white_numbers = [13, 10, 9, 8, 2]
+		if (white_suits[0] == white_suits[1]) && (white_suits[1] == white_suits[2]) && (white_suits[2] == white_suits[3]) && (white_suits[3] == white_suits[4])
+			# p "Flush, #{white_numbers[0]} high."
+		end
+	end
+
+
+	def test_straight_flush
+		white_suits = [0, 0, 0, 0, 0]
+		white_numbers = [13, 12, 11, 10, 9]
+		if (white_suits[0] == white_suits[1]) && (white_suits[1] == white_suits[2]) && (white_suits[2] == white_suits[3]) && (white_suits[3] == white_suits[4])
+			flush = true
+		else
+			flush = false
+		end
+
+		if (white_numbers[0] - 1 == white_numbers[1]) && (white_numbers[1] - 1 == white_numbers[2]) && (white_numbers[2] - 1 == white_numbers[3]) && (white_numbers[3] - 1 == white_numbers[4])
+		elsif (white_numbers[0] == 14) && (white_numbers[1] == 5) && (white_numbers[2] == 4) && (white_numbers[3] == 3) && (white_numbers[4] == 2)
+			straight = true
+		end
+
+		if (flush == true) && (straight == true)
+			p "Straight flush, #{white_numbers} high."
+			unless (white_numbers[0] == 14) && (white_numbers[1] == 5) && (white_numbers[2] == 4) && (white_numbers[3] == 3) && (white_numbers[4] == 2)
+				p "Straight flush, 5 high."
+			end
+		end
+
+
+
 	end
 
 
