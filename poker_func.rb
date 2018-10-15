@@ -35,11 +35,13 @@ end
 
 
 def white_high_low(whitecards_arr)
-    whitehigh_arr = white.sort { |x,y| y <=> x }
+    white = whitecards_arr.sort { |x,y| y <=> x }
+    white
 end
 
 def black_high_low(blackcards_arr)
-    blackhigh_arr = black.sort { |x,y| y <=> x }
+    black = blackcards_arr.sort { |x,y| y <=> x }
+    black
 end
 
 #this converts the dealt white cards into a modified hand (white)
@@ -159,47 +161,48 @@ end
 
 ######### We have white numbers and white suits, black numbers and black suits. 
 ###Let's test for the high card only.
+## REEXAMINE THIS ONE.
 
-def get_white_high(white_numbers)
-    w_high = white_number[0]
+def white_high(white_numbers)
+    w_high = "High card, #{white_numbers}."
     w_high
 end
 
-def get_black_high(black_numbers)
-    b_high = black_number[0]
+def black_high(black_numbers)
+    b_high = "High card, #{black_numbers}."
     b_high
 end
 
 ### Here is the test for one pair
-def get_white_pair
+def white_pair(white_numbers)
     if (white[0] == white[1])  
-        w_pair = "Pair of #{white[0]}s, #{white[2]} high."
+        w_pair = "Pair of #{white[0]}s, #{white[2]}, #{white[3]}, #{white[4]} high."
     elsif (white[1] == white[2])  
-        w_pair = "Pair of #{white[1]}s, #{white[0]} high."
+        w_pair = "Pair of #{white[1]}s, #{white[0]}, #{white[3]}, #{white[4]} high."
     elsif (white[2] == white[3])  
-        w_pair = "Pair of #{white[2]}s, #{white[0]} high."
+        w_pair = "Pair of #{white[2]}s, #{white[0]}, #{white[1]}, #{white[4]} high."
     elsif (white[3] == white[4])  
-        w_pair = "Pair of #{white[3]}s, #{white[0]} high."
+        w_pair = "Pair of #{white[3]}s, #{white[0]}, #{white[1]}, #{white[2]} high."
     end
     w_pair
 end
 
-def get_black_pair
+def black_pair(black_numbers)
     if (black[0] == black[1])  
-        b_pair = "Pair of #{black[0]}s, #{black[2]} high."
+        b_pair = "Pair of #{black[0]}s, #{black[2]}, #{black[3]}, #{black[4]} high."
     elsif (white[1] == white[2])  
-        b_pair = "Pair of #{black[1]}s, #{black[0]} high."
+        b_pair = "Pair of #{black[1]}s, #{black[0]}, #{black[3]}, #{black[4]} high."
     elsif (white[2] == white[3])  
-        b_pair = "Pair of #{black[2]}s, #{black[0]} high."
+        b_pair = "Pair of #{black[2]}s, #{black[0]}, #{black[1]}, #{black[4]} high."
     elsif (white[3] == white[4])  
-        b_pair = "Pair of #{black[3]}s, #{black[0]} high."
+        b_pair = "Pair of #{black[3]}s, #{black[0]}, #{black[1]}, #{black[2]} high."
     end
     b_pair
 end
 
 ## Here is the test for two pair
 
-def white_two_pair
+def white_two_pair(white_numbers)
     if (white[0] == white[1]) && (white[2] == white[3])
         w_2pair = "Two pair, #{white[0]}s and #{white[2]}s, #{white[4]} kicker."
     elsif (white[0] == white[1]) && (white[3] == white[4])
@@ -207,17 +210,49 @@ def white_two_pair
     elsif (white[1] == white[2]) && (white[3] == white[4])
         w_2pair = "Two pair, #{white[1]}s and #{white[3]}s, #{white[0]} kicker."
     end
+    w_2pair
 end
 
-def black_two_pair
+def black_two_pair(black_numbers)
     if (black[0] == black[1]) && (black[2] == black[3])
-        w_2pair = "Two pair, #{black[0]}s and #{black[2]}s, #{black[4]} kicker."
+        b_2pair = "Two pair, #{black[0]}s and #{black[2]}s, #{black[4]} kicker."
     elsif (black[0] == black[1]) && (black[3] == black[4])
-        w_2pair = "Two pair, #{black[0]}s and #{black[3]}s, #{black[2]} kicker."
+        b_2pair = "Two pair, #{black[0]}s and #{black[3]}s, #{black[2]} kicker."
     elsif (black[1] == black[2]) && (black[3] == black[4])
-        w_2pair = "Two pair, #{black[1]}s and #{black[3]}s, #{black[0]} kicker."
+        b_2pair = "Two pair, #{black[1]}s and #{black[3]}s, #{black[0]} kicker."
     end
+    b_2pair
 end
 
 ## Here is the test for three of a kind
 
+def white_three_of_Kind
+    if (white[0] == white[1]) && (white[0] == white[2])
+        white_3s = "Three of a kind, #{white[0]}s."
+    elsif (white[0] == white[1]) && (white[0] == white[3])
+        white_3s = "Three of a kind, #{white[0]}s."
+    elsif (white[0] == white[1]) && (white[0] == white[4])
+        white_3s = "Three of a kind, #{white[0]}s."
+    elsif (white[1] == white[2]) && (white[1] == white[3])
+        white_3s = "Three of a kind, #{white[1]}s."
+    elsif (white[1] == white[2]) && (white[1] == white[4])
+        white_3s = "Three of a kind, #{white[1]}s."
+    elsif (white[2] == white[3]) && (white[2] == white[4])
+        white_3s = "Three of a kind, #{white[2]}s."
+    end
+    white_3s
+end
+
+def black_three_of_Kind
+    if (white[0] == white[1]) && (white[0] == white[2])
+        black_3s = "Three of a kind, #{white[0]}s."
+    elsif (white[1] == white[2]) && (white[1] == white[3])
+        black_3s ="Three of a kind, #{white[1]}s."
+    elsif (white[2] == white[3]) && (white[2] == white[4])
+        black_3s ="Three of a kind, #{white[2]}s."
+    end
+    black_3s
+end
+
+
+## Here is the test for four of a kind

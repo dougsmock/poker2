@@ -150,14 +150,14 @@ class Poker_test < Minitest::Test
 		# p "Black's suits are #{black_suits}."
 	end	
 	
-	def test_high_card_string
-		white_number = [6, 6, 8, 12, 10]
+	def test_high_card_string #obsolete REDOING?
+		white_number = [12, 10, 8, 6, 4]
 		# p white_number
 		w_high = white_number.max
-		# p "#{w_high} is white's high card."
+		# p "#{w_high} is white's high card, with "
 	end
 
-	def test_high_card
+	def test_high_card #obsolete, as cards will be shuffled from high to low
 		white_number = [6, 6, 8, 12, 10]
 		assert_equal(12, white_number.max)
 	end
@@ -190,6 +190,18 @@ class Poker_test < Minitest::Test
 			# p "Two pair, #{white[0]}s and #{white[3]}s, #{white[2]} kicker."
 		elsif (white[1] == white[2]) && (white[3] == white[4])
 			# p "Two pair, #{white[1]}s and #{white[3]}s, #{white[0]} kicker."
+		end
+	end
+
+
+	def test_get_three_of_Kind
+		white = [13, 12, 7, 7, 7]
+		if (white[0] == white[1]) && (white[0] == white[2])
+			# p "Three of a kind, #{white[0]}s."
+		elsif (white[1] == white[2]) && (white[1] == white[3])
+			# p "Three of a kind, #{white[1]}s."
+		elsif (white[2] == white[3]) && (white[2] == white[4])
+			# p "Three of a kind, #{white[2]}s."
 		end
 	end
 
