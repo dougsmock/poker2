@@ -252,14 +252,15 @@ class Poker_test < Minitest::Test
 			flush = false
 		end
 
-		if (white_numbers[0] - 1 == white_numbers[1]) && (white_numbers[1] - 1 == white_numbers[2]) && (white_numbers[2] - 1 == white_numbers[3]) && (white_numbers[3] - 1 == white_numbers[4])
-		elsif (white_numbers[0] == 14) && (white_numbers[1] == 5) && (white_numbers[2] == 4) && (white_numbers[3] == 3) && (white_numbers[4] == 2)
+		if ((white_numbers[0] - 1 == white_numbers[1]) && (white_numbers[1] - 1 == white_numbers[2]) && (white_numbers[2] - 1 == white_numbers[3]) && (white_numbers[3] - 1 == white_numbers[4])) || ((white_numbers[0] == 14) && (white_numbers[1] == 5) && (white_numbers[2] == 4) && (white_numbers[3] == 3) && (white_numbers[4] == 2))
 			straight = true
+		else
+			straight = false
 		end
 
 		if (flush == true) && (straight == true)
-			p "Straight flush, #{white_numbers} high."
-			unless (white_numbers[0] == 14) && (white_numbers[1] == 5) && (white_numbers[2] == 4) && (white_numbers[3] == 3) && (white_numbers[4] == 2)
+			p "Straight flush, #{white_numbers[0]} high."
+			unless (flush == true) && ((white_numbers[0] == 14) && (white_numbers[1] == 5) && (white_numbers[2] == 4) && (white_numbers[3] == 3) && (white_numbers[4] == 2))
 				p "Straight flush, 5 high."
 			end
 		end
