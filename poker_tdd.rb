@@ -206,6 +206,27 @@ class Poker_test < Minitest::Test
 	end
 
 
+	def test_get_four_of_Kind
+		white = [13, 13, 13, 13, 7]
+		if (white[0] == white[1]) && (white[0] == white[2]) && (white[0] == white[3])
+			# p "Four of a kind, #{white[0]}s."
+		elsif (white[1] == white[2]) && (white[1] == white[3]) && (white[1] == white[4])
+			# p "Four of a kind, #{white[1]}s."
+		end
+	end
+
+
+	def test_full_house
+		white = [10, 10, 10, 9, 9]
+		if ((white[0] == white[1]) && (white[0] == white[2])) && (white[3] == white[4])
+			p "Full house, #{white[0]} over #{white[3]}."
+		elsif (white[0] == white[1]) && ((white[2] == white[3]) && (white[2] == white[4]))
+			p "Full house, #{white[2]} over #{white[0]}."
+		end
+	end
+
+
+
 
 
 
