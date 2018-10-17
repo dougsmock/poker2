@@ -297,10 +297,91 @@ class Poker_test < Minitest::Test
 		white_suits = ["Clubs", "Diamonds", "Hearts", "Hearts", "Spades"]
 		x = 0
 		5.times do
-			p "#{white_numbers[x]} of #{white_suits[x]}"
+			# p "#{white_numbers[x]} of #{white_suits[x]}"
 			x += 1
 		end
-    end
+	end
+	
+	# def test_print_straight_flush
+	# 	w_sf = "Straight flush, 10 high."
+	# 	if w_sf == "ROYAL FLUSH"
+	# 		p w_sf
+	# 	elsif w_sf.include? "Four of a kind."
+	# 		p w_sf
+	# 	end
+	# end
+
+	def test_print_fours
+		w_4s = "Four of a kind, 10s."
+		if w_4s.include? "Four of a kind"
+			# p w_4s
+		end
+	end
+
+	def test_print_rank_hand
+		w_sf = "Straight flflush, 10 high."
+		w_4s = "Four of a kinnnd, 6s"
+		w_full = "Ful house, 6s over 4s."
+		w_flush = "Fush, 7 high"
+		w_straight = "Strait, 10 high"
+		w_3s = "Thee of a kind, 6s"
+		w_2pair = "To pair, 4s and 2s"
+		w_pair = "Par, 7s"
+		w_high = ""
+		white_numbers = [11, 10, 8, 4, 2]
+
+		if w_sf == "ROYAL FLUSH!"
+			p w_sf
+			return w_sf
+		elsif w_sf.include? "Straight flush"
+			p w_sf
+			return w_sf
+		end
+	
+		if w_4s.include? "Four of a kind"
+			p w_4s
+			return w_4s
+		end
+	
+		if w_full.include? "Full house"
+			p w_full
+			return w_full
+		end
+	
+		if w_flush.include? "Flush"
+			p w_flush
+			return w_flush
+		end
+	
+		if w_straight.include? "Straight"
+			p w_straight
+			return w_straight
+		end
+	
+		if w_3s.include? "Three of a kind"
+			p w_3s
+			return w_3s
+		end
+	
+		if w_2pair.include? "Two pair"
+			p w_2pair
+			return w_2pair
+		end
+	
+		if w_pair.include? "Pair,"
+			p w_pair
+			return w_pair
+		else
+			p "High card, #{white_numbers}."
+		end
+	end
+
+
+
+
+
+
+
 
 
 end

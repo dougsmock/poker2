@@ -348,12 +348,15 @@ def white_straight_flush(white_numbers, white_suits)
     end
 
     if (flush == true) && (straight == true)
-        if white_numbers[0] == 14
+        if white_numbers[0] == 14 && white_numbers[1] == 13
+            w_sf = "ROYAL FLUSH!"
+        elsif white_numbers[0] == 14 && white_numbers[1] == 5
             w_sf = "Straight flush, 5 high."
         else
             w_sf = "Straight flush, #{white_numbers[0]} high."
         end
     end
+    w_sf
 end
 
 def black_straight_flush(black_numbers, black_suits) 
@@ -370,14 +373,17 @@ def black_straight_flush(black_numbers, black_suits)
     if (black_numbers[0] == 14) && (black_numbers[1] == 5) && (black_numbers[2] == 4) && (black_numbers[3] == 3) && (black_numbers[4] == 2)
         straight = true
     end
-    
+
     if (flush == true) && (straight == true)
-        if black_numbers[0] == 14
+        if black_numbers[0] == 14 && black_numbers[1] == 13
+            b_sf = "ROYAL FLUSH!"
+        elsif black_numbers[0] == 14 && black_numbers[1] == 5
             b_sf = "Straight flush, 5 high."
         else
-            v_sf = "Straight flush, #{black_numbers[0]} high."
+            b_sf = "Straight flush, #{black_numbers[0]} high."
         end
     end
+    b_sf
 end
 
 # Create display of each hand with numbers and suits
@@ -397,33 +403,52 @@ def blackhand_display(black_numbers, black_suits)
     end
 end
 
-## report for screen
+## report for screen, preparing to compare between black and white
 
-def white_report(w_high, w_pair, w_2pair, w_3s, w_straight, w_flush, w_full, w_4s, w_sf)
-    p w_high
-    p w_pair
-    p w_2pair
-    p w_3s
-    p w_straight
-    p w_flush
-    p w_full
-    p w_4s
-    p w_sf
+def white_report(w_high, w_pair, w_2pair, w_3s, w_straight, w_flush, w_full, w_4s, w_sf, white_numbers)
+    if w_sf == "ROYAL FLUSH!"
+        p w_sf
+        return w_sf
+    elsif w_sf.include? "Straight flush"
+        p w_sf
+        return w_sf
+    end
+
+    if w_4s.include? "Four of a kind"
+        p w_4s
+        return w_4s
+    end
+
+    if w_full.include? "Full house"
+        p w_full
+        return w_full
+    end
+
+    if w_flush.include? "Flush"
+        p w_flush
+        return w_flush
+    end
+
+    if w_straight.include? "Straight"
+        p straight
+        return w_straight
+    end
+
+    if w_3s.include? "Three of a kind"
+        p w3s
+        return w_3s
+    end
+
+    if w_2pair.include? "Two pair"
+        p w_2pair
+        return w_2pair
+    end
+
+    if w_pair.include? "Pair,"
+        p w_pair
+        return w_pair
+    else
+        p "High card, #{white_numbers}."
+    end
 end
-
-def black_report(b_high, b_pair, b_2pair, b_3s, b_straight, b_flush, b_full, b_4s, b_sf)
-    p b_high
-    p b_pair
-    p b_2pair
-    p b_3s
-    p b_straight
-    p b_flush
-    p b_full
-    p b_4s
-    p b_sf
-end
-
-
-
-
 
