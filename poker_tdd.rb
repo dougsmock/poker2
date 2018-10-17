@@ -6,6 +6,27 @@ class Poker_test < Minitest::Test
 		assert_equal(2, 1+1)
 	end
 
+	def test_deal_hands_and_split
+		card_arr = [*1..52]
+		# p "Deck #{card_arr}."
+		shufcard_arr = card_arr.shuffle 
+		# p shufcard_arr
+		whitecards_arr = []
+		whitecards_arr = shufcard_arr.pop(5)
+		# p "White: #{whitecards_arr}."
+		black_avail = shufcard_arr
+		blackcards_arr = black_avail.pop(5)
+		# p "Black: #{blackcards_arr}."
+		bothhands = []
+		bothhands << whitecards_arr
+		bothhands << blackcards_arr
+		# p "Hands combined: #{bothhands}."
+		whitehand = bothhands.shift(1)
+		# p "White hand again: #{whitehand}."
+		blackhand = bothhands[0]
+		# p "Black hand again: #{blackhand}."
+	end
+
 	def test_of_integer_division
 		assert_equal(1, 7/4)
 	end
@@ -14,16 +35,16 @@ class Poker_test < Minitest::Test
 		assert_equal(3, 7%4)
 	end
 
-	def test_card_position
-		card_arr = [*1..52]
-		assert_equal(11, card_arr[10])
-	end
+	# def test_card_position
+	# 	card_arr = [*1..52]
+	# 	assert_equal(11, card_arr[10])
+	# end
 
-	def test_shuffling_cards_length
-		card_arr = [*1..52]
-		newcard_arr = card_arr.shuffle
-		assert_equal(52, newcard_arr.length)
-	end
+	# def test_shuffling_cards_length
+	# 	card_arr = [*1..52]
+	# 	newcard_arr = card_arr.shuffle
+	# 	assert_equal(52, newcard_arr.length)
+	# end
 
 	def test_of_array_pop
 		test_array = [*1..52]
@@ -235,7 +256,7 @@ class Poker_test < Minitest::Test
 	end
 
 	def test_flush
-		white_suits = [0, 0, 0, 0, 0]
+		white_suits = ["Hearts", "Hearts", "Hearts", "Hearts", "Hearts"]
 		white_numbers = [13, 10, 9, 8, 2]
 		if (white_suits[0] == white_suits[1]) && (white_suits[1] == white_suits[2]) && (white_suits[2] == white_suits[3]) && (white_suits[3] == white_suits[4])
 			# p "Flush, #{white_numbers[0]} high."
@@ -244,7 +265,7 @@ class Poker_test < Minitest::Test
 
 
 	def test_straight_flush ##Test this over again. 
-		white_suits = [0, 0, 0, 0, 0]
+		white_suits = ["Hearts", "Hearts", "Hearts", "Hearts", "Hearts"]
 		white_numbers = [6, 5, 4, 3, 2]
 		flush = false
 		straight = false
@@ -261,34 +282,25 @@ class Poker_test < Minitest::Test
 		end
 
 		if (flush == true) && (straight == true)
-			if white_numbers[0] == 14
-				p "Straight flush, 5 high."
+			if (white_numbers[0] == 14 && white_numbers[1] == 5)
+				# p "Straight flush, 5 high."
+			elsif (white_numbers[0] == 14 && white_numbers[1] == 13)
+				# p "ROYAL FLUSH!"
 			else
-				p "Straight flush, #{white_numbers[0]} high."
+				# p "Straight flush, #{white_numbers[0]} high."
 			end
-		else
-			p "No straight flush."
 		end
-	
-	
-	
-	
-	
 	end
 
-
-
-
-
-
-		
-	
-
-
-
-
-
-
+	def test_hand_display
+		white_numbers = [11, 10, 8, 4, 2]
+		white_suits = ["Clubs", "Diamonds", "Hearts", "Hearts", "Spades"]
+		x = 0
+		5.times do
+			p "#{white_numbers[x]} of #{white_suits[x]}"
+			x += 1
+		end
+    end
 
 
 end
