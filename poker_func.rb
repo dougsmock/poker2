@@ -1,4 +1,5 @@
-#This is a deck of cards, numbered 1 through 52.
+# This is a deck of cards, numbered 1 through 52.
+# Numbers and suits will be sorted late
 
 def cards()
     card_arr = [*1..52]
@@ -55,8 +56,6 @@ end
 #adding 7 to all for an 8-through-59 deck
 
 #ready for division into a card number and suit
-#and limiting global variable
-
 #8 will be 2 of Clubs, or 2 modulus 0
 #59 will be 14 modulus 3, an Ace of Hearts.
 
@@ -74,8 +73,6 @@ end
 #adding 7 to all for an 8-through-59 deck
 
 #ready for division into a card number and suit
-#and limiting global variable
-
 #8 will be 2 of Clubs, or 2 modulus 0
 #59 will be 14 modulus 3, an Ace of Hearts.
 
@@ -134,7 +131,7 @@ def white_suits(white_added)
 		elsif white_mod[y] == 3
 			white_suits << "Hearts"
 		else
-			puts "Out of order"	
+			p "Out of order"	
 		end
 		w += 1
         y += 1
@@ -158,7 +155,7 @@ def black_suits(black_added)
         elsif black_mod[y] == 3
             black_suits << "Hearts"
         else
-            puts "Out of order"	
+            p "Out of order"	
         end
         w += 1
         y += 1
@@ -168,7 +165,6 @@ end
 
 ######### We have white numbers and white suits, black numbers and black suits. 
 ###Let's test for the high card only.
-## REEXAMINE THIS ONE.
 
 def white_high(white_numbers)
     w_high = "High card, #{white_numbers}."
@@ -403,52 +399,133 @@ def blackhand_display(black_numbers, black_suits)
     end
 end
 
-## report for screen, preparing to compare between black and white
+##### Reporting to screen, preparing to compare hands.
 
 def white_report(w_high, w_pair, w_2pair, w_3s, w_straight, w_flush, w_full, w_4s, w_sf, white_numbers)
     if w_sf == "ROYAL FLUSH!"
         p w_sf
-        return w_sf
+        handrank_w = 1
+        return handrank_w
     elsif w_sf.include? "Straight flush"
         p w_sf
-        return w_sf
+        handrank_w = 2
+        return handrank_w
     end
 
     if w_4s.include? "Four of a kind"
         p w_4s
-        return w_4s
+        handrank_w = 3
+        return handrank_w
     end
 
     if w_full.include? "Full house"
         p w_full
-        return w_full
+        handrank_w = 4
+        return handrank_w
     end
 
     if w_flush.include? "Flush"
         p w_flush
-        return w_flush
+        handrank_w = 5
+        return handrank_w
     end
 
     if w_straight.include? "Straight"
-        p straight
-        return w_straight
+        p w_straight
+        handrank_w = 6
+        return handrank_w
     end
 
     if w_3s.include? "Three of a kind"
-        p w3s
-        return w_3s
+        p w_3s
+        handrank_w = 7
+        return handrank_w
     end
 
     if w_2pair.include? "Two pair"
         p w_2pair
-        return w_2pair
+        p handrank_w = 8
+        return handrank_w
     end
 
     if w_pair.include? "Pair,"
         p w_pair
-        return w_pair
+        handrank_w = 9
+        return handrank_w
     else
         p "High card, #{white_numbers}."
+        handrank_w = 10
     end
 end
+
+##### same thing, now with the black hand.
+
+
+def black_report(b_high, b_pair, b_2pair, b_3s, b_straight, b_flush, b_full, b_4s, b_sf, black_numbers)
+    if b_sf == "ROYAL FLUSH!"
+        p b_sf
+        handrank_b = 1
+        return handrank_b
+    elsif b_sf.include? "Straight flush"
+        p b_sf
+        handrank_b = 2
+        return handrank_b
+    end
+
+    if b_4s.include? "Four of a kind"
+        p b_4s
+        handrank_b = 3
+        return handrank_b
+    end
+
+    if b_full.include? "Full house"
+        p b_full
+        handrank_b = 4
+        return handrank_b
+    end
+
+    if b_flush.include? "Flush"
+        p b_flush
+        handrank_b = 5
+        return handrank_b
+    end
+
+    if b_straight.include? "Straight"
+        p b_straight
+        handrank_b = 6
+        return handrank_b
+    end
+
+    if b_3s.include? "Three of a kind"
+        p b_3s
+        handrank_w = 7
+        return handrank_w
+    end
+
+    if b_2pair.include? "Two pair"
+        p b_2pair
+        handrank_b = 8
+        return handrank_b
+    end
+
+    if b_pair.include? "Pair,"
+        p b_pair
+        handrank_b = 9
+        return handrank_b
+    else
+        p "High card, #{black_numbers}."
+        handrank_b = 10
+    end
+end
+
+def declare_winner(handrank_w, handrank_b)
+    if handrank_w < handrank_b
+        p "WHITE WINS!"
+    elsif handrank_w > handrank_b
+        p "BLACK WINS!"
+    else handrank_w == handrank_b
+        p "Tiebreaker"
+    end
+end
+
 

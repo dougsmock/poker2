@@ -313,66 +313,86 @@ class Poker_test < Minitest::Test
 
 	def test_print_fours
 		w_4s = "Four of a kind, 10s."
-		if w_4s.include? "Four of a kind"
+		if w_4s.include? "Four of a kind,"
 			# p w_4s
 		end
 	end
 
 	def test_print_rank_hand
-		w_sf = "Straight flflush, 10 high."
-		w_4s = "Four of a kinnnd, 6s"
-		w_full = "Ful house, 6s over 4s."
-		w_flush = "Fush, 7 high"
-		w_straight = "Strait, 10 high"
-		w_3s = "Thee of a kind, 6s"
-		w_2pair = "To pair, 4s and 2s"
-		w_pair = "Par, 7s"
+		w_sf = "Straight flush, 10"
+		w_4s = "Four of a kind, 9"
+		w_full = "Full house, 6 over 4."
+		w_flush = ""
+		w_straight = ""
+		w_3s = "Three of a kind, 6s"
+		w_2pair = "Two pair, 6s and 4s"
+		w_pair = "Pir, 6s"
 		w_high = ""
-		white_numbers = [11, 10, 8, 4, 2]
+		white_numbers = [6, 6, 6, 4, 4]
 
 		if w_sf == "ROYAL FLUSH!"
 			p w_sf
-			return w_sf
-		elsif w_sf.include? "Straight flush"
+			handrank_w = 1
+			p handrank_w
+			return handrank_w
+		elsif w_sf.include? "Straight flush,"
 			p w_sf
-			return w_sf
+			handrank_w = 2
+			p handrank_w
+			return handrank_w
 		end
 	
-		if w_4s.include? "Four of a kind"
+		if w_4s.include? "Four of a kind,"
 			p w_4s
-			return w_4s
+			handrank_w = 3
+			p handrank_w
+			return handrank_w
 		end
 	
-		if w_full.include? "Full house"
+		if w_full.include? "Full house,"
 			p w_full
-			return w_full
+			handrank_w = 4
+			p handrank_w
+			return handrank_w
 		end
 	
-		if w_flush.include? "Flush"
+		if w_flush.include? "Flush,"
 			p w_flush
-			return w_flush
+			handrank_w = 5
+			p handrank_w
+			return handrank_w
 		end
 	
-		if w_straight.include? "Straight"
+		if w_straight.include? "Straight,"
 			p w_straight
-			return w_straight
+			handrank_w = 6
+			p handrank_w
+			return handrank_w
 		end
 	
-		if w_3s.include? "Three of a kind"
+		if w_3s.include? "Three of a kind,"
 			p w_3s
-			return w_3s
+			handrank_w = 7
+			p handrank_w
+			return handrank_w
 		end
 	
-		if w_2pair.include? "Two pair"
+		if w_2pair.include? "Two pair,"
 			p w_2pair
-			return w_2pair
+			handrank_w = 8
+			p handrank_w
+			return handrank_w
 		end
 	
 		if w_pair.include? "Pair,"
 			p w_pair
-			return w_pair
+			handrank_w = 9
+			p handrank_w
+			return handrank_w
 		else
 			p "High card, #{white_numbers}."
+			handrank_w = 10
+			p handrank_w
 		end
 	end
 
