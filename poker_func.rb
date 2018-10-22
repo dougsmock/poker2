@@ -178,6 +178,7 @@ end
 
 ### Here is the test for one pair
 def white_pair(white_numbers)
+    white = white_numbers
     if (white[0] == white[1])  
         w_pair = "Pair of #{white[0]}s, #{white[2]}, #{white[3]}, #{white[4]} high."
     elsif (white[1] == white[2])  
@@ -191,6 +192,7 @@ def white_pair(white_numbers)
 end
 
 def black_pair(black_numbers)
+    black = black_numbers
     if (black[0] == black[1])  
         b_pair = "Pair of #{black[0]}s, #{black[2]}, #{black[3]}, #{black[4]} high."
     elsif (black[1] == black[2])  
@@ -206,6 +208,7 @@ end
 ## Here is the test for two pair
 
 def white_two_pair(white_numbers)
+    white = white_numbers
     if (white[0] == white[1]) && (white[2] == white[3])
         w_2pair = "Two pair, #{white[0]}s and #{white[2]}s, #{white[4]} kicker."
     elsif (white[0] == white[1]) && (white[3] == white[4])
@@ -217,6 +220,7 @@ def white_two_pair(white_numbers)
 end
 
 def black_two_pair(black_numbers)
+    black = black_numbers
     if (black[0] == black[1]) && (black[2] == black[3])
         b_2pair = "Two pair, #{black[0]}s and #{black[2]}s, #{black[4]} kicker."
     elsif (black[0] == black[1]) && (black[3] == black[4])
@@ -230,6 +234,7 @@ end
 ## Here is the test for three of a kind
 
 def white_three(white_numbers)
+    white = white_numbers
     if (white[0] == white[1]) && (white[0] == white[2])
         w_3s = "Three of a kind, #{white[0]}s."
     elsif (white[1] == white[2]) && (white[1] == white[3])
@@ -241,6 +246,7 @@ def white_three(white_numbers)
 end
 
 def black_three(black_numbers)
+    black = black_numbers
     if (black[0] == black[1]) && (black[0] == black[2])
         b_3s = "Three of a kind, #{black[0]}s."
     elsif (black[1] == black[2]) && (black[1] == black[3])
@@ -254,6 +260,7 @@ end
 ## Here is the tests for strights
 
 def white_straight(white_numbers)
+    white = white_numbers
     if (white[0] - 1 == white[1]) && (white[1] - 1 == white[2]) && (white[2] - 1 == white[3]) && (white[3] - 1 == white[4])
         w_straight = "Straight, #{white[0]} high."
     elsif (white[0] == 14) && (white[1] == 5) && (white[2] == 4) && (white[3] == 3) && (white[4] == 2)
@@ -263,6 +270,7 @@ def white_straight(white_numbers)
 end
 
 def black_straight(black_numbers)
+    black = black_numbers
     if (black[0] - 1 == black[1]) && (black[1] - 1 == black[2]) && (black[2] - 1 == black[3]) && (black[3] - 1 == black[4])
         b_straight = "Straight, #{black[0]} high."
     elsif (black[0] == 14) && (black[1] == 5) && (black[2] == 4) && (black[3] == 3) && (black[4] == 2)
@@ -280,6 +288,7 @@ def white_flush(white_suits, white_numbers)
 end
 
 def black_flush(black_suits, black_numbers)
+    black = black_numbers
     if (black_suits[0] == black_suits[1]) && (black_suits[1] == black_suits[2]) && (black_suits[2] == black_suits[3]) && (black_suits[3] == black_suits[4])
         b_flush = "Flush, #{black_numbers[0]} high."
     end
@@ -289,6 +298,7 @@ end
 ## Here is the test for full house
 
 def white_full_house(white_numbers)
+    white = white_numbers
     if ((white[0] == white[1]) && (white[0] == white[2])) && (white[3] == white[4])
         w_full = "Full house, #{white[0]} over #{white[3]}."
     elsif (white[0] == white[1]) && ((white[2] == white[3]) && (white[2] == white[4]))
@@ -298,6 +308,7 @@ def white_full_house(white_numbers)
 end
 
 def black_full_house(black_numbers)
+    black = black_numbers
     if ((black[0] == black[1]) && (black[0] == black[2])) && (black[3] == black[4])
         b_full = "Full house, #{black[0]} over #{black[3]}."
     elsif (black[0] == black[1]) && ((black[2] == black[3]) && (black[2] == black[4]))
@@ -309,6 +320,7 @@ end
 ## Here is the test for four of a kind
 
 def white_four(white_numbers)
+    white = white_numbers
     if (white[0] == white[1]) && (white[0] == white[2]) && (white[0] == white[3])
         w_4s = "Four of a kind, #{white[0]}s."
     elsif (white[1] == white[2]) && (white[1] == white[3]) && (white[1] == white[4])
@@ -318,6 +330,7 @@ def white_four(white_numbers)
 end
 
 def black_four(black_numbers)
+    black = black_numbers
     if (black[0] == black[1]) && (black[0] == black[2]) && (black[0] == black[3])
         b_4s = "Four of a kind, #{black[0]}s."
     elsif (black[1] == black[2]) && (black[1] == black[3]) && (black[1] == black[4])
@@ -404,6 +417,7 @@ end
 ##### Reporting to screen, preparing to compare hands.
 
 def white_report(w_high, w_pair, w_2pair, w_3s, w_straight, w_flush, w_full, w_4s, w_sf, white_numbers)
+    handrank_w = 0
     if w_sf == "ROYAL FLUSH!"
         p w_sf
         handrank_w = 1
@@ -414,56 +428,69 @@ def white_report(w_high, w_pair, w_2pair, w_3s, w_straight, w_flush, w_full, w_4
         return handrank_w
     end
 
-    if w_4s.include? "Four of a kind"
-        p w_4s
-        handrank_w = 3
-        return handrank_w
+    if w_4s != nil
+        if w_4s.include? "Four of a kind"
+            p w_4s
+            handrank_w = 3
+            return handrank_w
+        end
     end
 
-    if w_full.include? "Full house"
+    if w_full != nil
+        if w_full.include? "Full house"
         p w_full
         handrank_w = 4
         return handrank_w
+        end
     end
 
-    if w_flush.include? "Flush"
-        p w_flush
-        handrank_w = 5
-        return handrank_w
+    if w_flush != nil
+        if w_flush.include? "Flush"
+            p w_flush
+            handrank_w = 5
+            return handrank_w
+        end
     end
 
-    if w_straight.include? "Straight"
-        p w_straight
-        handrank_w = 6
-        return handrank_w
+    if w_straight != nil
+        if w_straight.include? "Straight"
+            p w_straight
+            handrank_w = 6
+            return handrank_w
+        end
     end
 
-    if w_3s.include? "Three of a kind"
-        p w_3s
-        handrank_w = 7
-        return handrank_w
+    if w_3s != nil
+        if w_3s.include? "Three of a kind"
+            p w_3s
+            handrank_w = 7
+            return handrank_w
+        end
     end
 
-    if w_2pair.include? "Two pair"
-        p w_2pair
-        p handrank_w = 8
-        return handrank_w
+    if w_2pair != nil
+        if w_2pair.include? "Two pair"
+            p w_2pair
+            handrank_w = 8
+            return handrank_w
+        end
     end
 
-    if w_pair.include? "Pair,"
-        p w_pair
-        handrank_w = 9
-        return handrank_w
+    if w_pair != nil
+        if w_pair.include? "Pair,"
+            p w_pair
+            handrank_w = 9
+            return handrank_w
+        end
     else
-        p "High card, #{white_numbers}."
-        handrank_w = 10
+        return handrank_w = 10
     end
 end
 
 ##### same thing, now with the black hand.
 
-
 def black_report(b_high, b_pair, b_2pair, b_3s, b_straight, b_flush, b_full, b_4s, b_sf, black_numbers)
+    handrank_b = 0
     if b_sf == "ROYAL FLUSH!"
         p b_sf
         handrank_b = 1
@@ -474,51 +501,67 @@ def black_report(b_high, b_pair, b_2pair, b_3s, b_straight, b_flush, b_full, b_4
         return handrank_b
     end
 
-    if b_4s.include? "Four of a kind"
-        p b_4s
-        handrank_b = 3
-        return handrank_b
+    if b_4s != nil
+        if b_4s.include? "Four of a kind"
+            p b_4s
+            handrank_b = 3
+            return handrank_b
+        end
     end
 
-    if b_full.include? "Full house"
+    if b_full != nil
+        if b_full.include? "Full house"
         p b_full
         handrank_b = 4
         return handrank_b
+        end
     end
 
-    if b_flush.include? "Flush"
-        p b_flush
-        handrank_b = 5
-        return handrank_b
+    if b_flush != nil
+        if b_flush.include? "Flush"
+            p b_flush
+            handrank_b = 5
+            return handrank_b
+        end
     end
 
-    if b_straight.include? "Straight"
-        p b_straight
-        handrank_b = 6
-        return handrank_b
+    if b_straight != nil
+        if b_straight.include? "Straight"
+            p b_straight
+            handrank_b = 6
+            return handrank_b
+        end
     end
 
-    if b_3s.include? "Three of a kind"
-        p b_3s
-        handrank_w = 7
-        return handrank_w
+    if b_3s != nil
+        if b_3s.include? "Three of a kind"
+            p b_3s
+            handrank_b = 7
+            return handrank_b
+        end
     end
 
-    if b_2pair.include? "Two pair"
-        p b_2pair
-        handrank_b = 8
-        return handrank_b
+    if b_2pair != nil
+        if b_2pair.include? "Two pair"
+            p b_2pair
+            handrank_b = 8
+            return handrank_b
+        end
     end
 
-    if b_pair.include? "Pair,"
-        p b_pair
-        handrank_b = 9
-        return handrank_b
+    if b_pair != nil
+        if b_pair.include? "Pair,"
+            p b_pair
+            handrank_b = 9
+            return handrank_b
+        end
     else
-        p "High card, #{black_numbers}."
-        handrank_b = 10
+        return handrank_b = 10
     end
 end
+
+
+
 
 def declare_winner(handrank_w, handrank_b)
     if handrank_w < handrank_b
