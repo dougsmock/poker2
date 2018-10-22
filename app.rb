@@ -42,8 +42,25 @@ bdisplay = blackhand_display(bnumbs, bsuits)
 p wdisplay
 p bdisplay
 
+a = ""
+b = ""
+c = ""
+d = ""
+e = ""
+f = ""
+g = ""
+h = ""
+i = ""
+j = ""
 
+wreport = white_report(a, b, c, d, e, f, g, h, i, j)
+puts "White hand"
+puts wreport
 
+# breport = black_report(a, b, c, d, e, f, g, h, i, j)
+
+# p "Black hand"
+# p breport
 
 
 

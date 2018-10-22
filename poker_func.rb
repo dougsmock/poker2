@@ -387,7 +387,7 @@ def whitehand_display(white_numbers, white_suits)
     x = 0
     p "White hand"
     5.times do
-        p "#{white_numbers[x]} of #{white_suits[x]}"
+        puts "#{white_numbers[x]} of #{white_suits[x]}"
         x += 1
     end
 end
@@ -396,7 +396,7 @@ def blackhand_display(black_numbers, black_suits)
     x = 0
     p "Black hand"
     5.times do
-        p "#{black_numbers[x]} of #{black_suits[x]}"
+        puts "#{black_numbers[x]} of #{black_suits[x]}"
         x += 1
     end
 end
