@@ -87,14 +87,12 @@ w = ""
 b = ""
 wreport = white_report(w_sf, w_4, w_full, w_flush, w_straight, w_3, w_2p, w_2, w_high, w)
 breport = black_report(b_sf, b_4, b_full, b_flush, b_straight, b_3, b_2p, b_2, b_high, b)
-p wreport
-p breport
 
 
-
-
-" And the winner is ... "
-
+p " And the winner is ... "
+winner = declare_winner(wreport, breport)
+p winner
+ 
 
 
 

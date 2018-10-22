@@ -417,7 +417,6 @@ end
 ##### Reporting to screen, preparing to compare hands.
 
 def white_report(w_high, w_pair, w_2pair, w_3s, w_straight, w_flush, w_full, w_4s, w_sf, white_numbers)
-    handrank_w = 0
     if w_sf == "ROYAL FLUSH!"
         p w_sf
         handrank_w = 1
@@ -490,7 +489,6 @@ end
 ##### same thing, now with the black hand.
 
 def black_report(b_high, b_pair, b_2pair, b_3s, b_straight, b_flush, b_full, b_4s, b_sf, black_numbers)
-    handrank_b = 0
     if b_sf == "ROYAL FLUSH!"
         p b_sf
         handrank_b = 1
@@ -560,10 +558,10 @@ def black_report(b_high, b_pair, b_2pair, b_3s, b_straight, b_flush, b_full, b_4
     end
 end
 
-
-
-
 def declare_winner(handrank_w, handrank_b)
+    p handrank_w
+    p handrank_b
+
     if handrank_w < handrank_b
         p "WHITE WINS!"
     elsif handrank_w > handrank_b
