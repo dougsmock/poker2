@@ -331,70 +331,71 @@ class Poker_test < Minitest::Test
 		white_numbers = [6, 6, 6, 4, 4]
 
 		if w_sf == "ROYAL FLUSH!"
-			p w_sf
+			# p w_sf
 			handrank_w = 1
-			p handrank_w
+			# p handrank_w
 			return handrank_w
 		elsif w_sf.include? "Straight flush,"
-			p w_sf
+			# p w_sf
 			handrank_w = 2
-			p handrank_w
+			# p handrank_w
 			return handrank_w
 		end
 	
 		if w_4s.include? "Four of a kind,"
-			p w_4s
+			# p w_4s
 			handrank_w = 3
-			p handrank_w
+			# p handrank_w
 			return handrank_w
 		end
 	
 		if w_full.include? "Full house,"
-			p w_full
+			# p w_full
 			handrank_w = 4
-			p handrank_w
+			# p handrank_w
 			return handrank_w
 		end
 	
 		if w_flush.include? "Flush,"
-			p w_flush
+			# p w_flush
 			handrank_w = 5
-			p handrank_w
+			# p handrank_w
 			return handrank_w
 		end
 	
 		if w_straight.include? "Straight,"
-			p w_straight
+			# p w_straight
 			handrank_w = 6
-			p handrank_w
+			# p handrank_w
 			return handrank_w
 		end
 	
 		if w_3s.include? "Three of a kind,"
-			p w_3s
+			# p w_3s
 			handrank_w = 7
-			p handrank_w
+			# p handrank_w
 			return handrank_w
 		end
 	
 		if w_2pair.include? "Two pair,"
-			p w_2pair
+			# p w_2pair
 			handrank_w = 8
-			p handrank_w
+			# p handrank_w
 			return handrank_w
 		end
 	
 		if w_pair.include? "Pair,"
-			p w_pair
+			# p w_pair
 			handrank_w = 9
-			p handrank_w
+			# p handrank_w
 			return handrank_w
 		else
-			p "High card, #{white_numbers}."
+			# p "High card, #{white_numbers}."
 			handrank_w = 10
-			p handrank_w
+			# p handrank_w
 		end
 	end
+
 
 
 

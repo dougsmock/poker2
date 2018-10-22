@@ -1,13 +1,12 @@
 # This is a deck of cards, numbered 1 through 52.
-# Numbers and suits will be sorted late
 
-def cards()
+def cards
     card_arr = [*1..52]
     card_arr
 end
 
-#This shuffles the cards
-
+## this shuffles the cards
+    
 def shuffle(card_arr)
     shufcard_arr = card_arr.shuffle
     shufcard_arr
@@ -30,6 +29,7 @@ end
 #This splits out into a 5-card whitehand
 def whitehand(bothhands)
     whitehand = bothhands.shift(1)
+    whitehand = whitehand[0]
     whitehand
 end
 
@@ -48,7 +48,7 @@ def white_high_low(whitehand)
 end
 
 def black_high_low(blackhand)
-    black = blackhand.sort { |x,y| y <=> x }
+    blackhigh = blackhand.sort { |x,y| y <=> x }
     blackhigh
 end
 
@@ -106,7 +106,7 @@ def black_numbers(black_added)
     c = 0
     black_numbers = []
     until black_added[b] == nil
-        black_numbers[c] = black_added[w] / 4
+        black_numbers[c] = black_added[b] / 4
         b += 1
         c += 1
     end
@@ -159,8 +159,8 @@ def black_suits(black_added)
         end
         w += 1
         y += 1
-        black_suits
     end
+    black_suits
 end
 
 ######### We have white numbers and white suits, black numbers and black suits. 
@@ -385,7 +385,8 @@ end
 # Create display of each hand with numbers and suits
 def whitehand_display(white_numbers, white_suits)
     x = 0
-    5.times each do
+    p "White hand"
+    5.times do
         p "#{white_numbers[x]} of #{white_suits[x]}"
         x += 1
     end
@@ -393,7 +394,8 @@ end
 
 def blackhand_display(black_numbers, black_suits)
     x = 0
-    5.times each do
+    p "Black hand"
+    5.times do
         p "#{black_numbers[x]} of #{black_suits[x]}"
         x += 1
     end
