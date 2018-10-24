@@ -311,55 +311,55 @@ class Poker_test < Minitest::Test
 	# 	end
 	# end
 
-	def test_print_fours
-		w_4s = "Four of a kind, 10s."
-		if w_4s.include? "Four of a kind,"
-			# p w_4s
-		end
-	end
+	# def test_print_fours
+	# 	w_4s = "Four of a kind, 10s."
+	# 	if w_4s.include? "Four of a kind,"
+	# 		# p w_4s
+	# 	end
+	# end
 
 	def test_print_rank_hand
-		w_sf = "Straight flush, 10"
-		w_4s = "Four of a kind, 9"
+		w_sf = "st, 10"
+		w_4s = "Fo of a kind, 9"
 		w_full = "Full house, 6 over 4."
 		w_flush = ""
 		w_straight = ""
-		w_3s = "Three of a kind, 6s"
-		w_2pair = "Two pair, 6s and 4s"
+		w_3s = "Thee of a kind, 6s"
+		w_2pair = "Two pir, 6s and 4s"
 		w_pair = "Pir, 6s"
 		w_high = ""
 		white_numbers = [6, 6, 6, 4, 4]
 
 		if w_sf == "ROYAL FLUSH!"
-			# p w_sf
+			p w_sf
 			handrank_w = 1
-			# p handrank_w
+			p handrank_w
 			return handrank_w
 		elsif w_sf.include? "Straight flush,"
-			# p w_sf
+			p w_sf
 			handrank_w = 2
-			# p handrank_w
+			p handrank_w
 			return handrank_w
 		end
 	
 		if w_4s.include? "Four of a kind,"
-			# p w_4s
+			p w_4s
 			handrank_w = 3
-			# p handrank_w
+			p handrank_w
 			return handrank_w
 		end
 	
 		if w_full.include? "Full house,"
-			# p w_full
+			p w_full
 			handrank_w = 4
-			# p handrank_w
+			p handrank_w
 			return handrank_w
 		end
 	
 		if w_flush.include? "Flush,"
-			# p w_flush
+			p w_flush
 			handrank_w = 5
-			# p handrank_w
+			p handrank_w
 			return handrank_w
 		end
 	
@@ -371,31 +371,117 @@ class Poker_test < Minitest::Test
 		end
 	
 		if w_3s.include? "Three of a kind,"
-			# p w_3s
+			p w_3s
 			handrank_w = 7
-			# p handrank_w
+			p handrank_w
 			return handrank_w
 		end
 	
 		if w_2pair.include? "Two pair,"
-			# p w_2pair
+			p w_2pair
 			handrank_w = 8
-			# p handrank_w
+			p handrank_w
 			return handrank_w
 		end
 	
 		if w_pair.include? "Pair,"
-			# p w_pair
+			p w_pair
 			handrank_w = 9
-			# p handrank_w
+			p handrank_w
 			return handrank_w
 		else
-			# p "High card, #{white_numbers}."
+			p "High card, #{white_numbers}."
 			handrank_w = 10
-			# p handrank_w
+			p handrank_w
+		end
+	
+	
+		b_sf = "Strt flush, 10"
+		b_4s = "Four of a kind, 9"
+		b_full = "Full he, 6 over 4."
+		b_flush = ""
+		b_straight = ""
+		b_3s = "Th of a kind, 6s"
+		b_2pair = "Two r, 6s and 4s"
+		b_pair = "Pir, 6s"
+		b_high = ""
+		black_numbers = [8, 8, 8, 8, 2]
+
+		if b_sf == "ROYAL FLUSH!"
+			p b_sf
+			handrank_b = 1
+			p handrank_b
+			return handrank_b
+		elsif b_sf.include? "Straight flush,"
+			p b_sf
+			handrank_b = 2
+			p handrank_b
+			return handrank_b
+		end
+	
+		if b_4s.include? "Four of a kind,"
+			p b_4s
+			handrank_b = 3
+			p handrank_b
+			return handrank_b
+		end
+	
+		if b_full.include? "Full house,"
+			p b_full
+			handrank_b = 4
+			p handrank_b
+			return handrank_b
+		end
+	
+		if b_flush.include? "Flush,"
+			p b_flush
+			handrank_b = 5
+			p handrank_b
+			return handrank_b
+		end
+	
+		if b_straight.include? "Straight,"
+			p b_straight
+			handrank_b = 6
+			p handrank_b
+			return handrank_b
+		end
+	
+		if b_3s.include? "Three of a kind,"
+			p b_3s
+			handrank_b = 7
+			p handrank_b
+			return handrank_b
+		end
+	
+		if b_2pair.include? "Two pair,"
+			p b_2pair
+			handrank_b = 8
+			p handrank_b
+			return handrank_b
+		end
+	
+		if b_pair.include? "Pair,"
+			p b_pair
+			handrank_b = 9
+			p handrank_b
+			return handrank_b
+		else
+			p "High card, #{black_numbers}."
+			handrank_b = 10
+			p handrank_b
 		end
 	end
-
+	
+	def declare_winner(handrank_w, handrank_b)
+		if handrank_w < handrank_b
+			p "WHITE WINS!"
+		elsif handrank_w > handrank_b
+			p "BLACK WINS!"
+		else handrank_w == handrank_b
+			p "Tiebreaker"
+		end
+	end
 
 
 

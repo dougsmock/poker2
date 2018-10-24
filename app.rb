@@ -42,7 +42,14 @@ bdisplay = blackhand_display(bnumbs, bsuits)
 p wdisplay
 p bdisplay
 
+w = ""
+b = ""
+winner = declare_winner(w, b)
+
+
+
 p "** white's hand rank **"
+p ""
 w_sf = white_straight_flush(wnumbs, wsuits)
 if w_sf != nil
     p w_sf
@@ -54,7 +61,7 @@ if w_4 != nil
 end
 
 w_full = white_full_house(wnumbs)
-if w_full != nil   
+if w_full != nil
     p w_full
 end
 
@@ -84,9 +91,13 @@ if w_2 != nil
 end
 
 w_high = white_high(wnumbs)
-p w_high
+if w_high != nil
+    p w_high
+end
 
+p ""
 p "** black's hand rank **"
+p ""
 b_sf = black_straight_flush(bnumbs, bsuits)
 if b_sf != nil
     p b_sf
@@ -104,12 +115,11 @@ end
 
 b_flush = black_flush(bnumbs, bsuits)
 if b_flush != nil
-    p b_flush
+    p w_blush
 end
 
 b_straight = black_straight(bnumbs)
 if b_straight != nil
-    p b_straight
 end
 
 b_3 = black_three(bnumbs)
@@ -118,8 +128,10 @@ if b_3 != nil
 end
 
 b_2p = black_two_pair(bnumbs)
-if w_2p != nil
-    p w_2p
+if b_2p != nil
+    p b_2p
+    bhand = 2
+    p bhand
 end
 
 b_2 = black_pair(bnumbs)
@@ -128,17 +140,17 @@ if b_2 != nil
 end
 
 b_high = black_high(bnumbs)
-p b_high
-
-
-w = ""
-b = ""
-wreport = white_report(w_sf, w_4, w_full, w_flush, w_straight, w_3, w_2p, w_2, w_high, w)
-breport = black_report(b_sf, b_4, b_full, b_flush, b_straight, b_3, b_2p, b_2, b_high, b)
+if b_high != nil
+    p b_high
+else
+    p "Out of order."
+end
 
 
 p " And the winner is ... "
-winner = declare_winner(wreport, breport)
+a = ""
+b = ""
+winner = declare_winner(a, b)
 p winner
  
 

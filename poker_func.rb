@@ -482,7 +482,9 @@ def white_report(w_high, w_pair, w_2pair, w_3s, w_straight, w_flush, w_full, w_4
             return handrank_w
         end
     else
-        return handrank_w = 10
+        handrank_w = 10
+        p w_high
+        return handrank_w
     end
 end
 
@@ -554,14 +556,13 @@ def black_report(b_high, b_pair, b_2pair, b_3s, b_straight, b_flush, b_full, b_4
             return handrank_b
         end
     else
-        return handrank_b = 10
+        handrank_b = 10
+        p b_high
+        return handrank_b
     end
 end
 
 def declare_winner(handrank_w, handrank_b)
-    p handrank_w
-    p handrank_b
-
     if handrank_w < handrank_b
         p "WHITE WINS!"
     elsif handrank_w > handrank_b
