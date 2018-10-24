@@ -44,41 +44,89 @@ p bdisplay
 
 p "** white's hand rank **"
 w_sf = white_straight_flush(wnumbs, wsuits)
-p w_sf
+if w_sf != nil
+    p w_sf
+end
+
 w_4 = white_four(wnumbs)
-p w_4
+if w_4 != nil
+    p w_4
+end
+
 w_full = white_full_house(wnumbs)
-p w_full
+if w_full != nil   
+    p w_full
+end
+
 w_flush = white_flush(wnumbs, wsuits)
-p w_flush
+if w_flush != nil
+    p w_flush
+end
+
 w_straight = white_straight(wnumbs)
-p w_straight
+if w_straight != nil
+    p w_straight
+end
+
 w_3 = white_three(wnumbs)
-p w_3
+if w_3 != nil
+    p w_3
+end
+
 w_2p = white_two_pair(wnumbs)
-p w_2p
+if w_2p != nil
+    p w_2p
+end
+
 w_2 = white_pair(wnumbs)
-p w_2
+if w_2 != nil
+    p w_2
+end
+
 w_high = white_high(wnumbs)
 p w_high
 
 p "** black's hand rank **"
 b_sf = black_straight_flush(bnumbs, bsuits)
-p b_sf
+if b_sf != nil
+    p b_sf
+end
+
 b_4 = black_four(bnumbs)
-p b_4
+if b_4 != nil
+    p b_4
+end
+
 b_full = black_full_house(bnumbs)
-p b_full
+if b_full != nil   
+    p b_full
+end
+
 b_flush = black_flush(bnumbs, bsuits)
-p b_flush
+if b_flush != nil
+    p b_flush
+end
+
 b_straight = black_straight(bnumbs)
-p b_straight
+if b_straight != nil
+    p b_straight
+end
+
 b_3 = black_three(bnumbs)
-p b_3
+if b_3 != nil
+    p b_3
+end
+
 b_2p = black_two_pair(bnumbs)
-p b_2p
+if w_2p != nil
+    p w_2p
+end
+
 b_2 = black_pair(bnumbs)
-p b_2
+if b_2 != nil
+    p b_2
+end
+
 b_high = black_high(bnumbs)
 p b_high
 
