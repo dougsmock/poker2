@@ -567,6 +567,16 @@ def declare_winner(handrank_w, handrank_b)
     end
 end
 
-
+def tiebreaker_high(white_numbers, black_numbers)
+    x = 0
+    while x <= 5
+        if white_numbers[] > black_numbers[]
+            p "WHITE WINS!"
+        elsif white[] < black[]
+            p "BLACK WINS!"
+        end
+    x += 1
+    end
+end
 
 
