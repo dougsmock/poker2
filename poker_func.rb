@@ -13,7 +13,7 @@ def shuffle(card_arr)
 end
 
 #This pops into a 5-card whitecards_arr, then pops into blackcards_arr
-#Then combines two hands into array to pass as one
+#Then shovels two hands into array to pass as one
 
 def deal_hands(shufcard_arr)
   whitecards_arr = []
@@ -26,7 +26,7 @@ def deal_hands(shufcard_arr)
   bothhands
 end
 
-#This splits out into a 5-card whitehand
+#This splits that array into a 5-card whitehand
 def whitehand(bothhands)
     whitehand = bothhands.shift(1)
     whitehand = whitehand[0]
@@ -87,7 +87,7 @@ def convert_black(blackhigh)
 end
 
 # Now, we assign numbers to cards 
-# (11, 12, 13, 14 will be renamed as late in the process as possible.)
+# (10, 11, 12, 13, 14 will be renamed T, J, Q, K as late in the process as possible.)
 
 def white_numbers(white_added)
     w = 0
@@ -400,7 +400,7 @@ def whitehand_display(white_numbers, white_suits)
     x = 0
     p "White hand"
     5.times do
-        puts "#{white_numbers[x]} of #{white_suits[x]}"
+        p "#{white_numbers[x]} of #{white_suits[x]}"
         x += 1
     end
 end
@@ -409,28 +409,33 @@ def blackhand_display(black_numbers, black_suits)
     x = 0
     p "Black hand"
     5.times do
-        puts "#{black_numbers[x]} of #{black_suits[x]}"
+        p "#{black_numbers[x]} of #{black_suits[x]}"
         x += 1
     end
 end
 
 ##### Reporting to screen, preparing to compare hands.
 
-def white_report(w_high, w_pair, w_2pair, w_3s, w_straight, w_flush, w_full, w_4s, w_sf, white_numbers)
-    if w_sf == "ROYAL FLUSH!"
-        p w_sf
-        handrank_w = 1
-        return handrank_w
-    elsif w_sf.include? "Straight flush"
-        p w_sf
-        handrank_w = 2
-        return handrank_w
+def white_report(w_high, w_pair, w_2pair, w_3s, w_straight, w_flush, w_full, w_4s, w_sf)
+    if w_sf != nil  
+        if w_sf == "ROYAL FLUSH!"
+            p w_sf
+            handrank_w = 1
+            p handrank_w
+            return handrank_w
+        elsif w_sf.include? "Straight flush"
+            p w_sf
+            handrank_w = 2
+            p handrank_w
+            return handrank_w
+        end
     end
 
     if w_4s != nil
         if w_4s.include? "Four of a kind"
             p w_4s
             handrank_w = 3
+            p handrank_w
             return handrank_w
         end
     end
@@ -439,6 +444,7 @@ def white_report(w_high, w_pair, w_2pair, w_3s, w_straight, w_flush, w_full, w_4
         if w_full.include? "Full house"
         p w_full
         handrank_w = 4
+        p handrank_w
         return handrank_w
         end
     end
@@ -447,6 +453,7 @@ def white_report(w_high, w_pair, w_2pair, w_3s, w_straight, w_flush, w_full, w_4
         if w_flush.include? "Flush"
             p w_flush
             handrank_w = 5
+            p handrank_w
             return handrank_w
         end
     end
@@ -455,6 +462,7 @@ def white_report(w_high, w_pair, w_2pair, w_3s, w_straight, w_flush, w_full, w_4
         if w_straight.include? "Straight"
             p w_straight
             handrank_w = 6
+            p handrank_w
             return handrank_w
         end
     end
@@ -463,6 +471,7 @@ def white_report(w_high, w_pair, w_2pair, w_3s, w_straight, w_flush, w_full, w_4
         if w_3s.include? "Three of a kind"
             p w_3s
             handrank_w = 7
+            p handrank_w
             return handrank_w
         end
     end
@@ -471,6 +480,7 @@ def white_report(w_high, w_pair, w_2pair, w_3s, w_straight, w_flush, w_full, w_4
         if w_2pair.include? "Two pair"
             p w_2pair
             handrank_w = 8
+            p handrank_w
             return handrank_w
         end
     end
@@ -479,33 +489,34 @@ def white_report(w_high, w_pair, w_2pair, w_3s, w_straight, w_flush, w_full, w_4
         if w_pair.include? "Pair,"
             p w_pair
             handrank_w = 9
+            p handrank_w
             return handrank_w
         end
     else
         handrank_w = 10
         p w_high
+        p handrank_w
         return handrank_w
     end
 end
 
 ##### same thing, now with the black hand.
 
-def black_report(b_high, b_pair, b_2pair, b_3s, b_straight, b_flush, b_full, b_4s, b_sf, black_numbers)
-    if b_sf == "ROYAL FLUSH!"
-        p b_sf
-        handrank_b = 1
-        return handrank_b
-    elsif b_sf.include? "Straight flush"
-        p b_sf
-        handrank_b = 2
-        return handrank_b
+def black_report(b_high, b_pair, b_2pair, b_3s, b_straight, b_flush, b_full, b_4s, b_sf)
+    if b_sf != nil  
+        if b_sf == "ROYAL FLUSH!"
+            p b_sf
+            handrank_b = 1
+        elsif b_sf.include? "Straight flush"
+            p b_sf
+            handrank_b = 2
+        end
     end
 
     if b_4s != nil
         if b_4s.include? "Four of a kind"
             p b_4s
             handrank_b = 3
-            return handrank_b
         end
     end
 
@@ -513,7 +524,6 @@ def black_report(b_high, b_pair, b_2pair, b_3s, b_straight, b_flush, b_full, b_4
         if b_full.include? "Full house"
         p b_full
         handrank_b = 4
-        return handrank_b
         end
     end
 
@@ -521,7 +531,6 @@ def black_report(b_high, b_pair, b_2pair, b_3s, b_straight, b_flush, b_full, b_4
         if b_flush.include? "Flush"
             p b_flush
             handrank_b = 5
-            return handrank_b
         end
     end
 
@@ -529,7 +538,6 @@ def black_report(b_high, b_pair, b_2pair, b_3s, b_straight, b_flush, b_full, b_4
         if b_straight.include? "Straight"
             p b_straight
             handrank_b = 6
-            return handrank_b
         end
     end
 
@@ -537,7 +545,6 @@ def black_report(b_high, b_pair, b_2pair, b_3s, b_straight, b_flush, b_full, b_4
         if b_3s.include? "Three of a kind"
             p b_3s
             handrank_b = 7
-            return handrank_b
         end
     end
 
@@ -545,7 +552,6 @@ def black_report(b_high, b_pair, b_2pair, b_3s, b_straight, b_flush, b_full, b_4
         if b_2pair.include? "Two pair"
             p b_2pair
             handrank_b = 8
-            return handrank_b
         end
     end
 
@@ -553,12 +559,10 @@ def black_report(b_high, b_pair, b_2pair, b_3s, b_straight, b_flush, b_full, b_4
         if b_pair.include? "Pair,"
             p b_pair
             handrank_b = 9
-            return handrank_b
         end
     else
-        handrank_b = 10
         p b_high
-        return handrank_b
+        handrank_b = 10
     end
 end
 
@@ -571,5 +575,7 @@ def declare_winner(handrank_w, handrank_b)
         p "Tiebreaker"
     end
 end
+
+
 
 

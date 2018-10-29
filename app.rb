@@ -42,12 +42,6 @@ bdisplay = blackhand_display(bnumbs, bsuits)
 p wdisplay
 p bdisplay
 
-w = ""
-b = ""
-winner = declare_winner(w, b)
-
-
-
 p "** white's hand rank **"
 p ""
 w_sf = white_straight_flush(wnumbs, wsuits)
@@ -120,6 +114,7 @@ end
 
 b_straight = black_straight(bnumbs)
 if b_straight != nil
+    p b_straight
 end
 
 b_3 = black_three(bnumbs)
@@ -147,42 +142,6 @@ else
 end
 
 
-p " And the winner is ... "
-a = ""
-b = ""
-winner = declare_winner(a, b)
-p winner
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# a = ""
-# b = ""
-# c = ""
-# d = ""
-# e = ""
-# f = ""
-# g = ""
-# h = ""
-# i = ""
-# j = ""
-
-
-# puts "**Black hand ranking**"
-# breport = black_report(a, b, c, d, e, f, g, h, i, j)
-# puts breport
 
 
 
