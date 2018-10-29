@@ -45,44 +45,63 @@ p bdisplay
 p "** white's hand rank **"
 p ""
 w_sf = white_straight_flush(wnumbs, wsuits)
-if w_sf != nil
+if w_sf != nil && winner_w != true
+    handrank_w = 2
+    p handrank_w
     p w_sf
+    winner_w = true
 end
 
 w_4 = white_four(wnumbs)
-if w_4 != nil
+if w_4 != nil && winner_w != true
+    handrank_w = 3
+    p handrank_w
     p w_4
+    winner_w = true
 end
 
 w_full = white_full_house(wnumbs)
-if w_full != nil
+if w_full != nil && winner_w != true
+    handrank_w = 4
+    p handrank_w
     p w_full
+    winner_w = true
 end
 
 w_flush = white_flush(wnumbs, wsuits)
-if w_flush != nil
+if w_flush != nil && winner_w != true
+    handrank_w = 5
+    p handrank_w
     p w_flush
+    winner_w = true
 end
 
 w_straight = white_straight(wnumbs)
-if w_straight != nil
+if w_straight != nil && winner_w != true
+    handrank_w = 6
+    p handrank_w
     p w_straight
+    winner_w = true
 end
 
 w_3 = white_three(wnumbs)
-if w_3 != nil
+if w_3 != nil && winner_w != true
+    handrank_w = 7
+    p handrank_w
     p w_3
+    winner_w = true
 end
 
 w_2p = white_two_pair(wnumbs)
-if w_2p != nil
+if w_2p != nil && winner_w != true
     handrank_w = 8
     p handrank_w
     p w_2p
+    winner_w = true
 end
 
 w_2 = white_pair(wnumbs)
-if w_2 != nil
+if w_2 != nil && winner_w != true
     handrank_w = 9
     p handrank_w
     p w_2
@@ -96,60 +115,80 @@ if w_high != nil && winner_w != true
     p w_high
 end
 
-p ""
 p "** black's hand rank **"
 p ""
 b_sf = black_straight_flush(bnumbs, bsuits)
-if b_sf != nil
+if b_sf != nil && winner_b != true
+    handrank_b = 2
+    p handrank_b
     p b_sf
+    winner_b = true
 end
 
 b_4 = black_four(bnumbs)
-if b_4 != nil
+if b_4 != nil && winner_b != true
+    handrank_b = 3
+    p handrank_b
     p b_4
+    winner_b = true
 end
 
 b_full = black_full_house(bnumbs)
-if b_full != nil   
+if b_full != nil && winner_b != true
+    handrank_b = 4
+    p handrank_b
     p b_full
+    winner_b = true
 end
 
 b_flush = black_flush(bnumbs, bsuits)
-if b_flush != nil
-    p w_blush
+if b_flush != nil && winner_b != true
+    handrank_b = 5
+    p handrank_b
+    p b_flush
+    winner_b = true
 end
 
 b_straight = black_straight(bnumbs)
-if b_straight != nil
+if b_straight != nil && winner_b != true
+    handrank_b = 6
+    p handrank_b
     p b_straight
+    winner_b = true
 end
 
 b_3 = black_three(bnumbs)
-if b_3 != nil
+if b_3 != nil && winner_b != true
+    handrank_b = 7
+    p handrank_b
     p b_3
+    winner_b = true
 end
 
 b_2p = black_two_pair(bnumbs)
-if b_2p != nil
+if b_2p != nil && winner_b != true
+    handrank_b = 8
+    p handrank_b
     p b_2p
-    bhand = 2
-    p bhand
+    winner_b = true
 end
 
 b_2 = black_pair(bnumbs)
-if b_2 != nil
+if b_2 != nil && winner_b != true
+    handrank_b = 9
+    p handrank_b
     p b_2
+    winner_b = true
 end
 
 b_high = black_high(bnumbs)
-if b_high != nil
+if b_high != nil && winner_b != true
+    handrank_b = 10
+    p handrank_b
     p b_high
-else
-    p "Out of order."
 end
 
-
-
+winner = declare_winner(handrank_w, handrank_b)
 
 
 

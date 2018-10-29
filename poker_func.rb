@@ -426,7 +426,6 @@ def white_report(w_high, w_pair, w_2pair, w_3s, w_straight, w_flush, w_full, w_4
         elsif w_sf.include? "Straight flush"
             p w_sf
             handrank_w = 2
-            p handrank_w
             return handrank_w
         end
     end
@@ -435,7 +434,6 @@ def white_report(w_high, w_pair, w_2pair, w_3s, w_straight, w_flush, w_full, w_4
         if w_4s.include? "Four of a kind"
             p w_4s
             handrank_w = 3
-            p handrank_w
             return handrank_w
         end
     end
@@ -444,7 +442,6 @@ def white_report(w_high, w_pair, w_2pair, w_3s, w_straight, w_flush, w_full, w_4
         if w_full.include? "Full house"
         p w_full
         handrank_w = 4
-        p handrank_w
         return handrank_w
         end
     end
@@ -453,7 +450,6 @@ def white_report(w_high, w_pair, w_2pair, w_3s, w_straight, w_flush, w_full, w_4
         if w_flush.include? "Flush"
             p w_flush
             handrank_w = 5
-            p handrank_w
             return handrank_w
         end
     end
@@ -462,7 +458,6 @@ def white_report(w_high, w_pair, w_2pair, w_3s, w_straight, w_flush, w_full, w_4
         if w_straight.include? "Straight"
             p w_straight
             handrank_w = 6
-            p handrank_w
             return handrank_w
         end
     end
@@ -471,7 +466,6 @@ def white_report(w_high, w_pair, w_2pair, w_3s, w_straight, w_flush, w_full, w_4
         if w_3s.include? "Three of a kind"
             p w_3s
             handrank_w = 7
-            p handrank_w
             return handrank_w
         end
     end
@@ -480,7 +474,6 @@ def white_report(w_high, w_pair, w_2pair, w_3s, w_straight, w_flush, w_full, w_4
         if w_2pair.include? "Two pair"
             p w_2pair
             handrank_w = 8
-            p handrank_w
             return handrank_w
         end
     end
@@ -489,13 +482,11 @@ def white_report(w_high, w_pair, w_2pair, w_3s, w_straight, w_flush, w_full, w_4
         if w_pair.include? "Pair,"
             p w_pair
             handrank_w = 9
-            p handrank_w
             return handrank_w
         end
     else
         handrank_w = 10
         p w_high
-        p handrank_w
         return handrank_w
     end
 end
