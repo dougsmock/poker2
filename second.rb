@@ -189,8 +189,8 @@ if b_high != nil && winner_b != true
 end
 
 winner = declare_winner(handrank_w, handrank_b)
-if handrank_w == handrank_b
-    tiebreaker = tiebreaker_high(wnumbs, bnumbs)
+if handrank_w == 10 && handrank_b == 10
+    tiebreaker = tie_high(wnumbs, bnumbs)
 end
 
 

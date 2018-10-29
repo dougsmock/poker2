@@ -557,6 +557,8 @@ def black_report(b_high, b_pair, b_2pair, b_3s, b_straight, b_flush, b_full, b_4
     end
 end
 
+################ We start to declare a winner here, based on card level
+
 def declare_winner(handrank_w, handrank_b)
     if handrank_w < handrank_b
         p "WHITE WINS!"
@@ -567,19 +569,25 @@ def declare_winner(handrank_w, handrank_b)
     end
 end
 
-def tiebreaker_high(white_numbers, black_numbers)
+################ Breaking a tiebreaker with high card, straight, flush, full house, straight flush
+
+def tie_high(white_numbers, black_numbers)
     x = 0
+    broke_tie = false
     while x < 5
         if white_numbers[x] > black_numbers[x]
             p "WHITE WINS!"
+            broke_tie = true
             return white_numbers
         elsif white_numbers[x] < black_numbers[x]
             p "BLACK WINS!"
+            broke_tie = true
             return black_numbers
         else white_numbers[x] == black_numbers[x]
             x += 1
         end
+    end
+    if broke_tie = false
         p "DEAD TIE!"
-        return true
     end
 end
