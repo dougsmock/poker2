@@ -569,7 +569,7 @@ def declare_winner(handrank_w, handrank_b)
     end
 end
 
-################ Breaking a tiebreaker with high card, straight, flush, full house, straight flush
+################ Breaking a tiebreaker with high card, flush, full house, straight flush
 
 def tie_high(white_numbers, black_numbers)
     x = 0
@@ -587,7 +587,150 @@ def tie_high(white_numbers, black_numbers)
             x += 1
         end
     end
-    if broke_tie = false
+    if broke_tie == false
         p "DEAD TIE!"
     end
 end
+
+## tiebreaker for pair (a monster)
+
+def tie_pair(white_numbers, black_numbers)
+    broke_tie = false
+
+    white_paircards = []
+    if white_numbers[0] == white_numbers[1]
+        white_paircards << white_numbers[0] << white_numbers[1]
+    elsif white_numbers[1] == white_numbers[2]
+        white_paircards << white_numbers[1] << white_numbers[2]
+    elsif white_numbers[2] == white_numbers[3]
+        white_paircards << white_numbers[2] << white_numbers[3]
+    else white_numbers[3] == white_numbers[4]
+        white_paircards << white_numbers[3] << white_numbers[4]
+    end 
+
+    black_paircards = []
+    if black_numbers[0] == black_numbers[1]
+        black_paircards << black_numbers[0] << black_numbers[1]
+    elsif black_numbers[1] == black_numbers[2]
+        black_paircards << black_numbers[1] << black_numbers[2]
+    elsif black_numbers[2] == black_numbers[3]
+        black_paircards << black_numbers[2] << black_numbers[3]
+    else black_numbers[3] == black_numbers[4]
+        black_paircards << black_numbers[3] << black_numbers[4]
+    end 
+    
+    if white_paircards[0] > black_paircards[0]
+        p "WHITE WINS!"
+        broke_tie = true
+    elsif white_paircards[0] < black_paircards[0]
+        p "BLACK WINS!"
+        broke_tie = true
+    end  
+        
+    x = 0
+    while x < 3
+        if broke_tie == false
+            if white_numbers[x] > black_numbers[x]
+                p "WHITE WINS!"
+                broke_tie = true
+                return white_numbers
+            elsif white_numbers[x] < black_numbers[x]
+                p "BLACK WINS!"
+                broke_tie = true
+                return black_numbers
+            else white_numbers[x] == black_numbers[x]
+                x += 1
+            end
+        end
+    end
+    if broke_tie == false
+        p "DEAD TIE!"
+    end
+end
+
+## tiebreaker for 2 pairs 
+
+def tie_2pair(white_numbers, black_numbers)
+    broke_tie = false
+
+    white_kicker = 0
+    if (white_numbers[0] == white_numbers[1]) && (white_numbers[2] == white_numbers[3])
+        white_firstp = white_numbers[0]
+        white_secondp = white_numbers[2]
+        white_kicker = white_numbers[4]
+    elsif (white_numbers[0] == white_numbers[1]) && (white_numbers[3] == white_numbers[4])
+        white_firstp = white_numbers[0]
+        white_secondp = white_numbers[3]
+        white_kicker = white_numbers[2]
+    elsif (white_numbers[1] == white_numbers[2]) && (white_numbers[3] == white_numbers[4])
+        white_firstp = white_numbers[1]
+        white_secondp = white_numbers[3]
+        white_kicker = white_numbers[0]
+    end
+
+    black_kicker = 0
+    if (black_numbers[0] == black_numbers[1]) && (black_numbers[2] == black_numbers[3])
+        black_firstp = black_numbers[0]
+        black_secondp = black_numbers[2]
+        black_kicker = black_numbers[4]
+    elsif (black_numbers[0] == black_numbers[1]) && (black_numbers[3] == black_numbers[4])
+        black_firstp = black_numbers[0]
+        black_secondp = black_numbers[3]
+        black_kicker = black_numbers[2]
+    elsif (black_numbers[1] == black_numbers[2]) && (black_numbers[3] == black_numbers[4])
+        black_firstp = black_numbers[1]
+        black_secondp = black_numbers[3]
+        black_kicker = black_numbers[0]
+    end
+
+    if white_firstp > black_firstp
+        p "WHITE WINS!"
+        broketie = true
+        return white_numbers
+    elsif white_firstp < black_firstp
+        p "BLACK WINS!"
+        broketie = true
+        return black_numbers
+    elsif white_secondp > black_secondp
+        p "WHITE WINS!"
+        broketie = true
+        return white_numbers
+    elsif white_secondp < black_secondp
+        p "BLACK WINS!"
+        broketie = true
+        return black_numbers
+    elsif white_kicker > black_kicker
+        p "WHITE WINS!"
+        broketie = true
+        return white_numbers
+    elsif white_kicker < black_kicker
+        p "BLACK WINS!"
+        broketie = true
+        return black_numbers
+    else
+        if broke_tie == false
+            p "DEAD TIE!"
+        end
+    end
+
+
+
+    
+    
+
+
+
+
+
+
+
+end
+
+
+
+
+
+
+
+
+
