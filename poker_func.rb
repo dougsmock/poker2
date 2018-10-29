@@ -569,14 +569,17 @@ end
 
 def tiebreaker_high(white_numbers, black_numbers)
     x = 0
-    while x <= 5
-        if white_numbers[] > black_numbers[]
+    while x < 5
+        if white_numbers[x] > black_numbers[x]
             p "WHITE WINS!"
-        elsif white[] < black[]
+            return white_numbers
+        elsif white_numbers[x] < black_numbers[x]
             p "BLACK WINS!"
+            return black_numbers
+        else white_numbers[x] == black_numbers[x]
+            x += 1
         end
-    x += 1
+        p "DEAD TIE!"
+        return true
     end
 end
-
-
