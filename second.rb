@@ -43,9 +43,8 @@ p wdisplay
 p bdisplay
 
 p "** white's hand rank **"
-p ""
 w_sf = white_straight_flush(wnumbs, wsuits)
-if w_sf != nil && winner_w != true
+if w_sf != nil
     handrank_w = 2
     p handrank_w
     p w_sf
@@ -116,9 +115,8 @@ if w_high != nil && winner_w != true
 end
 
 p "** black's hand rank **"
-p ""
 b_sf = black_straight_flush(bnumbs, bsuits)
-if b_sf != nil && winner_b != true
+if b_sf != nil
     handrank_b = 2
     p handrank_b
     p b_sf

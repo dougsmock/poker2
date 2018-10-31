@@ -26,18 +26,32 @@ def deal_hands(shufcard_arr)
   bothhands
 end
 
+######## THIS WILL STEP ASIDE FOR HARD-CODED HANDS ######
 #This splits that array into a 5-card whitehand
+# def whitehand(bothhands)
+#     whitehand = bothhands.shift(1)
+#     whitehand = whitehand[0]
+#     whitehand
+# end
+
+#This recreates the 5-card blackhand
+# def blackhand(bothhands)
+#     blackhand = bothhands[0]
+#     blackhand
+# end
+########## END OF COMMENTED OUT CODE
+
 def whitehand(bothhands)
-    whitehand = bothhands.shift(1)
-    whitehand = whitehand[0]
+    whitehand = [41, 33, 29, 25, 21]
     whitehand
 end
 
-#This recreates the 5-card blackhand
 def blackhand(bothhands)
-    blackhand = bothhands[0]
+    blackhand = [24, 20, 12, 8, 4]
     blackhand
 end
+
+
 
 ###### ###### This rearranges the cards in your hand from high to low before 
 #### determining number and suits
@@ -564,8 +578,6 @@ def declare_winner(handrank_w, handrank_b)
         p "WHITE WINS!"
     elsif handrank_w > handrank_b
         p "BLACK WINS!"
-    else handrank_w == handrank_b
-        p "Tiebreaker"
     end
 end
 
@@ -717,88 +729,52 @@ end
 
 def tie_3(white_numbers, black_numbers)
     broke_tie = false
-    white_extras = []
     white3 = 0
     if white_numbers[0] == white_numbers[1]
         white3 = white_numbers[0]
-        white_extras << white_numbers[3] << white_numbers[4]
     elsif white_numbers[1] == white_numbers[2]
         white3 = white_numbers[1]
-        white_extras << white_numbers[0] << white_numbers[4]
     elsif white_numbers[2] == white_numbers[3]
         white3 = white_numbers[2]
-        white_extras << white_numbers[0] << white_numbers[1]
     end
 
     black_extras = []
     black3 = 0
     if black_numbers[0] == black_numbers[1]
         black3 = black_numbers[0]
-        black_extras << black_numbers[3] << black_numbers[4]
     elsif black_numbers[1] == black_numbers[2]
         black3 = black_numbers[1]
-        black_extras << black_numbers[0] << black_numbers[4]
     elsif black_numbers[2] == black_numbers[3]
         black3 = black_numbers[2]
-        black_extras << black_numbers[0] << black_numbers[1]
     end
 
-    #### compare the threes, then the kickers (pass broketie?)
+    #### compare the threes
 
     if white3 > black3
         p "WHITE WINS!"
         broke_tie = true
         return white_numbers
-    elsif white3 < black3
+    else white3 < black3
         p "BLACK WINS!"
         broke_tie = true
         return black_numbers
-    elsif white3 == white3
-        if white_extras[0] > black_extras[0] 
-            p "WHITE WINS!"
-            broke_tie = true
-            return white_numbers
-        elsif white_extras[0] < black_extras[0]
-            p "BLACK WINS!"
-            broke_tie = true
-            return black_numbers
-        elsif white_extras[1] > black_extras[1]
-            p "WHITE WINS!"
-            broke_tie = true
-            return white_numbers
-        elsif black_extras[1] < black_extras[1]
-            p "BLACK WINS!"
-            broke_tie = true
-            return black_numbers
-        else
-            broke_tie = false
-            p "DEAD TIE."
-        end
     end
 end
-
-
 
     ##### Let's work on the fours
     
 def tie_4(white_numbers, black_numbers)
     broke_tie = false
-    white_kicker = 0
-    white4 = 0
     if white_numbers[0] == white_numbers[1]
         white4 = white_numbers[0]
-        white_kicker = white_numbers[4]
     elsif white_numbers[1] == white_numbers[2]
         white_4 = white_numbers[1]
-        white_kicker = white_numbers[0]
     end
 
     if black_numbers[0] == black_numbers[1]
         black4 = black_numbers[0]
-        black_kicker = black_numbers[4]
     elsif black_numbers[1] == black_numbers[2]
         black_4 = black_numbers[1]
-        black_kicker = black_numbers[0]
     end
 
         ##### Time to compare, break the tie
@@ -807,49 +783,29 @@ def tie_4(white_numbers, black_numbers)
         p "WHITE WINS!"
         broke_tie = true
         return white_numbers
-    elsif white4 < black4
+    else white4 < black4
         p "BLACK WINS!"
         broke_tie = true
         return black_numbers
-    elsif white4 == white4
-        if white_kicker > black_kicker 
-            p "WHITE WINS!"
-            broke_tie = true
-            return white_numbers
-        elsif white_kicker < black_kicker
-            p "BLACK WINS!"
-            broke_tie = true
-            return black_numbers
-        else
-            broke_tie = false
-            p "DEAD TIE."
-        end
     end
 end
 
 ## Breaking a full house tiebreaker
 
-
 def tie_full(white_numbers, black_numbers)
     white_3part = 0
-    white_2part = 0
     broke_tie = false
     if (white_numbers[0] == white_numbers[1]) && (white_numbers[1] == white_numbers[2])
         white_3part = white_numbers[0]
-        white_2part = white_numbers[3]
     else white_numbers[0] != white_numbers[2]
         white_3part = white_numbers[2]
-        white_2part = white_numbers[0]
     end
 
     black_3part = 0
-    black_2part = 0
     if (black_numbers[0] == black_numbers[1]) && (black_numbers[1] == black_numbers[2])
         black_3part = black_numbers[0]
-        black_2part = black_numbers[3]
     else black_numbers[0] != black_numbers[2]
         black_3part = black_numbers[2]
-        black_2part = black_numbers[0]
     end
 
             ### Now, it's time to compare and break that tie.
@@ -858,22 +814,10 @@ def tie_full(white_numbers, black_numbers)
         p "WHITE WINS!"
         broke_tie = true
         return white_numbers
-    elsif white_3part < black_3part
+    else white_3part < black_3part
         p "BLACK WINS!"
         broke_tie = true
         return black_numbers
-    else
-        if white_2part > black_2part
-            p "WHITE WINS!"
-            broke_tie = true
-            return white_numbers
-        elsif white_2part < black_2part
-            p "BLACK WINS!"
-            broke_tie = true
-            return black_numbers
-        else white_2part == black_2part
-            p "DEAD TIE."
-        end
     end
 end
 
@@ -905,12 +849,3 @@ def tie_straight(white_numbers, black_numbers)
         p "DEAD TIE."
     end
 end
-       
-
-
-
-
-
-
-
-
