@@ -712,20 +712,131 @@ def tie_2pair(white_numbers, black_numbers)
             p "DEAD TIE!"
         end
     end
-
-
-
-    
-    
-
-
-
-
-
-
-
 end
 
+####### Now we set up to compare three of a kind, if needed 
+
+def tie_3(white_numbers, black_numbers)
+    broke_tie = false
+    white_extras = []
+    white3 = 0
+    if white_numbers[0] == white_numbers[1]
+        white3 = white_numbers[0]
+        white_extras << white_numbers[3] << white_numbers[4]
+    elsif white_numbers[1] == white_numbers[2]
+        white3 = white_numbers[1]
+        white_extras << white_numbers[0] << white_numbers[4]
+    elsif white_numbers[2] == white_numbers[3]
+        white3 = white_numbers[2]
+        white_extras << white_numbers[0] << white_numbers[1]
+    end
+
+    black_extras = []
+    black3 = 0
+    if black_numbers[0] == black_numbers[1]
+        black3 = black_numbers[0]
+        black_extras << black_numbers[3] << black_numbers[4]
+    elsif black_numbers[1] == black_numbers[2]
+        black3 = black_numbers[1]
+        black_extras << black_numbers[0] << black_numbers[4]
+    elsif black_numbers[2] == black_numbers[3]
+        black3 = black_numbers[2]
+        black_extras << black_numbers[0] << black_numbers[1]
+    end
+
+    #### compare the threes, then the kickers (pass broketie?)
+
+    if white3 > black3
+        p "WHITE WINS!"
+        broke_tie = true
+        return white_numbers
+    elsif white3 < black3
+        p "BLACK WINS!"
+        broke_tie = true
+        return black_numbers
+    elsif white3 == white3
+        if white_extras[0] > black_extras[0] 
+            p "WHITE WINS!"
+            broke_tie = true
+            return white_numbers
+        elsif white_extras[0] < black_extras[0]
+            p "BLACK WINS!"
+            broke_tie = true
+            return black_numbers
+        elsif white_extras[1] > black_extras[1]
+            p "WHITE WINS!"
+            broke_tie = true
+            return white_numbers
+        elsif black_extras[1] < black_extras[1]
+            p "BLACK WINS!"
+            broke_tie = true
+            return black_numbers
+        else
+            broke_tie = false
+            p "DEAD TIE."
+        end
+    end
+
+    ##### Let's work on the fours
+    
+    def tie_4(white_numbers, black_numbers)
+        broke_tie = false
+        white_kicker = 0
+        white4 = 0
+        if white_numbers[0] == white_numbers[1]
+            white4 = white_numbers[0]
+            white_kicker = white_numbers[4]
+        elsif white_numbers[1] == white_numbers[2]
+            white_4 = white_numbers[1]
+            white_kicker = white_numbers[0]
+        end
+
+        if black_numbers[0] == black_numbers[1]
+            black4 = black_numbers[0]
+            black_kicker = black_numbers[4]
+        elsif black_numbers[1] == black_numbers[2]
+            black_4 = black_numbers[1]
+            black_kicker = black_numbers[0]
+        end
+
+        ##### Time to compare, break the tie
+
+        if white4 > black4
+            p "WHITE WINS!"
+            broke_tie = true
+            return white_numbers
+        elsif white4 < black4
+            p "BLACK WINS!"
+            broke_tie = true
+            return black_numbers
+        elsif white4 == white4
+            if white_kicker > black_kicker 
+                p "WHITE WINS!"
+                broke_tie = true
+                return white_numbers
+            elsif white_kicker < black_kicker
+                p "BLACK WINS!"
+                broke_tie = true
+                return black_numbers
+            else
+                broke_tie = false
+                p "DEAD TIE."
+            end
+        end
+    end
+
+    def tie_full(white_numbers, black_numbers)
+        3part = 0
+        2part = 0
+        broke_tie = false
+        
+
+
+
+    end
+end
+        
+       
 
 
 
