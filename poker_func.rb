@@ -257,7 +257,7 @@ def black_three(black_numbers)
     b_3s
 end
 
-## Here is the tests for strights
+## Here are the tests for strights
 
 def white_straight(white_numbers)
     white = white_numbers
@@ -619,27 +619,29 @@ def tie_pair(white_numbers, black_numbers)
         black_paircards << black_numbers[3] << black_numbers[4]
     end 
     
+    x = 0
+
     if white_paircards[0] > black_paircards[0]
         p "WHITE WINS!"
         broke_tie = true
+        return white_numbers
     elsif white_paircards[0] < black_paircards[0]
         p "BLACK WINS!"
         broke_tie = true
-    end  
-        
-    x = 0
-    broke_tie = false
-    while x < 4
-        if white_paircards > black_paircards
-            p "WHITE WINS!"
-            broke_tie = true
-            return white_numbers
-        elsif white_paircards < black_paircards
-            p "BLACK WINS!"
-            broke_tie = true
-            return black_numbers
+        return black_numbers
+        while x < 3
+            if white_numbers[x] > black_numbers[x]
+                p "WHITE WINS!"
+                broke_tie = true
+                return white_numbers
+            elsif white_numbers[x] < black_numbers[x]
+                p "BLACK WINS!"
+                broke_tie = true
+                return black_numbers
+            end
         end
-    end
+    end  
+       
     if broke_tie == false
         p "DEAD TIE!"
     end
