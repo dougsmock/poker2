@@ -630,17 +630,15 @@ def tie_pair(white_numbers, black_numbers)
     x = 0
     broke_tie = false
     while x < 4
-        if white_paircards[x] > black_paircards[x]
+        if white_paircards > black_paircards
             p "WHITE WINS!"
             broke_tie = true
             return white_numbers
-        elsif white_paircards[x] < black_paircards[x]
+        elsif white_paircards < black_paircards
             p "BLACK WINS!"
             broke_tie = true
             return black_numbers
-        else white_paircards[x] == black_paircards[x]
         end
-        x += 1
     end
     if broke_tie == false
         p "DEAD TIE!"
