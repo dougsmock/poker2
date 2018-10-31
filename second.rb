@@ -3,14 +3,16 @@ require_relative 'poker_func.rb'
 
 # enable :sessions
 
-deck = cards()
-# p deck
+# deck = cards()
+# # p deck
 
-shuffled = shuffle(deck)
-# p shuffled
+# shuffled = shuffle(deck)
+# # p shuffled
 
-dealt = deal_hands(shuffled)
-# p dealt
+# dealt = deal_hands(shuffled)
+# # p dealt
+
+####### Taking out the above for hardcoding
 
 whitehand = whitehand(dealt)
 # p whitehand
