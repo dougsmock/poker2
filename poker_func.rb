@@ -1,3 +1,7 @@
+### working out flush, looking at straight flush for guidance.
+
+
+
 # This is a deck of cards, numbered 1 through 52.
 
 def cards
@@ -47,11 +51,11 @@ def whitehand(bothhands)
 end
 
 def blackhand(bothhands)
-    blackhand = [24, 20, 12, 8, 4]
+    blackhand = [24, 20, 16, 12, 8]
     blackhand
 end
 
-
+###### end of hard coding
 
 ###### ###### This rearranges the cards in your hand from high to low before 
 #### determining number and suits
@@ -294,20 +298,21 @@ def black_straight(black_numbers)
 end
 
 #### Testing for flushes
-def white_flush(white_suits, white_numbers)
-    if (white_suits[0] == white_suits[1]) && (white_suits[1] == white_suits[2]) && (white_suits[2] == white_suits[3]) && (white_suits[3] == white_suits[4])
-        w_flush = "Flush, #{white_numbers[0]} high."
-    end
-    w_flush
-end
+# def white_flush(white_suits, white_numbers)
+#     if (white_suits[0] == white_suits[1]) && (white_suits[1] == white_suits[2]) && (white_suits[2] == white_suits[3]) && (white_suits[3] == white_suits[4])
+#         w_flush = true
+#         p "Flush, #{white_numbers[0]} high."
+#     end
+#     w_flush
+# end
 
-def black_flush(black_suits, black_numbers)
-    black = black_numbers
-    if (black_suits[0] == black_suits[1]) && (black_suits[1] == black_suits[2]) && (black_suits[2] == black_suits[3]) && (black_suits[3] == black_suits[4])
-        b_flush = "Flush, #{black_numbers[0]} high."
-    end
-    b_flush
-end
+# def black_flush(black_suits, black_numbers)
+#     if (black_suits[0] == black_suits[1]) && (black_suits[1] == black_suits[2]) && (black_suits[2] == black_suits[3]) && (black_suits[3] == black_suits[4])
+#         b_flush = true
+#         p "Flush, #{black_numbers[0]} high."
+#     end
+#     b_flush
+# end
 
 ## Here is the test for full house
 
@@ -354,6 +359,7 @@ def black_four(black_numbers)
 end
 
 ## The test for straight flush
+## AND FLUSH?
 
 def white_straight_flush(white_numbers, white_suits) 
     flush = false
@@ -378,6 +384,10 @@ def white_straight_flush(white_numbers, white_suits)
         else
             w_sf = "Straight flush, #{white_numbers[0]} high."
         end
+    end
+
+    if (flush == true) && (straight == false)
+        w_sf = "Flush, #{white_numbers[0]} high."
     end
     w_sf
 end
