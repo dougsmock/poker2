@@ -114,7 +114,7 @@ if w_high != nil && winner_w != true
     p w_high
 end
 
-p "** black's hand rank **"
+puts "** black's hand rank **"
 b_sf = black_straight_flush(bnumbs, bsuits)
 if b_sf != nil
     handrank_b = 2
@@ -140,7 +140,7 @@ if b_full != nil && winner_b != true
 end
 
 b_flush = black_flush(bnumbs, bsuits)
-if b_flush != nil && winner_b != true
+if b_sf == nil && b_flush != nil && winner_b != true
     handrank_b = 5
     p handrank_b
     p b_flush
