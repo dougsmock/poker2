@@ -1,3 +1,7 @@
+### working out flush, looking at straight flush for guidance.
+
+
+
 # This is a deck of cards, numbered 1 through 52.
 
 def cards
@@ -39,11 +43,11 @@ def blackhand(bothhands)
     blackhand = bothhands[0]
     blackhand
 end
+########## END OF COMMENTED OUT CODE
+#### HARD-CODING IS HERE
 
-
-### START OF HARD CODING TESTS #########
 # def whitehand(bothhands)
-#     whitehand = [44, 40, 36, 31, 28]
+#     whitehand = [41, 33, 29, 25, 21]
 #     whitehand
 # end
 
@@ -52,7 +56,7 @@ end
 #     blackhand
 # end
 
-###### end of hard coding #############
+###### end of hard coding
 
 ###### ###### This rearranges the cards in your hand from high to low before 
 #### determining number and suits
@@ -178,25 +182,6 @@ def black_suits(black_added)
     black_suits
 end
 
-# Create display of each hand with numbers and suits
-def whitehand_display(white_numbers, white_suits)
-    x = 0
-    puts "\n^^^^White hand^^^^"
-    5.times do
-        puts "#{white_numbers[x]} of #{white_suits[x]}"
-        x += 1
-    end
-end
-
-def blackhand_display(black_numbers, black_suits)
-    x = 0
-    puts "\n^^^^Black hand^^^^"
-    5.times do
-        puts "#{black_numbers[x]} of #{black_suits[x]}"
-        x += 1
-    end
-end
-
 ######### We have white numbers and white suits, black numbers and black suits. 
 ###Let's test for the high card only.
 
@@ -291,7 +276,7 @@ def black_three(black_numbers)
     b_3s
 end
 
-## Here are the tests for straights
+## Here are the tests for strights
 
 def white_straight(white_numbers)
     white = white_numbers
@@ -313,7 +298,7 @@ def black_straight(black_numbers)
     b_straight
 end
 
-## Testing for flushes
+#### Testing for flushes
 def white_flush(white_suits, white_numbers)
     if (white_suits[0] == white_suits[1]) && (white_suits[1] == white_suits[2]) && (white_suits[2] == white_suits[3]) && (white_suits[3] == white_suits[4])
         w_flush = true
@@ -375,32 +360,37 @@ def black_four(black_numbers)
 end
 
 ## The test for straight flush
+## AND FLUSH?
 
 def white_straight_flush(white_numbers, white_suits) 
-    w_flush = false
-    w_straight = false
+    flush = false
+    straight = false
     if (white_suits[0] == white_suits[1]) && (white_suits[0] == white_suits[2]) && (white_suits[0] == white_suits[3]) && (white_suits[0] == white_suits[4])
-        w_flush = true
+        flush = true
     end
 
     if ((white_numbers[0] - 1) == white_numbers[1]) && ((white_numbers[1] - 1) == white_numbers[2]) && ((white_numbers[2] - 1) == white_numbers[3]) && ((white_numbers[3] - 1) == white_numbers[4])
-        w_straight = true
+        straight = true
     end
 
     if (white_numbers[0] == 14) && (white_numbers[1] == 5) && (white_numbers[2] == 4) && (white_numbers[3] == 3) && (white_numbers[4] == 2)
-        w_straight = true
+        straight = true
     end
 
-    if (w_flush == true) && (w_straight == true)
+    if (flush == true) && (straight == true)
         if white_numbers[0] == 14 && white_numbers[1] == 13
             w_sf = "ROYAL FLUSH!"
         elsif white_numbers[0] == 14 && white_numbers[1] == 5
             w_sf = "Straight flush, 5 high."
         else
             w_sf = "Straight flush, #{white_numbers[0]} high."
-            return w_sf
         end
     end
+
+    if (flush == true) && (straight == false)
+        w_sf = "Flush, #{white_numbers[0]} high."
+    end
+    w_sf
 end
 
 def black_straight_flush(black_numbers, black_suits) 
@@ -427,152 +417,170 @@ def black_straight_flush(black_numbers, black_suits)
             b_sf = "Straight flush, #{black_numbers[0]} high."
         end
     end
+    b_sf
 end
 
-#### Reporting to screen, preparing to compare hands.
-#### Now, determining hand rank
-
-
-def white_report(w_high, w_pair, w_2pair, w_3s, w_straight, w_flush, w_full, w_4s, w_sf)
-    if w_sf != nil  
-        if w_sf == "ROYAL FLUSH!"
-            p w_sf
-            handrank_w = 1
-            p handrank_w
-            return handrank_w
-        elsif w_sf.include? "Straight flush"
-            p w_sf
-            handrank_w = 2
-            return handrank_w
-        end
-    end
-
-    if w_4s != nil
-        if w_4s.include? "Four of a kind"
-            p w_4s
-            handrank_w = 3
-            return handrank_w
-        end
-    end
-
-    if w_full != nil
-        if w_full.include? "Full house"
-        p w_full
-        handrank_w = 4
-        return handrank_w
-        end
-    end
-
-    if w_flush != nil
-        if w_flush.include? "Flush"
-            p w_flush
-            handrank_w = 5
-            return handrank_w
-        end
-    end
-
-    if w_straight != nil
-        if w_straight.include? "Straight"
-            p w_straight
-            handrank_w = 6
-            return handrank_w
-        end
-    end
-
-    if w_3s != nil
-        if w_3s.include? "Three of a kind"
-            p w_3s
-            handrank_w = 7
-            return handrank_w
-        end
-    end
-
-    if w_2pair != nil
-        if w_2pair.include? "Two pair"
-            p w_2pair
-            handrank_w = 8
-            return handrank_w
-        end
-    end
-
-    if w_pair != nil
-        if w_pair.include? "Pair,"
-            p w_pair
-            handrank_w = 9
-            return handrank_w
-        end
-    else
-        handrank_w = 10
-        p w_high
-        return handrank_w
+# Create display of each hand with numbers and suits
+def whitehand_display(white_numbers, white_suits)
+    x = 0
+    p "White hand"
+    5.times do
+        p "#{white_numbers[x]} of #{white_suits[x]}"
+        x += 1
     end
 end
 
-##### same thing, now with the black hand.
-
-def black_report(b_high, b_pair, b_2pair, b_3s, b_straight, b_flush, b_full, b_4s, b_sf)
-    if b_sf != nil  
-        if b_sf == "ROYAL FLUSH!"
-            p b_sf
-            handrank_b = 1
-        elsif b_sf.include? "Straight flush"
-            p b_sf
-            handrank_b = 2
-        end
-    end
-
-    if b_4s != nil
-        if b_4s.include? "Four of a kind"
-            p b_4s
-            handrank_b = 3
-        end
-    end
-
-    if b_full != nil
-        if b_full.include? "Full house"
-        p b_full
-        handrank_b = 4
-        end
-    end
-
-    if b_flush != nil
-        if b_flush.include? "Flush"
-            p b_flush
-            handrank_b = 5
-        end
-    end
-
-    if b_straight != nil
-        if b_straight.include? "Straight"
-            p b_straight
-            handrank_b = 6
-        end
-    end
-
-    if b_3s != nil
-        if b_3s.include? "Three of a kind"
-            p b_3s
-            handrank_b = 7
-        end
-    end
-
-    if b_2pair != nil
-        if b_2pair.include? "Two pair"
-            p b_2pair
-            handrank_b = 8
-        end
-    end
-
-    if b_pair != nil
-        if b_pair.include? "Pair,"
-            p b_pair
-            handrank_b = 9
-        end
-    else
-        p b_high
-        handrank_b = 10
+def blackhand_display(black_numbers, black_suits)
+    x = 0
+    p "Black hand"
+    5.times do
+        p "#{black_numbers[x]} of #{black_suits[x]}"
+        x += 1
     end
 end
+
+##### Reporting to screen, preparing to compare hands.
+
+# def white_report(w_high, w_pair, w_2pair, w_3s, w_straight, w_flush, w_full, w_4s, w_sf)
+#     if w_sf != nil  
+#         if w_sf == "ROYAL FLUSH!"
+#             p w_sf
+#             handrank_w = 1
+#             p handrank_w
+#             return handrank_w
+#         elsif w_sf.include? "Straight flush"
+#             p w_sf
+#             handrank_w = 2
+#             return handrank_w
+#         end
+#     end
+
+#     if w_4s != nil
+#         if w_4s.include? "Four of a kind"
+#             p w_4s
+#             handrank_w = 3
+#             return handrank_w
+#         end
+#     end
+
+#     if w_full != nil
+#         if w_full.include? "Full house"
+#         p w_full
+#         handrank_w = 4
+#         return handrank_w
+#         end
+#     end
+
+#     if w_flush != nil
+#         if w_flush.include? "Flush"
+#             p w_flush
+#             handrank_w = 5
+#             return handrank_w
+#         end
+#     end
+
+#     if w_straight != nil
+#         if w_straight.include? "Straight"
+#             p w_straight
+#             handrank_w = 6
+#             return handrank_w
+#         end
+#     end
+
+#     if w_3s != nil
+#         if w_3s.include? "Three of a kind"
+#             p w_3s
+#             handrank_w = 7
+#             return handrank_w
+#         end
+#     end
+
+#     if w_2pair != nil
+#         if w_2pair.include? "Two pair"
+#             p w_2pair
+#             handrank_w = 8
+#             return handrank_w
+#         end
+#     end
+
+#     if w_pair != nil
+#         if w_pair.include? "Pair,"
+#             p w_pair
+#             handrank_w = 9
+#             return handrank_w
+#         end
+#     else
+#         handrank_w = 10
+#         p w_high
+#         return handrank_w
+#     end
+# end
+
+# ##### same thing, now with the black hand.
+
+# def black_report(b_high, b_pair, b_2pair, b_3s, b_straight, b_flush, b_full, b_4s, b_sf)
+#     if b_sf != nil  
+#         if b_sf == "ROYAL FLUSH!"
+#             p b_sf
+#             handrank_b = 1
+#         elsif b_sf.include? "Straight flush"
+#             p b_sf
+#             handrank_b = 2
+#         end
+#     end
+
+#     if b_4s != nil
+#         if b_4s.include? "Four of a kind"
+#             p b_4s
+#             handrank_b = 3
+#         end
+#     end
+
+#     if b_full != nil
+#         if b_full.include? "Full house"
+#         p b_full
+#         handrank_b = 4
+#         end
+#     end
+
+#     if b_flush != nil
+#         if b_flush.include? "Flush"
+#             p b_flush
+#             handrank_b = 5
+#         end
+#     end
+
+#     if b_straight != nil
+#         if b_straight.include? "Straight"
+#             p b_straight
+#             handrank_b = 6
+#         end
+#     end
+
+#     if b_3s != nil
+#         if b_3s.include? "Three of a kind"
+#             p b_3s
+#             handrank_b = 7
+#         end
+#     end
+
+#     if b_2pair != nil
+#         if b_2pair.include? "Two pair"
+#             p b_2pair
+#             handrank_b = 8
+#         end
+#     end
+
+#     if b_pair != nil
+#         if b_pair.include? "Pair,"
+#             p b_pair
+#             handrank_b = 9
+#         end
+#     else
+#         p b_high
+#         handrank_b = 10
+#     end
+# end
 
 ################ We start to declare a winner here, based on card level
 
