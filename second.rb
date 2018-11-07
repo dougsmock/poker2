@@ -123,6 +123,7 @@ b_rf = black_straight_flush(bnumbs, bsuits)
 if b_rf != nil && winner_b != true
     handrank_b = 1
     p b_rf
+    p handrank_b
     winner_b = true
 end
 
@@ -130,28 +131,9 @@ b_sf = black_straight_flush(bnumbs, bsuits)
 if b_sf != nil && winner_b != true
     handrank_b = 2
     p b_sf
+    p handrank_b
     winner_b = true
 end
-
-b_flush = black_straight_flush(bnumbs, bsuits)
-if b_flush != nil && winner_b != true 
-    handrank_b = 5
-    p b_flush
-    winner_b = true
-end
-
-b_straight = black_straight(bnumbs)
-if b_straight != nil && winner_b != true 
-    handrank_b = 6
-    p b_straight
-    winner_b = true
-end
-
-p handrank_b
-
-
-
-
 
 b_4 = black_four(bnumbs)
 if b_4 != nil && winner_b != true
@@ -165,6 +147,23 @@ b_full = black_full_house(bnumbs)
 if b_full != nil && winner_b != true
     handrank_b = 4
     p b_full
+    p handrank_b
+    winner_b = true
+end
+
+
+b_flush = black_straight_flush(bnumbs, bsuits)
+if b_flush != nil && winner_b != true 
+    handrank_b = 5
+    p b_flush
+    p handrank_b
+    winner_b = true
+end
+
+b_straight = black_straight(bnumbs)
+if b_straight != nil && winner_b != true 
+    handrank_b = 6
+    p b_straight
     p handrank_b
     winner_b = true
 end

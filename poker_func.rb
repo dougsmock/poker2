@@ -53,7 +53,7 @@ def whitehand(bothhands)
 end
 
 def blackhand(bothhands)
-    blackhand = [46, 43, 39, 35, 31]
+    blackhand = [44, 39, 36, 32, 28]
     blackhand
 end
 
