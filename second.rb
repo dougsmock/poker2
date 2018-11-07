@@ -115,11 +115,39 @@ if w_high != nil && winner_w != true
 end
 
 puts "** black's hand rank **"
+
+handrank_b = 0
+winner_b = false
+
+b_rf = black_straight_flush(bnumbs, bsuits)
+if b_rf != nil
+    handrank_b = 1
+    p handrank_b
+    p b_rf
+    winner_b = true
+end
+
 b_sf = black_straight_flush(bnumbs, bsuits)
-if b_sf != nil
+if b_sf != nil && winner_b != true
     handrank_b = 2
     p handrank_b
     p b_sf
+    winner_b = true
+end
+
+b_flush = black_straight_flush(bsuits, bnumbs)
+if b_flush != nil && winner_b != true
+    handrank_b = 5
+    p handrank_b
+    p b_flush
+    winner_b = true
+end
+
+b_straight = black_straight(bnumbs)
+if b_straight != nil && winner_b != true
+    handrank_b = 6
+    p handrank_b
+    p b_straight
     winner_b = true
 end
 
@@ -136,22 +164,6 @@ if b_full != nil && winner_b != true
     handrank_b = 4
     p handrank_b
     p b_full
-    winner_b = true
-end
-
-b_flush = black_flush(bnumbs, bsuits)
-if b_sf == nil && b_flush != nil && winner_b != true
-    handrank_b = 5
-    p handrank_b
-    p b_flush
-    winner_b = true
-end
-
-b_straight = black_straight(bnumbs)
-if b_straight != nil && winner_b != true
-    handrank_b = 6
-    p handrank_b
-    p b_straight
     winner_b = true
 end
 

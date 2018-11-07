@@ -53,7 +53,7 @@ def whitehand(bothhands)
 end
 
 def blackhand(bothhands)
-    blackhand = [47, 43, 39, 35, 23]
+    blackhand = [47, 43, 39, 35, 31]
     blackhand
 end
 
@@ -308,13 +308,46 @@ def white_flush(white_suits, white_numbers)
     w_flush
 end
 
-def black_flush(black_suits, black_numbers)
-    if ((black_suits[0] == black_suits[1]) && (black_suits[1] == black_suits[2]) && (black_suits[2] == black_suits[3]) && (black_suits[3] == black_suits[4])) && b_straight == false
+# NOW, A BLACK TEST FOR straight flushes, flushes, straights.
+
+def black_straight_flush(black_suits, black_numbers)
+    b_flush = false
+    b_straight = false
+    b_sf = false
+    b_rf = false
+    
+    if ((black_suits[0] == black_suits[1]) && (black_suits[0] == black_suits[2]) && (black_suits[0] == black_suits[3]) && (black_suits[0] == black_suits[4]))
         b_flush = true
-        p "Flush, #{black_numbers[0]} high."
+
+        if ((black_numbers[0] - 1) == black_numbers[1]) && ((black_numbers[1] - 1) == black_numbers[2]) && ((black_numbers[2] - 1) == black_numbers[3]) && ((black_numbers[3] - 1) == black_numbers[4])
+            b_straight = true
+        elsif (black_numbers[0] == 14) && (black_numbers[1] == 5) && (black_numbers[2] == 4) && (black_numbers[3] == 3) && (black_numbers[4] == 2)
+            b_straight = true
+        end
     end
-    b_flush
+
+    if b_flush == true && b_straight == true && black_numbers[0] == 14 && black_numbers[1] == 13
+        p "ROYAL FLUSH!"
+        return b_rf = true
+    elsif b_flush == true && b_straight == true 
+        p "Stright flush, #{black_numbers[0]} high."
+        return b_sf = true
+    end
+
+    if flush == true && straight == false
+        p "Flush, #{black_numbers[0]}."
+        return b_flush = true
+    end
+
+    if flush == false && straight == true
+        p "Straight, #{black_numbers[0]}."
+        return b_straight = true
+    end
 end
+
+
+
+
 
 ## Here is the test for full house
 
@@ -696,30 +729,30 @@ def tie_full(white_numbers, black_numbers)
 end
 
                 #### Now, the straight with that ace exception
-def tie_straight(white_numbers, black_numbers)
-    white_strhigh = 0
-    black_strhigh = 0
-    broke_tie = false
-    if white_numbers[0] == 14 && white_numbers[1] == 5
-        white_strhigh = 5
-    else white_strhigh = white_numbers[0]
-    end 
+# def tie_straight(white_numbers, black_numbers)
+#     white_strhigh = 0
+#     black_strhigh = 0
+#     broke_tie = false
+#     if white_numbers[0] == 14 && white_numbers[1] == 5
+#         white_strhigh = 5
+#     else white_strhigh = white_numbers[0]
+#     end 
     
-    if black_numbers[0] == 14 && black_numbers[1] == 5
-        black_strhigh = 5
-    else black_strhigh = black_numbers[0]
-    end  
+#     if black_numbers[0] == 14 && black_numbers[1] == 5
+#         black_strhigh = 5
+#     else black_strhigh = black_numbers[0]
+#     end  
 
-        ## compare the highs
-    if white_strhigh > black_strhigh
-        p "WHITE WINS!"
-        broke_tie = true
-        return white_numbers
-    elsif white_strhigh < black_strhigh
-        p "BLACK WINS!"
-        broke_tie = true
-        return black_numbers
-    else white_strhigh == black_strhigh
-        p "DEAD TIE."
-    end
-end
+#         ## compare the highs
+#     if white_strhigh > black_strhigh
+#         p "WHITE WINS!"
+#         broke_tie = true
+#         return white_numbers
+#     elsif white_strhigh < black_strhigh
+#         p "BLACK WINS!"
+#         broke_tie = true
+#         return black_numbers
+#     else white_strhigh == black_strhigh
+#         p "DEAD TIE."
+#     end
+# end
