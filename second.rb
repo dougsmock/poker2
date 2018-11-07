@@ -120,82 +120,82 @@ handrank_b = 0
 winner_b = false
 
 b_rf = black_straight_flush(bnumbs, bsuits)
-if b_rf != nil
+if b_rf != nil && winner_b != true
     handrank_b = 1
-    p handrank_b
     p b_rf
+    p handrank_b
     winner_b = true
 end
 
 b_sf = black_straight_flush(bnumbs, bsuits)
-if b_sf != nil && winner_b != true
+if b_sf != nil && winner_b != true 
     handrank_b = 2
-    p handrank_b
     p b_sf
+    p handrank_b
     winner_b = true
 end
 
-b_flush = black_straight_flush(bsuits, bnumbs)
-if b_flush != nil && winner_b != true
+b_flush = black_straight_flush(bnumbs, bsuits)
+if b_flush != nil && winner_b != true 
     handrank_b = 5
-    p handrank_b
     p b_flush
+    p handrank_b
     winner_b = true
 end
 
 b_straight = black_straight(bnumbs)
-if b_straight != nil && winner_b != true
+if b_straight != nil && winner_b != true 
     handrank_b = 6
-    p handrank_b
     p b_straight
+    p handrank_b
     winner_b = true
 end
 
 b_4 = black_four(bnumbs)
 if b_4 != nil && winner_b != true
     handrank_b = 3
-    p handrank_b
     p b_4
+    p handrank_b
     winner_b = true
 end
 
 b_full = black_full_house(bnumbs)
 if b_full != nil && winner_b != true
     handrank_b = 4
-    p handrank_b
     p b_full
+    p handrank_b
     winner_b = true
 end
 
 b_3 = black_three(bnumbs)
 if b_3 != nil && winner_b != true
     handrank_b = 7
-    p handrank_b
     p b_3
+    p handrank_b
     winner_b = true
 end
 
 b_2p = black_two_pair(bnumbs)
 if b_2p != nil && winner_b != true
     handrank_b = 8
-    p handrank_b
     p b_2p
+    p handrank_b
     winner_b = true
 end
 
 b_2 = black_pair(bnumbs)
 if b_2 != nil && winner_b != true
     handrank_b = 9
-    p handrank_b
     p b_2
+    p handrank_b
     winner_b = true
 end
 
 b_high = black_high(bnumbs)
 if b_high != nil && winner_b != true
     handrank_b = 10
-    p handrank_b
     p b_high
+    p handrank_b
 end
 
 winner = declare_winner(handrank_w, handrank_b)
