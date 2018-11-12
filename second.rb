@@ -121,22 +121,6 @@ puts "** white's hand rank **"
 handrank_w = 0
 winner_w = false
 
-w_4 = white_four(bnumbs)
-if w_4 != nil && winner_w != true
-    handrank_w = 3
-    p w_4
-    p handrank_w
-    winner_w = true
-end
-
-w_full = white_full_house(wnumbs)
-if w_full != nil && winner_w != true
-    handrank_w = 4
-    p w_full
-    p handrank_w
-    winner_w = true
-end
-
 w_rf = white_straight_flush(wnumbs, wsuits)
 if w_rf != nil && winner_w != true
     p w_rf      
@@ -153,6 +137,22 @@ if w_sf != nil && winner_w != true
     winner_w = true 
 end
 
+w_4 = white_four(bnumbs)
+if w_4 != nil && winner_w != true
+    handrank_w = 3
+    p w_4
+    p handrank_w
+    winner_w = true
+end
+
+w_full = white_full_house(wnumbs)
+if w_full != nil && winner_w != true
+    handrank_w = 4
+    p w_full
+    p handrank_w
+    winner_w = true
+end
+
 w_flush = white_straight_flush(wnumbs, wsuits)
 if w_flush != nil && winner_w != true 
     handrank_w = 5
@@ -161,7 +161,7 @@ if w_flush != nil && winner_w != true
     winner_w = true
 end
 
-w_straight = white_straight(wnumbs)
+w_straight = white_straight_flush(wnumbs, wsuits)
 if w_straight != nil && winner_w != true 
     handrank_w = 6
     puts "Or here? #{handrank_w}"
