@@ -18,7 +18,6 @@ get '/' do
     bsuits = session[:bsuits]
     wdisplay = session[:wdisplay]
     bdisplay = session[:bdisplay]
-    load 'second.rb'
     
     w_rf = session[:w_rf]
     w_sf = session[:w_sf]
@@ -34,7 +33,7 @@ get '/' do
     winner_w = session[:winner_w]
         
     handrank_b = session[:handrank_b]
-    winner_ b = session[:winner_b]
+    winner_b = session[:winner_b]
 
     b_rf = session[:b_rf]
     b_sf = session[:b_sf]
@@ -48,10 +47,14 @@ get '/' do
     load 'second.rb'
 
     erb :twohands
+    # , locals: {deck: deck, shuffled: shuffled, whitehand: whitehand, whighlow: whighlow, bhighlow: bhighlow, wconverted: wconverted, bconverted: bconverted, wnumbs: wnumbs, bnumbs: bnumbs, wsuits: wsuits, bsuits: bsuits, wdisplay: wdisplay, bdisplay: bdisplay, w_rf: w_rf, w_sf: w_sf, w_4: w_4, w_full: w_full, w_flush: w_flush, w_straight: w_straight, w_3: w_3, w_2b: w_2b, w_pair: w_pair, w_high: w_high, b_rf: b_rf, b_sf: b_sf, b_4: b_4, b_full: b_full, b_flush: b_flush, b_straight: b_straight, b_3: b_3, b_2b: b_2b, b_pair: b_pair, b_high: b_high} 
+
 end
 
 post '/twohands' do
-    puts "Here are some #{params}."
+
+
+
     session[:deck] = params[:deck]
     session[:shuffled] = params[:shuffled]
     session[:whitehand] = params[:blackhand]
@@ -61,7 +64,8 @@ post '/twohands' do
     session[:bconverted] = params[:bconverted]
     session[:wnumbs] = params[:wnumbs]
     session[:bnumbs] = params[:bsuits]
-    session[:wsuits] = params[:bsuits]
+    session[:wsuits] = params[:wsuits]
+    session[:bsuits] = params[:bsuits]
     session[:wdisplay] = params[:wdisplay]
     session[:bdisplay] = params[:bdisplay]
     
@@ -91,7 +95,6 @@ post '/twohands' do
     session[:b_2] = params[:b_2]
     session[:b_high] = params[:b_high]
 
-    puts "Here are some #{params}."
     
 
     redirect '/'
