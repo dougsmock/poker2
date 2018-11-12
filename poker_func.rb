@@ -48,12 +48,12 @@ end
 #### HARD-CODING IS HERE
 
 def whitehand(bothhands)
-    whitehand = [8, 7, 6, 3, 2]
+    whitehand = [52, 48, 44, 40, 36]
     whitehand
 end
 
 def blackhand(bothhands)
-    blackhand = [44, 39, 36, 32, 28]
+    blackhand = [34, 30, 26, 22, 18]
     blackhand
 end
 
@@ -318,29 +318,29 @@ def black_straight_flush(black_suits, black_numbers)
     
     if ((black_suits[0] == black_suits[1]) && (black_suits[0] == black_suits[2]) && (black_suits[0] == black_suits[3]) && (black_suits[0] == black_suits[4]))
         b_flush = true
+    end
 
-        if ((black_numbers[0] - 1) == black_numbers[1]) && ((black_numbers[1] - 1) == black_numbers[2]) && ((black_numbers[2] - 1) == black_numbers[3]) && ((black_numbers[3] - 1) == black_numbers[4])
-            b_straight = true
-        elsif (black_numbers[0] == 14) && (black_numbers[1] == 5) && (black_numbers[2] == 4) && (black_numbers[3] == 3) && (black_numbers[4] == 2)
-            b_straight = true
-        end
+    if ((black_numbers[0] - 1) == black_numbers[1]) && ((black_numbers[1] - 1) == black_numbers[2]) && ((black_numbers[2] - 1) == black_numbers[3]) && ((black_numbers[3] - 1) == black_numbers[4])
+        b_straight = true
+    elsif (black_numbers[0] == 14) && (black_numbers[1] == 5) && (black_numbers[2] == 4) && (black_numbers[3] == 3) && (black_numbers[4] == 2)
+           b_straight = true
     end
 
     if b_flush == true && b_straight == true && black_numbers[0] == 14 && black_numbers[1] == 13
         p "ROYAL FLUSH!"
         return b_rf = true
     elsif b_flush == true && b_straight == true 
-        p "Stright flush, #{black_numbers[0]} high."
+        p "Straight flush, #{black_numbers[0]} high."
         return b_sf = true
     end
 
     if flush == true && straight == false
-        p "Flush, #{black_numbers[0]}."
+        p "Flush, #{black_numbers[0]} high."
         return b_flush = true
     end
 
     if flush == false && straight == true
-        p "Straight, #{black_numbers[0]}."
+        p "Straight, #{black_numbers[0]} high."
         return b_straight = true
     end
 end

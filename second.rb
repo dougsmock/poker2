@@ -119,22 +119,6 @@ puts "** black's hand rank **"
 handrank_b = 0
 winner_b = false
 
-b_rf = black_straight_flush(bnumbs, bsuits)
-if b_rf != nil && winner_b != true
-    handrank_b = 1
-    p b_rf
-    p handrank_b
-    winner_b = true
-end
-
-b_sf = black_straight_flush(bnumbs, bsuits)
-if b_sf != nil && winner_b != true
-    handrank_b = 2
-    p b_sf
-    p handrank_b
-    winner_b = true
-end
-
 b_4 = black_four(bnumbs)
 if b_4 != nil && winner_b != true
     handrank_b = 3
@@ -151,8 +135,27 @@ if b_full != nil && winner_b != true
     winner_b = true
 end
 
+#############
+
+b_rf = black_straight_flush(bnumbs, bsuits)
+if b_rf != nil && winner_b != true
+    p b_rf      
+    handrank_b = 1
+    p handrank_b
+    winner_b = true
+end
+
+b_sf = black_straight_flush(bnumbs, bsuits)
+puts "Did I make it here? #{handrank_b}"
+if b_sf != nil && winner_b != true
+    handrank_b = 2
+    p b_sf
+    p handrank_b
+    winner_b = true 
+end
 
 b_flush = black_straight_flush(bnumbs, bsuits)
+puts "Did I make it here? #{handrank_b}"
 if b_flush != nil && winner_b != true 
     handrank_b = 5
     p b_flush
@@ -161,12 +164,23 @@ if b_flush != nil && winner_b != true
 end
 
 b_straight = black_straight(bnumbs)
+puts "Did I make it here? #{handrank_b}"
 if b_straight != nil && winner_b != true 
     handrank_b = 6
+    puts "Or here? #{handrank_b}"
     p b_straight
     p handrank_b
     winner_b = true
 end
+
+
+
+
+
+
+
+
+
 
 b_3 = black_three(bnumbs)
 if b_3 != nil && winner_b != true

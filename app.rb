@@ -1,155 +1,100 @@
 require_relative 'poker_func.rb'
-# require 'sinatra'
+require_relative 'second.rb'
+require 'sinatra'
 
-# enable :sessions
+enable :sessions
 
-deck = cards()
-# p deck
+get '/' do
+    deck = session[:deck]
+    shuffled = session[:shuffled]
+    whitehand = session[:whitehand]
+    whighlow = session[:whighlow]
+    bhighlow = session[:bhighlow]
+    wconverted = session[:wconverted]
+    bconverted = session[:bconverted]
+    wnumbs = session[:wnumbs]
+    bnumbs = session[:bnumbs]
+    wsuits = session[:wsuits]
+    bsuits = session[:bsuits]
+    wdisplay = session[:wdisplay]
+    bdisplay = session[:bdisplay]
+    load 'second.rb'
+    
+    w_rf = session[:w_rf]
+    w_sf = session[:w_sf]
+    w_4 = session[:w_4]
+    w_full = session[:w_full]
+    w_flush = session[:w_flush]
+    w_3 = session[:w_3]
+    w_2p = session[:w_2p]
+    w_2 = session[:w_2]
+    w_high = session[:w_high]
+    
+    handrank_w = session[:handrank_w]
+    winner_w = session[:winner_w]
+        
+    handrank_b = session[:handrank_b]
+    winner_ b = session[:winner_b]
 
-shuffled = shuffle(deck)
-# p shuffled
+    b_rf = session[:b_rf]
+    b_sf = session[:b_sf]
+    b_4 = session[:b_4]
+    b_full = session[:b_full]
+    b_flush = session[:b_flush]
+    b_3 = session[:b_3]
+    b_2p = session[:b_2p]
+    b_2 = session[:b_2]
+    b_high = session[:b_high]
+    load 'second.rb'
 
-dealt = deal_hands(shuffled)
-# p dealt
-
-whitehand = whitehand(dealt)
-# p whitehand
-blackhand = blackhand(dealt)
-# p blackhand
-
-whighlow = white_high_low(whitehand)
-# p whighlow
-bhighlow = black_high_low(blackhand)
-# p bhighlow
-
-wconverted = convert_white(whighlow)
-bconverted = convert_black(bhighlow)
-# p wconverted
-# p bconverted
-
-wnumbs = white_numbers(wconverted)
-bnumbs = black_numbers(bconverted)
-p wnumbs
-p bnumbs
-
-wsuits = white_suits(wconverted)
-bsuits = black_suits(bconverted)
-p wsuits
-p bsuits
-
-wdisplay = whitehand_display(wnumbs, wsuits)
-bdisplay = blackhand_display(bnumbs, bsuits)
-p wdisplay
-p bdisplay
-
-p "** white's hand rank **"
-p ""
-w_sf = white_straight_flush(wnumbs, wsuits)
-if w_sf != nil
-    p w_sf
+    erb :twohands
 end
 
-w_4 = white_four(wnumbs)
-if w_4 != nil
-    p w_4
-end
+post '/twohands' do
+    puts "Here are some #{params}."
+    session[:deck] = params[:deck]
+    session[:shuffled] = params[:shuffled]
+    session[:whitehand] = params[:blackhand]
+    session[:whighlow] = params[:whighlow]
+    session[:bhighlow] = params[:bhighlow]
+    session[:wconverted] = params[:wconverted]
+    session[:bconverted] = params[:bconverted]
+    session[:wnumbs] = params[:wnumbs]
+    session[:bnumbs] = params[:bsuits]
+    session[:wsuits] = params[:bsuits]
+    session[:wdisplay] = params[:wdisplay]
+    session[:bdisplay] = params[:bdisplay]
+    
+    session[:w_rf] = params[:w_rf]
+    session[:w_sf] = params[:w_sf]
+    session[:w_4] = params[:w_4]
+    session[:w_full] = params[:w_full]
+    session[:w_flush] = params[:w_flush]
+    session[:w_3] = params[:w_3]
+    session[:w_2p] = params[:w_2p]
+    session[:w_2] = params[:w_2]
+    session[:w_high] = params[:w_high]
+    
+    session[:handrank_w] = params[:handrank_w]
+    session[:winner_w] = params[:winner_w]
+        
+    session[:handrank_b] = params[:handrank_b]
+    session[:winner_b] = params[:winner_b]
 
-w_full = white_full_house(wnumbs)
-if w_full != nil
-    p w_full
-end
+    session[:b_rf] = params[:b_rf]
+    session[:b_sf] = params[:b_sf]
+    session[:b_4] = params[:b_4]
+    session[:b_full] = params[:b_full]
+    session[:b_flush] = params[:b_flush]
+    session[:b_3] = params[:b_3]
+    session[:b_2p] = params[:b_2p]
+    session[:b_2] = params[:b_2]
+    session[:b_high] = params[:b_high]
 
-w_flush = white_flush(wnumbs, wsuits)
-if w_flush != nil
-    p w_flush
-end
+    puts "Here are some #{params}."
+    
 
-w_straight = white_straight(wnumbs)
-if w_straight != nil
-    p w_straight
-end
-
-w_3 = white_three(wnumbs)
-if w_3 != nil
-    p w_3
-end
-
-w_2p = white_two_pair(wnumbs)
-if w_2p != nil
-    handrank_w = 8
-    p handrank_w
-    p w_2p
-end
-
-w_2 = white_pair(wnumbs)
-if w_2 != nil
-    handrank_w = 9
-    p handrank_w
-    p w_2
-    winner_w = true
-end
-
-w_high = white_high(wnumbs)
-if w_high != nil && winner_w != true
-    handrank_w = 10
-    p handrank_w
-    p w_high
-end
-
-p ""
-p "** black's hand rank **"
-p ""
-b_sf = black_straight_flush(bnumbs, bsuits)
-if b_sf != nil
-    p b_sf
-end
-
-b_4 = black_four(bnumbs)
-if b_4 != nil
-    p b_4
-end
-
-b_full = black_full_house(bnumbs)
-if b_full != nil   
-    p b_full
-end
-
-b_flush = black_flush(bnumbs, bsuits)
-if b_flush != nil
-    p w_blush
-end
-
-b_straight = black_straight(bnumbs)
-if b_straight != nil
-    p b_straight
-end
-
-b_3 = black_three(bnumbs)
-if b_3 != nil
-    p b_3
-end
-
-b_2p = black_two_pair(bnumbs)
-if b_2p != nil
-    p b_2p
-    bhand = 2
-    p bhand
-end
-
-b_2 = black_pair(bnumbs)
-if b_2 != nil
-    p b_2
-end
-
-b_high = black_high(bnumbs)
-if b_high != nil
-    p b_high
-else
-    p "Out of order."
-end
-
-
-
-
+    redirect '/'
+  end
 
 
