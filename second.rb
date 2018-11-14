@@ -51,18 +51,16 @@ winner_w = false
 
 # rewrite a straight/royal flush
 
-w_rf = white_straight_flush(wnumbs, wsuits)
+w_rf = white_royal_flush(wnumbs, wsuits)
     if w_rf != nil && winner_w != true
         handrank_w = 1
-        p w_rf
         p handrank_w
         winner_w = true
     end
 
 w_sf = white_straight_flush(wnumbs, wsuits)
-    if winner_w != true
+    if w_sf != nil && winner_w != true
         handrank_w = 2
-        p w_sf
         p handrank_w
         winner_w = true
     end
@@ -88,7 +86,6 @@ end
 w_flush = white_flush(wnumbs, wsuits)
 if winner_w != true 
     handrank_w = 5
-    p w_flush
     p handrank_w
     winner_w = true
 end

@@ -275,15 +275,19 @@ end
 
 # NOW, TESTS FOR straights, flushes, straight flushes.
 
-def white_straight_flush(white_numbers, white_suits)
+def white_royal_flush(white_numbers, white_suits)
     w_rf = false
     w_sf = false
     if ((white_numbers[0] == 14) && (white_numbers[1] == 13) && (white_numbers[2] == 12) && (white_numbers[3] == 11) && (white_numbers[4] == 10)) && ((white_suits[0] == white_suits[1]) && (white_suits[1] == white_suits[2]) && (white_suits[2] == white_suits[3]) && (white_suits[3] == white_suits[4]))
-        w_rf = true
         p "ROYAL FLUSH!"
-    elsif ((white_numbers[0] == white_numbers[1] + 1) && (white_numbers[1] == white_numbers[2] + 1) && (white_numbers[2] == white_numbers[3] + 1) && (white_numbers[3] == white_numbers[4] + 1)) && ((white_suits[0] == white_suits[1]) && (white_suits[1] == white_suits[2]) && (white_suits[2] == white_suits[3]) && (white_suits[3] == white_suits[4]))
-        w_sf = true
-        p "Straight flush, #{white_numbers[0]} high."
+        w_rf = true
+    end
+end
+
+def white_straight_flush(white_numbers, white_suits)
+    if ((white_numbers[0] == white_numbers[1] + 1) && (white_numbers[1] == white_numbers[2] + 1) && (white_numbers[2] == white_numbers[3] + 1) && (white_numbers[3] == white_numbers[4] + 1)) && ((white_suits[0] == white_suits[1]) && (white_suits[1] == white_suits[2]) && (white_suits[2] == white_suits[3]) && (white_suits[3] == white_suits[4]))  
+    p "Straight flush, #{white_numbers[0]} high."
+    w_sf = true
     end
 end
 
@@ -300,15 +304,14 @@ end
 
 def white_flush(white_numbers, white_suits)
     w_flush = false
-    if (white_suits[0] == white_suits[1]) && (white_suits[1] == white_suits[2]) && (white_suits[2] == white_suits[3]) && (white_suits[3] == white_suits[4])
+    if (white_suits[0] == white_suits[1]) && (white_suits[1] == white_suits[2]) && (white_suits[2] == white_suits[3]) && (white_suits[3] == white_suits[4]) && ((white_numbers[0] != white_numbers[1] + 1) || (white_numbers[1] != white_numbers[2] + 1) || (white_numbers[2] != white_numbers[3] + 1) || (white_numbers[3] != white_numbers[4] + 1))
         w_flush = true
         p "Flush, #{white_numbers[0]} high."
-
     end
 end
 
 
-
+##### below is black's straights and flushes, which will mirror that of white hand.
 
 def black_straight_flush(black_suits, black_numbers)
     b_flush = false
@@ -326,13 +329,13 @@ def black_straight_flush(black_suits, black_numbers)
     #        b_straight = true
     # end
 
-    if b_flush == true && b_straight == true && black_numbers[0] == 14 && black_numbers[1] == 13
-        p "ROYAL FLUSH!"
-        return b_rf = true
-    elsif b_flush == true && b_straight == true 
-        p "Straight flush, #{black_numbers[0]} high."
-        return b_sf = true
-    end
+    # if b_flush == true && b_straight == true && black_numbers[0] == 14 && black_numbers[1] == 13
+    #     p "ROYAL FLUSH!"
+    #     return b_rf = true
+    # elsif b_flush == true && b_straight == true 
+    #     p "Straight flush, #{black_numbers[0]} high."
+    #     return b_sf = true
+    # end
 
     # if flush == true && straight == false
     #     p "Flush, #{black_numbers[0]} high."
@@ -389,71 +392,6 @@ def black_four(black_numbers)
     b_4s
 end
 
-# ## The test for straight flush
-# ## AND FLUSH? OBSOLETED?
-
-# def white_straight_flush(white_numbers, white_suits) 
-#     flush = false
-#     straight = false
-#     if (white_suits[0] == white_suits[1]) && (white_suits[0] == white_suits[2]) && (white_suits[0] == white_suits[3]) && (white_suits[0] == white_suits[4])
-#         flush = true
-#     end
-
-#     if ((white_numbers[0] - 1) == white_numbers[1]) && ((white_numbers[1] - 1) == white_numbers[2]) && ((white_numbers[2] - 1) == white_numbers[3]) && ((white_numbers[3] - 1) == white_numbers[4])
-#         straight = true
-#     end
-
-#     if (white_numbers[0] == 14) && (white_numbers[1] == 5) && (white_numbers[2] == 4) && (white_numbers[3] == 3) && (white_numbers[4] == 2)
-#         straight = true
-#     end
-
-#     if (flush == true) && (straight == true)
-#         if white_numbers[0] == 14 && white_numbers[1] == 13
-#             w_sf = "ROYAL FLUSH!"
-#         elsif white_numbers[0] == 14 && white_numbers[1] == 5
-#             w_sf = "Straight flush, 5 high."
-#         else
-#             w_sf = "Straight flush, #{white_numbers[0]} high."
-#         end
-#     end
-
-#     if (flush == true) && (straight == false)
-#         return w_flush = "Flush, #{white_numbers[0]} high."
-#     end
-# end
-
-# def black_straight_flush(black_numbers, black_suits) 
-#     flush = false
-#     straight = false
-#     if (black_suits[0] == black_suits[1]) && (black_suits[0] == black_suits[2]) && (black_suits[0] == black_suits[3]) && (black_suits[0] == black_suits[4])
-#         flush = true
-#     end
-    
-#     if (black_numbers[0] - 1 == black_numbers[1]) && (black_numbers[1] - 1 == black_numbers[2]) && (black_numbers[2] - 1 == black_numbers[3]) && (black_numbers[3] - 1 == black_numbers[4])
-#         straight = true
-#     end
-    
-#     if (black_numbers[0] == 14) && (black_numbers[1] == 5) && (black_numbers[2] == 4) && (black_numbers[3] == 3) && (black_numbers[4] == 2)
-#         straight = true
-#     end
-
-#     if (flush == true) && (straight == true)
-#         if black_numbers[0] == 14 && black_numbers[1] == 13
-#             return b_rf = "ROYAL FLUSH!"
-#         else
-#             return b_sf = "Straight flush, #{black_numbers[0]} high."
-#         end
-#     end
-
-#     if (flush == true) && (straight == false)
-#         return b_flush = "Flush, #{black_numbers[0]} high."
-#     end
-
-#     if (flush == false) && (straight == true)
-#         return b_straight = "Straight, #{black_numbers[0]} high."
-#     end
-# end
-
 # Create display of each hand with numbers and suits
 def whitehand_display(white_numbers, white_suits)
     x = 0
@@ -483,7 +421,7 @@ def declare_winner(handrank_w, handrank_b)
     end
 end
 
-################ Breaking a tiebreaker with high card, flush, full house, straight flush
+######### Breaking a tiebreaker with high card, flush, full house, straight flush
 
 def tie_high(white_numbers, black_numbers)
     x = 0
