@@ -27,31 +27,31 @@ def deal_hands(shufcard_arr)
 end
 
 # ######## THIS WILL STEP ASIDE FOR HARD-CODED HANDS ######
-# # This splits that array into a 5-card whitehand
-# def whitehand(bothhands)
-#     whitehand = bothhands.shift(1)
-#     whitehand = whitehand[0]
-#     whitehand
-# end
+# This splits that array into a 5-card whitehand
+def whitehand(bothhands)
+    whitehand = bothhands.shift(1)
+    whitehand = whitehand[0]
+    whitehand
+end
 
-# # This recreates the 5-card blackhand
-# def blackhand(bothhands)
-#     blackhand = bothhands[0]
-#     blackhand
-# end
+# This recreates the 5-card blackhand
+def blackhand(bothhands)
+    blackhand = bothhands[0]
+    blackhand
+end
 # ########## END OF COMMENTED OUT CODE
 
 #### HARD-CODING IS HERE
 
-def whitehand(bothhands)
-    whitehand = [52, 48, 44, 39, 36]
-    whitehand
-end
+# def whitehand(bothhands)
+#     whitehand = [52, 48, 44, 40, 32]
+#     whitehand
+# end
 
-def blackhand(bothhands)
-    blackhand = [34, 30, 26, 22, 19]
-    blackhand
-end
+# def blackhand(bothhands)
+#     blackhand = [34, 30, 26, 22, 19]
+#     blackhand
+# end
 
 ###### end of hard coding
 
@@ -311,17 +311,19 @@ def white_flush(white_numbers, white_suits)
 end
 
 
-##### below is black's straights and flushes, which will mirror that of white hand.
+##### BELOW will be black's straights and flushes, which will mirror that of white hand.
 
-def black_straight_flush(black_suits, black_numbers)
-    b_flush = false
-    b_straight = false
-    b_sf = false
-    b_rf = false
+
+
+# def black_straight_flush(black_suits, black_numbers)
+#     b_flush = false
+#     b_straight = false
+#     b_sf = false
+#     b_rf = false
     
-    if ((black_suits[0] == black_suits[1]) && (black_suits[0] == black_suits[2]) && (black_suits[0] == black_suits[3]) && (black_suits[0] == black_suits[4]))
-        b_flush = true
-    end
+#     if ((black_suits[0] == black_suits[1]) && (black_suits[0] == black_suits[2]) && (black_suits[0] == black_suits[3]) && (black_suits[0] == black_suits[4]))
+#         b_flush = true
+#     end
 
     # if ((black_numbers[0] - 1) == black_numbers[1]) && ((black_numbers[1] - 1) == black_numbers[2]) && ((black_numbers[2] - 1) == black_numbers[3]) && ((black_numbers[3] - 1) == black_numbers[4])
     #     b_straight = true
@@ -346,7 +348,7 @@ def black_straight_flush(black_suits, black_numbers)
     #     p "Straight, #{black_numbers[0]} high."
     #     return b_straight = true
     # end
-end
+# end
 
 ## Here is the test for full house
 

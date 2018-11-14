@@ -84,14 +84,14 @@ end
 ##### redone
 
 w_flush = white_flush(wnumbs, wsuits)
-if winner_w != true 
+if w_flush != nil && winner_w != true 
     handrank_w = 5
     p handrank_w
     winner_w = true
 end
 
 w_str = white_straight(wnumbs, wsuits)
-if winner_w != true 
+if w_str != nil && winner_w != true 
     handrank_w = 6
     p w_str
     p handrank_w
