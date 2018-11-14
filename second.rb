@@ -81,22 +81,23 @@ if w_full != nil && winner_w != true
     winner_w = true
 end
 
-w_flush = white_straight_flush(wnumbs, wsuits)
-if w_flush != nil && winner_w != true 
-    handrank_w = 5
-    p w_flush
-    p handrank_w
-    winner_w = true
-end
-
-# w_straight = white_straight_flush(wnumbs, wsuits)
-# if w_straight != nil && winner_w != true 
-#     handrank_w = 6
-#     puts "Or here? #{handrank_w}"
-#     p w_straight
+# w_flush = white_straight_flush(wnumbs, wsuits)
+# if w_flush != nil && winner_w != true 
+#     handrank_w = 5
+#     p w_flush
 #     p handrank_w
 #     winner_w = true
 # end
+
+##### redone
+w_straight = white_straight(wnumbs, wsuits)
+if w_straight != nil && winner_w != true 
+    handrank_w = 6
+    puts "Did I make it here? #{handrank_w}"
+    p w_straight
+    p handrank_w
+    winner_w = true
+end
 
 w_3 = black_three(wnumbs)
 if w_3 != nil && winner_w != true
