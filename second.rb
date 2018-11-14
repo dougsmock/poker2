@@ -49,23 +49,25 @@ puts "** white's hand rank **"
 handrank_w = 0
 winner_w = false
 
-# w_rf = white_straight_flush(wnumbs, wsuits)
-# if w_rf != nil && winner_w != true
-#     p w_rf      
-#     handrank_w = 1
-#     p handrank_w
-#     winner_w = true
-# end
+# rewrite a straight/royal flush
 
-# w_sf = white_straight_flush(wnumbs, wsuits)
-# if w_sf != nil && winner_w != true
-#     handrank_w = 2
-#     p w_sf
-#     p handrank_w
-#     winner_w = true 
-# end
+w_rf = white_straight_flush(wnumbs, wsuits)
+    if w_rf != nil && winner_w != true
+        handrank_w = 1
+        p w_rf
+        p handrank_w
+        winner_w = true
+    end
 
-w_4 = white_four(bnumbs)
+w_sf = white_straight_flush(wnumbs, wsuits)
+    if winner_w != true
+        handrank_w = 2
+        p w_sf
+        p handrank_w
+        winner_w = true
+    end
+
+w_4 = white_four(wnumbs)
 if w_4 != nil && winner_w != true
     handrank_w = 3
     p w_4
@@ -81,23 +83,25 @@ if w_full != nil && winner_w != true
     winner_w = true
 end
 
-# w_flush = white_straight_flush(wnumbs, wsuits)
-# if w_flush != nil && winner_w != true 
-#     handrank_w = 5
-#     p w_flush
-#     p handrank_w
-#     winner_w = true
-# end
-
 ##### redone
-w_straight = white_straight(wnumbs, wsuits)
-if w_straight != nil && winner_w != true 
-    handrank_w = 6
-    puts "Did I make it here? #{handrank_w}"
-    p w_straight
+
+w_flush = white_flush(wnumbs, wsuits)
+if winner_w != true 
+    handrank_w = 5
+    p w_flush
     p handrank_w
     winner_w = true
 end
+
+w_str = white_straight(wnumbs, wsuits)
+if winner_w != true 
+    handrank_w = 6
+    p w_str
+    p handrank_w
+    winner_w = true
+end
+
+############
 
 w_3 = black_three(wnumbs)
 if w_3 != nil && winner_w != true
