@@ -44,7 +44,7 @@ end
 #### HARD-CODING IS HERE
 
 def whitehand(bothhands)
-    whitehand = [48, 44, 40, 36, 32]
+    whitehand = [52, 48, 44, 39, 36]
     whitehand
 end
 
@@ -285,9 +285,9 @@ def white_royal_flush(white_numbers, white_suits)
 end
 
 def white_straight_flush(white_numbers, white_suits)
-    if ((white_numbers[0] == white_numbers[1] + 1) && (white_numbers[1] == white_numbers[2] + 1) && (white_numbers[2] == white_numbers[3] + 1) && (white_numbers[3] == white_numbers[4] + 1)) && ((white_suits[0] == white_suits[1]) && (white_suits[1] == white_suits[2]) && (white_suits[2] == white_suits[3]) && (white_suits[3] == white_suits[4]))  
-    p "Straight flush, #{white_numbers[0]} high."
-    w_sf = true
+    if ((white_numbers[0] == white_numbers[1] + 1) && (white_numbers[1] == white_numbers[2] + 1) && (white_numbers[2] == white_numbers[3] + 1) && (white_numbers[3] == white_numbers[4] + 1)) && ((white_suits[0] == white_suits[1]) && (white_suits[1] == white_suits[2]) && (white_suits[2] == white_suits[3]) && (white_suits[3] == white_suits[4])) && white_numbers[0] != 14
+        p "Straight flush, #{white_numbers[0]} high."
+        w_sf = true
     end
 end
 
