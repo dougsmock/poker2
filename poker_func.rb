@@ -28,30 +28,30 @@ end
 
 # ######## THIS WILL STEP ASIDE FOR HARD-CODED HANDS ######
 # # This splits that array into a 5-card whitehand
-def whitehand(bothhands)
-    whitehand = bothhands.shift(1)
-    whitehand = whitehand[0]
-    whitehand
-end
+# def whitehand(bothhands)
+#     whitehand = bothhands.shift(1)
+#     whitehand = whitehand[0]
+#     whitehand
+# end
 
-# This recreates the 5-card blackhand
-def blackhand(bothhands)
-    blackhand = bothhands[0]
-    blackhand
-end
+# # This recreates the 5-card blackhand
+# def blackhand(bothhands)
+#     blackhand = bothhands[0]
+#     blackhand
+# end
 # ########## END OF COMMENTED OUT CODE
 
 #### HARD-CODING IS HERE
 
-# def whitehand(bothhands)
-#     whitehand = [52, 48, 44, 40, 36]
-#     whitehand
-# end
+def whitehand(bothhands)
+    whitehand = [52, 47, 44, 40, 36]
+    whitehand
+end
 
-# def blackhand(bothhands)
-#     blackhand = [34, 30, 26, 22, 18]
-#     blackhand
-# end
+def blackhand(bothhands)
+    blackhand = [34, 30, 26, 22, 19]
+    blackhand
+end
 
 ###### end of hard coding
 
@@ -281,11 +281,11 @@ def white_straight_flush(white_suits, white_numbers)
     w_sf = false
     w_rf = false
 
-    if ((white_numbers[0] - 1) == white_numbers[1]) && ((white_numbers[1] - 1) == white_numbers[2]) && ((white_numbers[2] - 1) == white_numbers[3]) && ((white_numbers[3] - 1) == white_numbers[4])
-        w_straight = true
-    elsif (white_numbers[0] == 14) && (white_numbers[1] == 5) && (white_numbers[2] == 4) && (white_numbers[3] == 3) && (white_numbers[4] == 2)
-        w_straight = true
-    end 
+    # if ((white_numbers[0] - 1) == white_numbers[1]) && ((white_numbers[1] - 1) == white_numbers[2]) && ((white_numbers[2] - 1) == white_numbers[3]) && ((white_numbers[3] - 1) == white_numbers[4])
+    #     w_straight = true
+    # elsif (white_numbers[0] == 14) && (white_numbers[1] == 5) && (white_numbers[2] == 4) && (white_numbers[3] == 3) && (white_numbers[4] == 2)
+    #     w_straight = true
+    # end 
     
     if ((white_suits[0] == white_suits[1]) && (white_suits[0] == white_suits[2]) && (white_suits[0] == white_suits[3]) && (white_suits[0] == white_suits[4]))
         w_flush = true
@@ -299,12 +299,7 @@ def white_straight_flush(white_suits, white_numbers)
         return w_sf = true
     end
 
-    if w_flush == true && w_straight == false
-        p "Flush, #{white_numbers[0]} high."
-        return w_flush = true
-    end
-
-    if flush == false && straight == true
+        if w_flush == false && w_straight == true
         p "Straight, #{white_numbers[0]} high."
         return w_straight = true
     end
@@ -320,11 +315,11 @@ def black_straight_flush(black_suits, black_numbers)
         b_flush = true
     end
 
-    if ((black_numbers[0] - 1) == black_numbers[1]) && ((black_numbers[1] - 1) == black_numbers[2]) && ((black_numbers[2] - 1) == black_numbers[3]) && ((black_numbers[3] - 1) == black_numbers[4])
-        b_straight = true
-    elsif (black_numbers[0] == 14) && (black_numbers[1] == 5) && (black_numbers[2] == 4) && (black_numbers[3] == 3) && (black_numbers[4] == 2)
-           b_straight = true
-    end
+    # if ((black_numbers[0] - 1) == black_numbers[1]) && ((black_numbers[1] - 1) == black_numbers[2]) && ((black_numbers[2] - 1) == black_numbers[3]) && ((black_numbers[3] - 1) == black_numbers[4])
+    #     b_straight = true
+    # elsif (black_numbers[0] == 14) && (black_numbers[1] == 5) && (black_numbers[2] == 4) && (black_numbers[3] == 3) && (black_numbers[4] == 2)
+    #        b_straight = true
+    # end
 
     if b_flush == true && b_straight == true && black_numbers[0] == 14 && black_numbers[1] == 13
         p "ROYAL FLUSH!"
@@ -334,15 +329,15 @@ def black_straight_flush(black_suits, black_numbers)
         return b_sf = true
     end
 
-    if flush == true && straight == false
-        p "Flush, #{black_numbers[0]} high."
-        return b_flush = true
-    end
+    # if flush == true && straight == false
+    #     p "Flush, #{black_numbers[0]} high."
+    #     return b_flush = true
+    # end
 
-    if flush == false && straight == true
-        p "Straight, #{black_numbers[0]} high."
-        return b_straight = true
-    end
+    # if flush == false && straight == true
+    #     p "Straight, #{black_numbers[0]} high."
+    #     return b_straight = true
+    # end
 end
 
 ## Here is the test for full house

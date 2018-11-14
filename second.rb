@@ -42,78 +42,6 @@ bdisplay = blackhand_display(bnumbs, bsuits)
 p wdisplay
 p bdisplay
 
-# p "** white's hand rank **"
-# w_sf = white_straight_flush(wnumbs, wsuits)
-# if w_sf != nil
-#     handrank_w = 2
-#     p handrank_w
-#     p w_sf
-#     winner_w = true
-# end
-
-# w_4 = white_four(wnumbs)
-# if w_4 != nil && winner_w != true
-#     handrank_w = 3
-#     p handrank_w
-#     p w_4
-#     winner_w = true
-# end
-
-# w_full = white_full_house(wnumbs)
-# if w_full != nil && winner_w != true
-#     handrank_w = 4
-#     p handrank_w
-#     p w_full
-#     winner_w = true
-# end
-
-# w_flush = white_flush(wnumbs, wsuits)
-# if w_flush != nil && winner_w != true
-#     handrank_w = 5
-#     p handrank_w
-#     p w_flush
-#     winner_w = true
-# end
-
-# w_straight = white_straight(wnumbs)
-# if w_straight != nil && winner_w != true
-#     handrank_w = 6
-#     p handrank_w
-#     p w_straight
-#     winner_w = true
-# end
-
-# w_3 = white_three(wnumbs)
-# if w_3 != nil && winner_w != true
-#     handrank_w = 7
-#     p handrank_w
-#     p w_3
-#     winner_w = true
-# end
-
-# w_2p = white_two_pair(wnumbs)
-# if w_2p != nil && winner_w != true
-#     handrank_w = 8
-#     p handrank_w
-#     p w_2p
-#     winner_w = true
-# end
-
-# w_2 = white_pair(wnumbs)
-# if w_2 != nil && winner_w != true
-#     handrank_w = 9
-#     p handrank_w
-#     p w_2
-#     winner_w = true
-# end
-
-# w_high = white_high(wnumbs)
-# if w_high != nil && winner_w != true
-#     handrank_w = 10
-#     p handrank_w
-#     p w_high
-# end
-
 ########## white copied into here from black.
 
 puts "** white's hand rank **"
@@ -121,21 +49,21 @@ puts "** white's hand rank **"
 handrank_w = 0
 winner_w = false
 
-w_rf = white_straight_flush(wnumbs, wsuits)
-if w_rf != nil && winner_w != true
-    p w_rf      
-    handrank_w = 1
-    p handrank_w
-    winner_w = true
-end
+# w_rf = white_straight_flush(wnumbs, wsuits)
+# if w_rf != nil && winner_w != true
+#     p w_rf      
+#     handrank_w = 1
+#     p handrank_w
+#     winner_w = true
+# end
 
-w_sf = white_straight_flush(wnumbs, wsuits)
-if w_sf != nil && winner_w != true
-    handrank_w = 2
-    p w_sf
-    p handrank_w
-    winner_w = true 
-end
+# w_sf = white_straight_flush(wnumbs, wsuits)
+# if w_sf != nil && winner_w != true
+#     handrank_w = 2
+#     p w_sf
+#     p handrank_w
+#     winner_w = true 
+# end
 
 w_4 = white_four(bnumbs)
 if w_4 != nil && winner_w != true
@@ -161,14 +89,14 @@ if w_flush != nil && winner_w != true
     winner_w = true
 end
 
-w_straight = white_straight_flush(wnumbs, wsuits)
-if w_straight != nil && winner_w != true 
-    handrank_w = 6
-    puts "Or here? #{handrank_w}"
-    p w_straight
-    p handrank_w
-    winner_w = true
-end
+# w_straight = white_straight_flush(wnumbs, wsuits)
+# if w_straight != nil && winner_w != true 
+#     handrank_w = 6
+#     puts "Or here? #{handrank_w}"
+#     p w_straight
+#     p handrank_w
+#     winner_w = true
+# end
 
 w_3 = black_three(wnumbs)
 if w_3 != nil && winner_w != true
@@ -209,6 +137,22 @@ puts "** black's hand rank **"
 handrank_b = 0
 winner_b = false
 
+# b_rf = black_straight_flush(bnumbs, bsuits)
+# if b_rf != nil && winner_b != true
+#     p b_rf      
+#     handrank_b = 1
+#     p handrank_b
+#     winner_b = true
+# end
+
+b_sf = black_straight_flush(bnumbs, bsuits)
+if b_sf != nil && winner_b != true
+    handrank_b = 2
+    p b_sf
+    p handrank_b
+    winner_b = true 
+end
+
 b_4 = black_four(bnumbs)
 if b_4 != nil && winner_b != true
     handrank_b = 3
@@ -225,22 +169,6 @@ if b_full != nil && winner_b != true
     winner_b = true
 end
 
-b_rf = black_straight_flush(bnumbs, bsuits)
-if b_rf != nil && winner_b != true
-    p b_rf      
-    handrank_b = 1
-    p handrank_b
-    winner_b = true
-end
-
-b_sf = black_straight_flush(bnumbs, bsuits)
-if b_sf != nil && winner_b != true
-    handrank_b = 2
-    p b_sf
-    p handrank_b
-    winner_b = true 
-end
-
 b_flush = black_straight_flush(bnumbs, bsuits)
 if b_flush != nil && winner_b != true 
     handrank_b = 5
@@ -249,14 +177,14 @@ if b_flush != nil && winner_b != true
     winner_b = true
 end
 
-b_straight = black_straight(bnumbs)
-if b_straight != nil && winner_b != true 
-    handrank_b = 6
-    puts "Or here? #{handrank_b}"
-    p b_straight
-    p handrank_b
-    winner_b = true
-end
+# b_straight = black_straight(bnumbs)
+# if b_straight != nil && winner_b != true 
+#     handrank_b = 6
+#     puts "Or here? #{handrank_b}"
+#     p b_straight
+#     p handrank_b
+#     winner_b = true
+# end
 
 b_3 = black_three(bnumbs)
 if b_3 != nil && winner_b != true
