@@ -1,16 +1,24 @@
-# This is a deck of cards, numbered 1 through 52.
+# This is a deck of cards, numbered 1 through 52, and then shuffled.
 
-def cards
+def cards()
     card_arr = [*1..52]
-    card_arr
-end
-
-## this shuffles the cards
-    
-def shuffle(card_arr)
     shufcard_arr = card_arr.shuffle
+    p shufcard_arr
     shufcard_arr
 end
+
+
+# def cards
+#     card_arr = [*1..52]
+#     card_arr
+# end
+
+# ## this shuffles the cards
+    
+# def shuffle(card_arr)
+#     shufcard_arr = card_arr.shuffle
+#     shufcard_arr
+# end
 
 #This pops into a 5-card whitecards_arr, then pops into blackcards_arr
 #Then shovels two hands into array to pass as one
@@ -313,42 +321,40 @@ end
 
 ##### BELOW will be black's straights and flushes, which will mirror that of white hand.
 
+def black_royal_flush(black_numbers, black_suits)
+    b_rf = false
+    b_sf = false
+    if ((black_numbers[0] == 14) && (black_numbers[1] == 13) && (black_numbers[2] == 12) && (black_numbers[3] == 11) && (black_numbers[4] == 10)) && ((black_suits[0] == black_suits[1]) && (black_suits[1] == black_suits[2]) && (black_suits[2] == black_suits[3]) && (black_suits[3] == black_suits[4]))
+        p "ROYAL FLUSH!"
+        b_rf = true
+    end
+end
 
+def black_straight_flush(black_numbers, black_suits)
+    if ((black_numbers[0] == black_numbers[1] + 1) && (black_numbers[1] == black_numbers[2] + 1) && (black_numbers[2] == black_numbers[3] + 1) && (black_numbers[3] == black_numbers[4] + 1)) && ((black_suits[0] == black_suits[1]) && (black_suits[1] == black_suits[2]) && (black_suits[2] == black_suits[3]) && (black_suits[3] == black_suits[4])) && black_numbers[0] != 14
+        p "Straight flush, #{black_numbers[0]} high."
+        b_sf = true
+    end
+end
 
-# def black_straight_flush(black_suits, black_numbers)
-#     b_flush = false
-#     b_straight = false
-#     b_sf = false
-#     b_rf = false
-    
-#     if ((black_suits[0] == black_suits[1]) && (black_suits[0] == black_suits[2]) && (black_suits[0] == black_suits[3]) && (black_suits[0] == black_suits[4]))
-#         b_flush = true
-#     end
+def black_straight(black_numbers, black_suits)
+    b_straight = false
+    if (black_numbers[0] == black_numbers[1] + 1) && (black_numbers[1] == black_numbers[2] + 1) && (black_numbers[2] == black_numbers[3] + 1) && (black_numbers[3] == black_numbers[4] + 1)
+        b_straight = true
+        b_str ="Straight, #{black_numbers[0]} high."
+    elsif (black_numbers[0] == 14) && (black_numbers[1] == 5) && (black_numbers[2] == 4) && (black_numbers[3] == 3) && (black_numbers[4] == 2)
+        b_straight = true
+        b_str ="Straight, 5 high."
+    end
+end
 
-    # if ((black_numbers[0] - 1) == black_numbers[1]) && ((black_numbers[1] - 1) == black_numbers[2]) && ((black_numbers[2] - 1) == black_numbers[3]) && ((black_numbers[3] - 1) == black_numbers[4])
-    #     b_straight = true
-    # elsif (black_numbers[0] == 14) && (black_numbers[1] == 5) && (black_numbers[2] == 4) && (black_numbers[3] == 3) && (black_numbers[4] == 2)
-    #        b_straight = true
-    # end
-
-    # if b_flush == true && b_straight == true && black_numbers[0] == 14 && black_numbers[1] == 13
-    #     p "ROYAL FLUSH!"
-    #     return b_rf = true
-    # elsif b_flush == true && b_straight == true 
-    #     p "Straight flush, #{black_numbers[0]} high."
-    #     return b_sf = true
-    # end
-
-    # if flush == true && straight == false
-    #     p "Flush, #{black_numbers[0]} high."
-    #     return b_flush = true
-    # end
-
-    # if flush == false && straight == true
-    #     p "Straight, #{black_numbers[0]} high."
-    #     return b_straight = true
-    # end
-# end
+def black_flush(black_numbers, black_suits)
+    b_flush = false
+    if (black_suits[0] == black_suits[1]) && (black_suits[1] == black_suits[2]) && (black_suits[2] == black_suits[3]) && (black_suits[3] == black_suits[4]) && ((black_numbers[0] != black_numbers[1] + 1) || (black_numbers[1] != black_numbers[2] + 1) || (black_numbers[2] != black_numbers[3] + 1) || (black_numbers[3] != black_numbers[4] + 1))
+        b_flush = true
+        p "Flush, #{black_numbers[0]} high."
+    end
+end
 
 ## Here is the test for full house
 

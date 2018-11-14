@@ -1,31 +1,16 @@
 require_relative 'poker_func.rb'
-# require 'sinatra'
-
-# enable :sessions
 
 deck = cards()
-# p deck
-
-shuffled = shuffle(deck)
-# p shuffled
-
-dealt = deal_hands(shuffled)
-# p dealt
+dealt = deal_hands(deck)
 
 whitehand = whitehand(dealt)
-# p whitehand
 blackhand = blackhand(dealt)
-# p blackhand
 
 whighlow = white_high_low(whitehand)
-# p whighlow
 bhighlow = black_high_low(blackhand)
-# p bhighlow
 
 wconverted = convert_white(whighlow)
 bconverted = convert_black(bhighlow)
-# p wconverted
-# p bconverted
 
 wnumbs = white_numbers(wconverted)
 bnumbs = black_numbers(bconverted)
@@ -42,14 +27,10 @@ bdisplay = blackhand_display(bnumbs, bsuits)
 p wdisplay
 p bdisplay
 
-########## white copied into here from black.
-
 puts "** white's hand rank **"
 
 handrank_w = 0
 winner_w = false
-
-# rewrite a straight/royal flush
 
 w_rf = white_royal_flush(wnumbs, wsuits)
     if w_rf != nil && winner_w != true
@@ -81,8 +62,6 @@ if w_full != nil && winner_w != true
     winner_w = true
 end
 
-##### redone
-
 w_flush = white_flush(wnumbs, wsuits)
 if w_flush != nil && winner_w != true 
     handrank_w = 5
@@ -97,8 +76,6 @@ if w_str != nil && winner_w != true
     p handrank_w
     winner_w = true
 end
-
-############
 
 w_3 = black_three(wnumbs)
 if w_3 != nil && winner_w != true
@@ -131,21 +108,17 @@ if w_high != nil && winner_w != true
     p handrank_w
 end
 
-
-########## separation between white and black ranks
-
 puts "** black's hand rank **"
 
 handrank_b = 0
 winner_b = false
 
-# b_rf = black_straight_flush(bnumbs, bsuits)
-# if b_rf != nil && winner_b != true
-#     p b_rf      
-#     handrank_b = 1
-#     p handrank_b
-#     winner_b = true
-# end
+b_rf = white_royal_flush(bnumbs, bsuits)
+    if b_rf != nil && winner_b != true
+        handrank_b = 1
+        p handrank_b
+        winner_b = true
+    end
 
 b_sf = black_straight_flush(bnumbs, bsuits)
 if b_sf != nil && winner_b != true
@@ -179,14 +152,13 @@ if b_flush != nil && winner_b != true
     winner_b = true
 end
 
-# b_straight = black_straight(bnumbs)
-# if b_straight != nil && winner_b != true 
-#     handrank_b = 6
-#     puts "Or here? #{handrank_b}"
-#     p b_straight
-#     p handrank_b
-#     winner_b = true
-# end
+b_str = black_straight(bnumbs, bsuits)
+if b_str != nil && winner_b != true 
+    handrank_b = 6
+    p b_str
+    p handrank_b
+    winner_b = true
+end
 
 b_3 = black_three(bnumbs)
 if b_3 != nil && winner_b != true
@@ -238,6 +210,3 @@ elsif (handrank_w == 4 && handrank_b == 4)
 elsif (handrank_w == 3 && handrank_b == 3)
     tiebreaker = tie_4(wnumbs, bnumbs)
 end
-
-
-# royal, sflush, 4s, full, flush, straight, 3s, 2pair, pair, high
