@@ -23,30 +23,30 @@ end
 
 ######## THE FOLLOWING WILL STEP ASIDE FOR HARD-CODED HANDS ######
 # This splits that array into the 5-card whitehand
-def whitehand(bothhands)
-    whitehand = bothhands.shift(1)
-    whitehand = whitehand[0]
-    whitehand
-end
+# def whitehand(bothhands)
+#     whitehand = bothhands.shift(1)
+#     whitehand = whitehand[0]
+#     whitehand
+# end
 
-# This recreates the 5-card blackhand
-def blackhand(bothhands)
-    blackhand = bothhands[0]
-    blackhand
-end
+# # This recreates the 5-card blackhand
+# def blackhand(bothhands)
+#     blackhand = bothhands[0]
+#     blackhand
+# end
 ########## END OF COMMENTED OUT CODE
 
 ### FOLLOWING IS HARD-CODING FOR TESTING HIGH HANDS
 
-# def whitehand(bothhands)
-#     whitehand = [48, 44, 40, 36, 32]
-#     whitehand
-# end
+def whitehand(bothhands)
+    whitehand = [48, 47, 35, 21, 14]
+    whitehand
+end
 
-# def blackhand(bothhands)
-#     blackhand = [47, 43, 39, 35, 31]
-#     blackhand
-# end
+def blackhand(bothhands)
+    blackhand = [46, 45, 34, 20, 13]
+    blackhand
+end
 
 ##### end of hard coding
 
@@ -402,6 +402,8 @@ def tie_pair(white_numbers, black_numbers)
     broke_tie = false
     
     white_paircards = []
+    x = 0
+
     if white_numbers[0] == white_numbers[1]
         white_paircards << white_numbers[0] << white_numbers[1]
     elsif white_numbers[1] == white_numbers[2]
@@ -423,8 +425,7 @@ def tie_pair(white_numbers, black_numbers)
         black_paircards << black_numbers[3] << black_numbers[4]
     end 
         
-    x = 0
-    
+    z = 0
     if white_paircards[0] > black_paircards[0]
         p "WHITE WINS!"
         broke_tie = true
@@ -433,12 +434,12 @@ def tie_pair(white_numbers, black_numbers)
         p "BLACK WINS!"
         broke_tie = true
         return black_numbers
-        while x < 3
-            if white_numbers[x] > black_numbers[x]
+        while z < 3
+            if white_numbers[z] > black_numbers[z]
                 p "WHITE WINS!"
                 broke_tie = true
                 return white_numbers
-            elsif white_numbers[x] < black_numbers[x]
+            elsif white_numbers[z] < black_numbers[z]
                 p "BLACK WINS!"
                 broke_tie = true
                 return black_numbers
