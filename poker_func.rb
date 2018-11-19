@@ -185,16 +185,26 @@ end
 ### Here is the test for one pair
 def white_pair(white_numbers)
     white = white_numbers
-    if (white[0] == white[1])  
-        w_pair = "Pair of #{white[0]}s, #{white[2]}, #{white[3]}, #{white[4]} high."
-    elsif (white[1] == white[2])  
-        w_pair = "Pair of #{white[1]}s, #{white[0]}, #{white[3]}, #{white[4]} high."
-    elsif (white[2] == white[3])  
-        w_pair = "Pair of #{white[2]}s, #{white[0]}, #{white[1]}, #{white[4]} high."
-    elsif (white[3] == white[4])  
-        w_pair = "Pair of #{white[3]}s, #{white[0]}, #{white[1]}, #{white[2]} high."
+    x = 0
+    until x == 4
+        if white[x] == white[x + 1]
+            w_pair = "Pair of #{white[x]}s."
+        end
+        x += 1
     end
     w_pair
+end
+
+def black_pair(black_numbers)
+    black = black_numbers
+    x = 0
+    until x == 4
+        if black[x] == black[x + 1]
+            b_pair = "Pair of #{black[x]}s."
+        end
+        x += 1
+    end
+    b_pair
 end
 
 def black_pair(black_numbers)
