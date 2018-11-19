@@ -454,6 +454,7 @@ def tie_pair(white_numbers, black_numbers)
             broke_tie = true
             return black_numbers
         end
+        z += 1
     end
 
     if broke_tie == false
