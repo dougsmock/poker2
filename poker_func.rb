@@ -39,12 +39,12 @@ end
 ### FOLLOWING IS HARD-CODING FOR TESTING HIGH HANDS
 
 def whitehand(bothhands)
-    whitehand = [52, 48, 44, 40, 32]
+    whitehand = [48, 44, 40, 36, 32]
     whitehand
 end
 
 def blackhand(bothhands)
-    blackhand = [34, 30, 26, 22, 14]
+    blackhand = [34, 30, 26, 22, 18]
     blackhand
 end
 
@@ -249,71 +249,55 @@ def white_royal_flush(white_numbers, white_suits)
     w_rf = false
     w_sf = false
     if ((white_numbers[0] == 14) && (white_numbers[1] == 13) && (white_numbers[2] == 12) && (white_numbers[3] == 11) && (white_numbers[4] == 10)) && ((white_suits[0] == white_suits[1]) && (white_suits[1] == white_suits[2]) && (white_suits[2] == white_suits[3]) && (white_suits[3] == white_suits[4]))
-        p "ROYAL FLUSH!"
-        w_rf = true
+        w_rf = "ROYAL FLUSH!"
     end
 end
 
 def white_straight_flush(white_numbers, white_suits)
     if ((white_numbers[0] == white_numbers[1] + 1) && (white_numbers[1] == white_numbers[2] + 1) && (white_numbers[2] == white_numbers[3] + 1) && (white_numbers[3] == white_numbers[4] + 1)) && ((white_suits[0] == white_suits[1]) && (white_suits[1] == white_suits[2]) && (white_suits[2] == white_suits[3]) && (white_suits[3] == white_suits[4])) && white_numbers[0] != 14
-        p "Straight flush, #{white_numbers[0]} high."
-        w_sf = true
+        w_sf = "Straight flush, #{white_numbers[0]} high."
     end
 end
 
 def white_straight(white_numbers, white_suits)
-    w_straight = false
     if (white_numbers[0] == white_numbers[1] + 1) && (white_numbers[1] == white_numbers[2] + 1) && (white_numbers[2] == white_numbers[3] + 1) && (white_numbers[3] == white_numbers[4] + 1)
-        w_straight = true
-        w_str ="Straight, #{white_numbers[0]} high."
+        w_straight = "Straight, #{white_numbers[0]} high."
     elsif (white_numbers[0] == 14) && (white_numbers[1] == 5) && (white_numbers[2] == 4) && (white_numbers[3] == 3) && (white_numbers[4] == 2)
-        w_straight = true
-        w_str ="Straight, 5 high."
+        w_straight = "Straight, 5 high."
     end
 end
 
 def white_flush(white_numbers, white_suits)
-    w_flush = false
     if (white_suits[0] == white_suits[1]) && (white_suits[1] == white_suits[2]) && (white_suits[2] == white_suits[3]) && (white_suits[3] == white_suits[4]) && ((white_numbers[0] != white_numbers[1] + 1) || (white_numbers[1] != white_numbers[2] + 1) || (white_numbers[2] != white_numbers[3] + 1) || (white_numbers[3] != white_numbers[4] + 1))
-        w_flush = true
-        p "Flush, #{white_numbers[0]} high."
+        w_flush = "Flush, #{white_numbers[0]} high."
     end
 end
 
 ##### BELOW will be black's straights and flushes, which will mirror that of white hand.
 
 def black_royal_flush(black_numbers, black_suits)
-    b_rf = false
-    b_sf = false
     if ((black_numbers[0] == 14) && (black_numbers[1] == 13) && (black_numbers[2] == 12) && (black_numbers[3] == 11) && (black_numbers[4] == 10)) && ((black_suits[0] == black_suits[1]) && (black_suits[1] == black_suits[2]) && (black_suits[2] == black_suits[3]) && (black_suits[3] == black_suits[4]))
-        p "ROYAL FLUSH!"
-        b_rf = true
+        b_rf = "ROYAL FLUSH!"
     end
 end
 
 def black_straight_flush(black_numbers, black_suits)
     if ((black_numbers[0] == black_numbers[1] + 1) && (black_numbers[1] == black_numbers[2] + 1) && (black_numbers[2] == black_numbers[3] + 1) && (black_numbers[3] == black_numbers[4] + 1)) && ((black_suits[0] == black_suits[1]) && (black_suits[1] == black_suits[2]) && (black_suits[2] == black_suits[3]) && (black_suits[3] == black_suits[4])) && black_numbers[0] != 14
-        p "Straight flush, #{black_numbers[0]} high."
-        b_sf = true
+        b_sf = "Straight flush, #{black_numbers[0]} high."
     end
 end
 
 def black_straight(black_numbers, black_suits)
-    b_straight = false
     if (black_numbers[0] == black_numbers[1] + 1) && (black_numbers[1] == black_numbers[2] + 1) && (black_numbers[2] == black_numbers[3] + 1) && (black_numbers[3] == black_numbers[4] + 1)
-        b_straight = true
-        b_str ="Straight, #{black_numbers[0]} high."
+        b_straight = "Straight, #{black_numbers[0]} high."
     elsif (black_numbers[0] == 14) && (black_numbers[1] == 5) && (black_numbers[2] == 4) && (black_numbers[3] == 3) && (black_numbers[4] == 2)
-        b_straight = true
-        b_str ="Straight, 5 high."
+        b_straight = "Straight, 5 high."
     end
 end
 
 def black_flush(black_numbers, black_suits)
-    b_flush = false
     if (black_suits[0] == black_suits[1]) && (black_suits[1] == black_suits[2]) && (black_suits[2] == black_suits[3]) && (black_suits[3] == black_suits[4]) && ((black_numbers[0] != black_numbers[1] + 1) || (black_numbers[1] != black_numbers[2] + 1) || (black_numbers[2] != black_numbers[3] + 1) || (black_numbers[3] != black_numbers[4] + 1))
-        b_flush = true
-        p "Flush, #{black_numbers[0]} high."
+        b_flush = "Flush, #{black_numbers[0]} high."
     end
 end
 

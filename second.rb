@@ -35,6 +35,7 @@ winner_w = false
 w_rf = white_royal_flush(wnumbs, wsuits)
     if w_rf != nil && winner_w != true
         handrank_w = 1
+        p w_rf
         p handrank_w
         winner_w = true
     end
@@ -42,6 +43,7 @@ w_rf = white_royal_flush(wnumbs, wsuits)
 w_sf = white_straight_flush(wnumbs, wsuits)
     if w_sf != nil && winner_w != true
         handrank_w = 2
+        p w_sf
         p handrank_w
         winner_w = true
     end
@@ -65,6 +67,7 @@ end
 w_flush = white_flush(wnumbs, wsuits)
 if w_flush != nil && winner_w != true 
     handrank_w = 5
+    p w_flush
     p handrank_w
     winner_w = true
 end
@@ -113,7 +116,7 @@ puts "** black's hand rank **"
 handrank_b = 0
 winner_b = false
 
-b_rf = white_royal_flush(bnumbs, bsuits)
+b_rf = black_royal_flush(bnumbs, bsuits)
     if b_rf != nil && winner_b != true
         handrank_b = 1
         p handrank_b
@@ -144,7 +147,7 @@ if b_full != nil && winner_b != true
     winner_b = true
 end
 
-b_flush = black_straight_flush(bnumbs, bsuits)
+b_flush = black_flush(bnumbs, bsuits)
 if b_flush != nil && winner_b != true 
     handrank_b = 5
     p b_flush
