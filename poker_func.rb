@@ -348,7 +348,7 @@ end
 # Create display of each hand with numbers and suits
 def whitehand_display(white_numbers, white_suits)
     x = 0
-    p "White hand"
+    puts "White hand"
     5.times do
         puts "#{white_numbers[x]} of #{white_suits[x]}"
         x += 1
@@ -359,7 +359,7 @@ def blackhand_display(black_numbers, black_suits)
     x = 0
     puts "Black hand"
     5.times do
-        p "#{black_numbers[x]} of #{black_suits[x]}"
+        puts "#{black_numbers[x]} of #{black_suits[x]}"
         x += 1
     end
 end
@@ -388,9 +388,8 @@ def tie_high(white_numbers, black_numbers)
             p "BLACK WINS!"
             broke_tie = true
             return black_numbers
-        else white_numbers[x] == black_numbers[x]
-            x += 1
         end
+        x += 1
     end
     if broke_tie == false
         p "DEAD TIE!"
@@ -401,7 +400,7 @@ end
 
 def tie_pair(white_numbers, black_numbers)
     broke_tie = false
-
+    
     white_paircards = []
     if white_numbers[0] == white_numbers[1]
         white_paircards << white_numbers[0] << white_numbers[1]
@@ -412,7 +411,7 @@ def tie_pair(white_numbers, black_numbers)
     else white_numbers[3] == white_numbers[4]
         white_paircards << white_numbers[3] << white_numbers[4]
     end 
-
+    
     black_paircards = []
     if black_numbers[0] == black_numbers[1]
         black_paircards << black_numbers[0] << black_numbers[1]
@@ -423,9 +422,9 @@ def tie_pair(white_numbers, black_numbers)
     else black_numbers[3] == black_numbers[4]
         black_paircards << black_numbers[3] << black_numbers[4]
     end 
-    
+        
     x = 0
-
+    
     if white_paircards[0] > black_paircards[0]
         p "WHITE WINS!"
         broke_tie = true
@@ -446,7 +445,7 @@ def tie_pair(white_numbers, black_numbers)
             end
         end
     end  
-       
+           
     if broke_tie == false
         p "DEAD TIE!"
     end
@@ -546,11 +545,9 @@ def tie_3(white_numbers, black_numbers)
     if white3 > black3
         p "WHITE WINS!"
         broke_tie = true
-        return white_numbers
     else white3 < black3
         p "BLACK WINS!"
         broke_tie = true
-        return black_numbers
     end
 end
 
@@ -561,13 +558,13 @@ def tie_4(white_numbers, black_numbers)
     if white_numbers[0] == white_numbers[1]
         white4 = white_numbers[0]
     elsif white_numbers[1] == white_numbers[2]
-        white_4 = white_numbers[1]
+        white4 = white_numbers[1]
     end
 
     if black_numbers[0] == black_numbers[1]
         black4 = black_numbers[0]
     elsif black_numbers[1] == black_numbers[2]
-        black_4 = black_numbers[1]
+        black4 = black_numbers[1]
     end
 
         ##### Time to compare, break the tie
