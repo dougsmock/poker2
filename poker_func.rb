@@ -21,32 +21,32 @@ def deal_hands(shufcard_arr)
   bothhands
 end
 
-# ######## THE FOLLOWING WILL STEP ASIDE FOR HARD-CODED HANDS ######
+######## THE FOLLOWING WILL STEP ASIDE FOR HARD-CODED HANDS ######
 # This splits that array into the 5-card whitehand
-# def whitehand(bothhands)
-#     whitehand = bothhands.shift(1)
-#     whitehand = whitehand[0]
-#     whitehand
-# end
-
-# # This recreates the 5-card blackhand
-# def blackhand(bothhands)
-#     blackhand = bothhands[0]
-#     blackhand
-# end
-# ########## END OF COMMENTED OUT CODE
-
-### FOLLOWING IS HARD-CODING FOR TESTING HIGH HANDS
-
 def whitehand(bothhands)
-    whitehand = [48, 44, 40, 36, 32]
+    whitehand = bothhands.shift(1)
+    whitehand = whitehand[0]
     whitehand
 end
 
+# This recreates the 5-card blackhand
 def blackhand(bothhands)
-    blackhand = [34, 30, 26, 22, 18]
+    blackhand = bothhands[0]
     blackhand
 end
+########## END OF COMMENTED OUT CODE
+
+### FOLLOWING IS HARD-CODING FOR TESTING HIGH HANDS
+
+# def whitehand(bothhands)
+#     whitehand = [48, 44, 40, 36, 32]
+#     whitehand
+# end
+
+# def blackhand(bothhands)
+#     blackhand = [47, 43, 39, 35, 31]
+#     blackhand
+# end
 
 ##### end of hard coding
 

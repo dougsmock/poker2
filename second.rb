@@ -198,7 +198,7 @@ end
 
 winner = declare_winner(handrank_w, handrank_b)
 
-if (handrank_w == 10 && handrank_b == 10) || (handrank_w == 5 && handrank_b == 5) || (handrank_w == 1 && handrank_b == 1) 
+if (handrank_w == 10 && handrank_b == 10) || (handrank_w == 5 && handrank_b == 5)  
     tiebreaker = tie_high(wnumbs, bnumbs)
 elsif (handrank_w == 9 && handrank_b == 9)
     tiebreaker = tie_pair(wnumbs, bnumbs)
