@@ -396,36 +396,43 @@ def tie_high(white_numbers, black_numbers)
     end
 end
 
-## tiebreaker for pair (a monster)
+## tiebreaker for pair (a monster), UNDER RECONSTRUCTION
 
 def tie_pair(white_numbers, black_numbers)
     broke_tie = false
-    
     white_paircards = []
-    x = 0
+    white_kickers = []
 
     if white_numbers[0] == white_numbers[1]
         white_paircards << white_numbers[0] << white_numbers[1]
+        white_kickers << white_numbers[2] << white_numbers[3] << white_numbers[4]
     elsif white_numbers[1] == white_numbers[2]
         white_paircards << white_numbers[1] << white_numbers[2]
+        white_kickers << white_numbers[0] << white_numbers[3] << white_numbers[4]
     elsif white_numbers[2] == white_numbers[3]
         white_paircards << white_numbers[2] << white_numbers[3]
+        white_kickers << white_numbers[0] << white_numbers[1] << white_numbers[4]
     else white_numbers[3] == white_numbers[4]
         white_paircards << white_numbers[3] << white_numbers[4]
+        white_kickers << white_numbers[0] << white_numbers[1] << white_numbers[2]
     end 
     
     black_paircards = []
+    black_kickers = []
     if black_numbers[0] == black_numbers[1]
         black_paircards << black_numbers[0] << black_numbers[1]
+        black_kickers << black_numbers[2] << black_numbers[3] << black_numbers[4]
     elsif black_numbers[1] == black_numbers[2]
         black_paircards << black_numbers[1] << black_numbers[2]
+        black_kickers << black_numbers[0] << black_numbers[3] << black_numbers[4]
     elsif black_numbers[2] == black_numbers[3]
         black_paircards << black_numbers[2] << black_numbers[3]
+        black_kickers << black_numbers[0] << black_numbers[1] << black_numbers[4]
     else black_numbers[3] == black_numbers[4]
         black_paircards << black_numbers[3] << black_numbers[4]
+        black_kickers << black_numbers[0] << black_numbers[1] << black_numbers[2]
     end 
         
-    z = 0
     if white_paircards[0] > black_paircards[0]
         p "WHITE WINS!"
         broke_tie = true
@@ -434,19 +441,21 @@ def tie_pair(white_numbers, black_numbers)
         p "BLACK WINS!"
         broke_tie = true
         return black_numbers
-        while z < 3
-            if white_numbers[z] > black_numbers[z]
-                p "WHITE WINS!"
-                broke_tie = true
-                return white_numbers
-            elsif white_numbers[z] < black_numbers[z]
-                p "BLACK WINS!"
-                broke_tie = true
-                return black_numbers
-            end
-        end
     end  
-           
+
+    z = 0
+    while z < 3
+        if white_kickers[z] > black_kickers[z]
+            p "WHITE WINS!"
+            broke_tie = true
+            return white_numbers
+        elsif white_kickers[z] < black_kickers[z]
+            p "BLACK WINS!"
+            broke_tie = true
+            return black_numbers
+        end
+    end
+
     if broke_tie == false
         p "DEAD TIE!"
     end
