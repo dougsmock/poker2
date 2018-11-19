@@ -7,21 +7,8 @@ def cards()
     shufcard_arr
 end
 
-
-# def cards
-#     card_arr = [*1..52]
-#     card_arr
-# end
-
-# ## this shuffles the cards
-    
-# def shuffle(card_arr)
-#     shufcard_arr = card_arr.shuffle
-#     shufcard_arr
-# end
-
 #This pops into a 5-card whitecards_arr, then pops into blackcards_arr
-#Then shovels two hands into array to pass as one
+#Then shovels two hands into a single array to pass as one
 
 def deal_hands(shufcard_arr)
   whitecards_arr = []
@@ -34,8 +21,8 @@ def deal_hands(shufcard_arr)
   bothhands
 end
 
-# ######## THIS WILL STEP ASIDE FOR HARD-CODED HANDS ######
-# This splits that array into a 5-card whitehand
+# ######## THE FOLLOWING WILL STEP ASIDE FOR HARD-CODED HANDS ######
+# This splits that array into the 5-card whitehand
 def whitehand(bothhands)
     whitehand = bothhands.shift(1)
     whitehand = whitehand[0]
@@ -49,7 +36,7 @@ def blackhand(bothhands)
 end
 # ########## END OF COMMENTED OUT CODE
 
-#### HARD-CODING IS HERE
+#### FOLLOWING IS HARD-CODING FOR TESTING HIGH HANDS
 
 # def whitehand(bothhands)
 #     whitehand = [52, 48, 44, 40, 32]
@@ -63,8 +50,7 @@ end
 
 ###### end of hard coding
 
-###### ###### This rearranges the cards in your hand from high to low before 
-#### determining number and suits
+###### ###### This rearranges the cards in your hand from high to low
 
 def white_high_low(whitehand)
     whitehigh = whitehand.sort { |x,y| y <=> x }
@@ -111,7 +97,7 @@ def convert_black(blackhigh)
 end
 
 # Now, we assign numbers to cards 
-# (10, 11, 12, 13, 14 will be renamed T, J, Q, K as late in the process as possible.)
+# (10, 11, 12, 13, 14 will be renamed T, J, Q, K, A on the front end.)
 
 def white_numbers(white_added)
     w = 0
@@ -154,8 +140,6 @@ def white_suits(white_added)
 			white_suits << "Diamonds"
 		elsif white_mod[y] == 3
 			white_suits << "Hearts"
-		else
-			p "Out of order"	
 		end
 		w += 1
         y += 1
@@ -178,8 +162,6 @@ def black_suits(black_added)
             black_suits << "Diamonds"
         elsif black_mod[y] == 3
             black_suits << "Hearts"
-        else
-            p "Out of order"	
         end
         w += 1
         y += 1
@@ -318,7 +300,6 @@ def white_flush(white_numbers, white_suits)
     end
 end
 
-
 ##### BELOW will be black's straights and flushes, which will mirror that of white hand.
 
 def black_royal_flush(black_numbers, black_suits)
@@ -405,14 +386,14 @@ def whitehand_display(white_numbers, white_suits)
     x = 0
     p "White hand"
     5.times do
-        p "#{white_numbers[x]} of #{white_suits[x]}"
+        puts "#{white_numbers[x]} of #{white_suits[x]}"
         x += 1
     end
 end
 
 def blackhand_display(black_numbers, black_suits)
     x = 0
-    p "Black hand"
+    puts "Black hand"
     5.times do
         p "#{black_numbers[x]} of #{black_suits[x]}"
         x += 1
@@ -507,7 +488,7 @@ def tie_pair(white_numbers, black_numbers)
     end
 end
 
-## tiebreaker for 2 pairs 
+## tiebreaker for 2 pairs (another monster)
 
 def tie_2pair(white_numbers, black_numbers)
     broke_tie = false
@@ -609,7 +590,7 @@ def tie_3(white_numbers, black_numbers)
     end
 end
 
-    ##### Let's work on the fours
+##### Let's work on the fours
     
 def tie_4(white_numbers, black_numbers)
     broke_tie = false
@@ -656,7 +637,7 @@ def tie_full(white_numbers, black_numbers)
         black_3part = black_numbers[2]
     end
 
-            ### Now, it's time to compare and break that tie.
+### Now, it's time to compare and break that tie.
 
     if white_3part > black_3part
         p "WHITE WINS!"
@@ -685,6 +666,7 @@ def tie_straight(white_numbers, black_numbers)
     end  
 
         ## compare the highs
+    
     if white_strhigh > black_strhigh
         p "WHITE WINS!"
         broke_tie = true
