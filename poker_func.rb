@@ -23,32 +23,32 @@ end
 
 # ######## THE FOLLOWING WILL STEP ASIDE FOR HARD-CODED HANDS ######
 # This splits that array into the 5-card whitehand
-def whitehand(bothhands)
-    whitehand = bothhands.shift(1)
-    whitehand = whitehand[0]
-    whitehand
-end
-
-# This recreates the 5-card blackhand
-def blackhand(bothhands)
-    blackhand = bothhands[0]
-    blackhand
-end
-# ########## END OF COMMENTED OUT CODE
-
-#### FOLLOWING IS HARD-CODING FOR TESTING HIGH HANDS
-
 # def whitehand(bothhands)
-#     whitehand = [52, 48, 44, 40, 32]
+#     whitehand = bothhands.shift(1)
+#     whitehand = whitehand[0]
 #     whitehand
 # end
 
+# # This recreates the 5-card blackhand
 # def blackhand(bothhands)
-#     blackhand = [34, 30, 26, 22, 19]
+#     blackhand = bothhands[0]
 #     blackhand
 # end
+# ########## END OF COMMENTED OUT CODE
 
-###### end of hard coding
+### FOLLOWING IS HARD-CODING FOR TESTING HIGH HANDS
+
+def whitehand(bothhands)
+    whitehand = [52, 48, 44, 40, 32]
+    whitehand
+end
+
+def blackhand(bothhands)
+    blackhand = [34, 30, 26, 22, 14]
+    blackhand
+end
+
+##### end of hard coding
 
 ###### ###### This rearranges the cards in your hand from high to low
 
@@ -207,42 +207,20 @@ def black_pair(black_numbers)
     b_pair
 end
 
-def black_pair(black_numbers)
-    black = black_numbers
-    if (black[0] == black[1])  
-        b_pair = "Pair of #{black[0]}s, #{black[2]}, #{black[3]}, #{black[4]} high."
-    elsif (black[1] == black[2])  
-        b_pair = "Pair of #{black[1]}s, #{black[0]}, #{black[3]}, #{black[4]} high."
-    elsif (black[2] == black[3])  
-        b_pair = "Pair of #{black[2]}s, #{black[0]}, #{black[1]}, #{black[4]} high."
-    elsif (black[3] == black[4])  
-        b_pair = "Pair of #{black[3]}s, #{black[0]}, #{black[1]}, #{black[2]} high."
-    end
-    b_pair
-end
-
 ## Here is the test for two pair
 
 def white_two_pair(white_numbers)
     white = white_numbers
-    if (white[0] == white[1]) && (white[2] == white[3])
-        w_2pair = "Two pair, #{white[0]}s and #{white[2]}s, #{white[4]} kicker."
-    elsif (white[0] == white[1]) && (white[3] == white[4])
-        w_2pair = "Two pair, #{white[0]}s and #{white[3]}s, #{white[2]} kicker."
-    elsif (white[1] == white[2]) && (white[3] == white[4])
-        w_2pair = "Two pair, #{white[1]}s and #{white[3]}s, #{white[0]} kicker."
+    if ((white[0] == white[1]) && (white[2] == white[3])) || ((white[0] == white[1]) && (white[3] == white[4])) || ((white[1] == white[2]) && (white[3] == white[4]))
+        w_2pair = "Two pair."
     end
     w_2pair
 end
 
 def black_two_pair(black_numbers)
     black = black_numbers
-    if (black[0] == black[1]) && (black[2] == black[3])
-        b_2pair = "Two pair, #{black[0]}s and #{black[2]}s, #{black[4]} kicker."
-    elsif (black[0] == black[1]) && (black[3] == black[4])
-        b_2pair = "Two pair, #{black[0]}s and #{black[3]}s, #{black[2]} kicker."
-    elsif (black[1] == black[2]) && (black[3] == black[4])
-        b_2pair = "Two pair, #{black[1]}s and #{black[3]}s, #{black[0]} kicker."
+    if ((black[0] == black[1]) && (black[2] == black[3])) || ((black[0] == black[1]) && (black[3] == black[4])) || ((black[1] == black[2]) && (black[3] == black[4]))
+        b_2pair = "Two pair."
     end
     b_2pair
 end
@@ -251,24 +229,16 @@ end
 
 def white_three(white_numbers)
     white = white_numbers
-    if (white[0] == white[1]) && (white[0] == white[2])
-        w_3s = "Three of a kind, #{white[0]}s."
-    elsif (white[1] == white[2]) && (white[1] == white[3])
-        w_3s = "Three of a kind, #{white[1]}s."
-    elsif (white[2] == white[3]) && (white[2] == white[4])
-        w_3s = "Three of a kind, #{white[2]}s."
+    if ((white[0] == white[1]) && (white[0] == white[2])) || ((white[1] == white[2]) && (white[1] == white[3])) || ((white[2] == white[3]) && (white[2] == white[4]))
+        w_3s = "Three of a kind."
     end
     w_3s
 end
 
 def black_three(black_numbers)
     black = black_numbers
-    if (black[0] == black[1]) && (black[0] == black[2])
-        b_3s = "Three of a kind, #{black[0]}s."
-    elsif (black[1] == black[2]) && (black[1] == black[3])
-        b_3s ="Three of a kind, #{black[1]}s."
-    elsif (black[2] == black[3]) && (black[2] == black[4])
-        b_3s ="Three of a kind, #{black[2]}s."
+    if ((black[0] == black[1]) && (black[0] == black[2])) || ((black[1] == black[2]) && (black[1] == black[3])) || ((black[2] == black[3]) && (black[2] == black[4]))
+        b_3s = "Three of a kind."
     end
     b_3s
 end
