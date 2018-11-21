@@ -8,14 +8,20 @@ get '/' do
     deck = session[:deck]
     dealt = session[:dealt]
     whitehand = session[:whitehand]
+    blackhand = session[:blackhand]
     whighlow = session[:whighlow]
     bhighlow = session[:bhighlow]
     wconverted = session[:wconverted]
     bconverted = session[:bconverted]
-    wnumbs = session[:wnumbs]
-    bnumbs = session[:bnumbs]
-    wsuits = session[:wsuits]
-    bsuits = session[:bsuits]
+    white_numbers = session[:white_numbers]
+    white_suits = session[:white_suits]
+    black_numbers = session[:black_numbers]
+    black_suits = session[:black_suits]
+
+    # wnumbs = session[:wnumbs]
+    # bnumbs = session[:bnumbs]
+    # wsuits = session[:wsuits]
+    # bsuits = session[:bsuits]
     wdisplay = session[:wdisplay]
     bdisplay = session[:bdisplay]
     
@@ -51,10 +57,10 @@ get '/' do
     load 'second.rb'
 
     # erb :twohands
-    erb :twohands, :layout => :layout, locals:{deck: deck, dealt: dealt, whitehand: whitehand, whighlow: whighlow, bhighlow: bhighlow, wconverted: wconverted, bconverted: bconverted, wnumbs: wnumbs, bnumbs: bnumbs, wsuits: wsuits, bsuits: bsuits, wdisplay: wdisplay, bdisplay: bdisplay, w_rf: w_rf, w_sf: w_sf, w_4: w_4, w_full: w_full, w_flush: w_flush, w_straight: w_straight, w_3: w_3, w_2p: w_2p, w_pair: w_pair, w_high: w_high, b_rf: b_rf, b_sf: b_sf, b_4: b_4, b_full: b_full, b_flush: b_flush, b_straight: b_straight, b_3: b_3, b_2p: b_2p, b_pair: b_pair, b_high: b_high} 
+    erb :twohands, :layout => :layout, locals:{deck: deck, dealt: dealt, whitehand: whitehand, blackhand: blackhand, whighlow: whighlow, bhighlow: bhighlow, wconverted: wconverted, bconverted: bconverted, white_numbers: white_numbers, black_numbers: black_numbers, white_suits: white_suits, black_suits: black_suits, wdisplay: wdisplay, bdisplay: bdisplay, w_rf: w_rf, w_sf: w_sf, w_4: w_4, w_full: w_full, w_flush: w_flush, w_straight: w_straight, w_3: w_3, w_2p: w_2p, w_pair: w_pair, w_high: w_high, b_rf: b_rf, b_sf: b_sf, b_4: b_4, b_full: b_full, b_flush: b_flush, b_straight: b_straight, b_3: b_3, b_2p: b_2p, b_pair: b_pair, b_high: b_high} 
 end
 
-post '/twohands' do
+post '/play' do
     session[:deck] = params[:deck]
     session[:dealt] = params[:dealt]
     session[:shuffled] = params[:shuffled]
@@ -63,10 +69,16 @@ post '/twohands' do
     session[:bhighlow] = params[:bhighlow]
     session[:wconverted] = params[:wconverted]
     session[:bconverted] = params[:bconverted]
-    session[:wnumbs] = params[:wnumbs]
-    session[:bnumbs] = params[:bnumbs]
-    session[:wsuits] = params[:wsuits]
-    session[:bsuits] = params[:bsuits]
+    session[white_numbers] = params[:white_numbers]
+    session[white_suits] = params[:white_suits]
+    session[black_numbers] = params[:black_numbers]
+    session[black_suits] = params[:black_suits]
+
+
+    # session[:wnumbs] = params[:wnumbs]
+    # session[:bnumbs] = params[:bnumbs]
+    # session[:wsuits] = params[:wsuits]
+    # session[:bsuits] = params[:bsuits]
     session[:wdisplay] = params[:wdisplay]
     session[:bdisplay] = params[:bdisplay]
     

@@ -3,7 +3,6 @@
 def cards()
     card_arr = [*1..52]
     shufcard_arr = card_arr.shuffle
-    p shufcard_arr
     shufcard_arr
 end
 
@@ -12,40 +11,40 @@ end
 
 def deal_hands(shufcard_arr)
   whitecards_arr = []
+  blackcards_arr = []
   whitecards_arr = shufcard_arr.pop(5)
-  black_avail = shufcard_arr
-  blackcards_arr = black_avail.pop(5)
+  blackcards_arr = shufcard_arr.pop(5)
   bothhands = []
   bothhands << whitecards_arr << blackcards_arr
   bothhands
 end
 
 ######## THE FOLLOWING WILL STEP ASIDE FOR HARD-CODED HANDS ######
-# This splits that array into the 5-card whitehand
-# def whitehand(bothhands)
-#     whitehand = bothhands.shift(1)
-#     whitehand = whitehand[0]
-#     whitehand
-# end
+# This splits that 2-D array into the 5-card whitehand
+def whitehand(bothhands)
+    whitehand = bothhands.shift(1)
+    whitehand = whitehand[0]
+    whitehand
+end
 
-# # This recreates the 5-card blackhand
-# def blackhand(bothhands)
-#     blackhand = bothhands[0]
-#     blackhand
-# end
+# This recreates the 5-card blackhand
+def blackhand(bothhands)
+    blackhand = bothhands[0]
+    blackhand
+end
 ########## END OF COMMENTED OUT CODE
 
 ### FOLLOWING IS HARD-CODING FOR TESTING HIGH HANDS
 
-def whitehand(bothhands)
-    whitehand = [48, 47, 35, 21, 14]
-    whitehand
-end
+# def whitehand(bothhands)
+#     whitehand = [48, 47, 35, 21, 14]
+#     whitehand
+# end
 
-def blackhand(bothhands)
-    blackhand = [46, 45, 34, 20, 13]
-    blackhand
-end
+# def blackhand(bothhands)
+#     blackhand = [46, 45, 34, 20, 13]
+#     blackhand
+# end
 
 ##### end of hard coding
 
@@ -126,44 +125,36 @@ end
 
 def white_suits(white_added)
 	w = 0
-	y = 0
-	white_mod = []
 	white_suits = []
 	until white_added[w] == nil
-		white_mod[y] = white_added[w] % 4
-		if white_mod[y] == 0
-			white_suits << "Clubs"
-		elsif white_mod[y] == 1
-			white_suits << "Spades"
-		elsif white_mod[y] == 2
+        if white_added[w] % 4 == 0
+            white_suits << "Clubs"
+        elsif white_added[w] % 4 == 1
+            white_suits << "Spades"
+		elsif white_added[w] % 4 == 2
 			white_suits << "Diamonds"
-		elsif white_mod[y] == 3
+		elsif white_added[w] % 4 == 3
 			white_suits << "Hearts"
 		end
 		w += 1
-        y += 1
     end
     white_suits
 end    
     
 def black_suits(black_added)
     w = 0
-    y = 0
-    black_mod = []
     black_suits = []
     until black_added[w] == nil
-        black_mod[y] = black_added[w] % 4
-        if black_mod[y] == 0
+        if black_added[w] % 4 == 0
             black_suits << "Clubs"
-        elsif black_mod[y] == 1
+        elsif black_added[w] % 4 == 1
             black_suits << "Spades"
-        elsif black_mod[y] == 2
+        elsif black_added[w] % 4 == 2
             black_suits << "Diamonds"
-        elsif black_mod[y] == 3
+        elsif black_added[w] % 4 == 3
             black_suits << "Hearts"
         end
         w += 1
-        y += 1
     end
     black_suits
 end
@@ -183,11 +174,10 @@ end
 
 ### Here is the test for one pair
 def white_pair(white_numbers)
-    white = white_numbers
     x = 0
-    until x == 4
-        if white[x] == white[x + 1]
-            w_pair = "Pair of #{white[x]}s."
+    while x < 4
+        if white_numbers[x] == white_numbers[x + 1]
+            w_pair = "Pair of #{white_numbers[x]}s."
         end
         x += 1
     end
@@ -195,11 +185,10 @@ def white_pair(white_numbers)
 end
 
 def black_pair(black_numbers)
-    black = black_numbers
     x = 0
-    until x == 4
-        if black[x] == black[x + 1]
-            b_pair = "Pair of #{black[x]}s."
+    while x < 4
+        if black_numbers[x] == black_numbers[x + 1]
+            b_pair = "Pair of #{black_numbers[x]}s."
         end
         x += 1
     end
@@ -245,8 +234,6 @@ end
 # NOW, TESTS FOR straights, flushes, straight flushes.
 
 def white_royal_flush(white_numbers, white_suits)
-    w_rf = false
-    w_sf = false
     if ((white_numbers[0] == 14) && (white_numbers[1] == 13) && (white_numbers[2] == 12) && (white_numbers[3] == 11) && (white_numbers[4] == 10)) && ((white_suits[0] == white_suits[1]) && (white_suits[1] == white_suits[2]) && (white_suits[2] == white_suits[3]) && (white_suits[3] == white_suits[4]))
         w_rf = "ROYAL FLUSH!"
     end
@@ -255,6 +242,8 @@ end
 def white_straight_flush(white_numbers, white_suits)
     if ((white_numbers[0] == white_numbers[1] + 1) && (white_numbers[1] == white_numbers[2] + 1) && (white_numbers[2] == white_numbers[3] + 1) && (white_numbers[3] == white_numbers[4] + 1)) && ((white_suits[0] == white_suits[1]) && (white_suits[1] == white_suits[2]) && (white_suits[2] == white_suits[3]) && (white_suits[3] == white_suits[4])) && white_numbers[0] != 14
         w_sf = "Straight flush, #{white_numbers[0]} high."
+    elsif ((white_numbers[0] == 14) && (white_numbers[1] == 2) && (white_numbers[2] == 3) && (white_numbers[3] == 4) && (white_numbers[4] == 5)) && ((white_suits[0] == white_suits[1]) && (white_suits[1] == white_suits[2]) && (white_suits[2] == white_suits[3]) && (white_suits[3] == white_suits[4]))
+        w_sf = "Straight flush, 5 high."
     end
 end
 
@@ -283,6 +272,8 @@ end
 def black_straight_flush(black_numbers, black_suits)
     if ((black_numbers[0] == black_numbers[1] + 1) && (black_numbers[1] == black_numbers[2] + 1) && (black_numbers[2] == black_numbers[3] + 1) && (black_numbers[3] == black_numbers[4] + 1)) && ((black_suits[0] == black_suits[1]) && (black_suits[1] == black_suits[2]) && (black_suits[2] == black_suits[3]) && (black_suits[3] == black_suits[4])) && black_numbers[0] != 14
         b_sf = "Straight flush, #{black_numbers[0]} high."
+    elsif ((black_numbers[0] == 14) && (black_numbers[1] == 2) && (black_numbers[2] == 3) && (black_numbers[3] == 4) && (black_numbers[4] == 5)) && ((black_suits[0] == black_suits[1]) && (black_suits[1] == black_suits[2]) && (black_suits[2] == black_suits[3]) && (black_suits[3] == black_suits[4]))
+        b_sf = "Straight flush, 5 high."
     end
 end
 
@@ -347,29 +338,34 @@ end
 # Create display of each hand with numbers and suits
 def whitehand_display(white_numbers, white_suits)
     x = 0
+    wcards = []
     puts "White hand"
     5.times do
         puts "#{white_numbers[x]} of #{white_suits[x]}"
+        wcards = "#{white_numbers[x]} of #{white_suits[x]}"
         x += 1
     end
 end
 
 def blackhand_display(black_numbers, black_suits)
     x = 0
+    bcards = []
     puts "Black hand"
     5.times do
         puts "#{black_numbers[x]} of #{black_suits[x]}"
+        bcards[x] = "#{black_numbers[x]} of #{black_suits[x]}"  
         x += 1
     end
+    bcards
 end
 
 ################ We start to declare a winner here, based on card level
 
 def declare_winner(handrank_w, handrank_b)
     if handrank_w < handrank_b
-        p "WHITE WINS!"
+        puts "WHITE WINS!"
     elsif handrank_w > handrank_b
-        p "BLACK WINS!"
+        puts "BLACK WINS!"
     end
 end
 
@@ -378,24 +374,24 @@ end
 def tie_high(white_numbers, black_numbers)
     x = 0
     broke_tie = false
-    while x < 5
+    until x == nil
         if white_numbers[x] > black_numbers[x]
-            p "WHITE WINS!"
+            puts "WHITE WINS!"
             broke_tie = true
             return white_numbers
         elsif white_numbers[x] < black_numbers[x]
-            p "BLACK WINS!"
+            puts "BLACK WINS!"
             broke_tie = true
             return black_numbers
         end
         x += 1
     end
     if broke_tie == false
-        p "DEAD TIE!"
+        puts "DEAD TIE!"
     end
 end
 
-## tiebreaker for pair (a monster), UNDER RECONSTRUCTION
+## tiebreaker for pair (a monster)
 
 def tie_pair(white_numbers, black_numbers)
     broke_tie = false
@@ -433,11 +429,11 @@ def tie_pair(white_numbers, black_numbers)
     end 
         
     if white_paircards[0] > black_paircards[0]
-        p "WHITE WINS!"
+        puts "WHITE WINS!"
         broke_tie = true
         return white_numbers
     elsif white_paircards[0] < black_paircards[0]
-        p "BLACK WINS!"
+        puts "BLACK WINS!"
         broke_tie = true
         return black_numbers
     end  
@@ -445,11 +441,11 @@ def tie_pair(white_numbers, black_numbers)
     z = 0
     while z < 3
         if white_kickers[z] > black_kickers[z]
-            p "WHITE WINS!"
+            puts "WHITE WINS!"
             broke_tie = true
             return white_numbers
         elsif white_kickers[z] < black_kickers[z]
-            p "BLACK WINS!"
+            puts "BLACK WINS!"
             broke_tie = true
             return black_numbers
         end
@@ -457,7 +453,7 @@ def tie_pair(white_numbers, black_numbers)
     end
 
     if broke_tie == false
-        p "DEAD TIE!"
+        puts "DEAD TIE!"
     end
 end
 
@@ -497,32 +493,32 @@ def tie_2pair(white_numbers, black_numbers)
     end
 
     if white_firstp > black_firstp
-        p "WHITE WINS!"
+        puts "WHITE WINS!"
         broketie = true
         return white_numbers
     elsif white_firstp < black_firstp
-        p "BLACK WINS!"
+        puts "BLACK WINS!"
         broketie = true
         return black_numbers
     elsif white_secondp > black_secondp
-        p "WHITE WINS!"
+        puts "WHITE WINS!"
         broketie = true
         return white_numbers
     elsif white_secondp < black_secondp
-        p "BLACK WINS!"
+        puts "BLACK WINS!"
         broketie = true
         return black_numbers
     elsif white_kicker > black_kicker
-        p "WHITE WINS!"
+        puts "WHITE WINS!"
         broketie = true
         return white_numbers
     elsif white_kicker < black_kicker
-        p "BLACK WINS!"
+        puts "BLACK WINS!"
         broketie = true
         return black_numbers
     else
         if broke_tie == false
-            p "DEAD TIE!"
+            puts "DEAD TIE!"
         end
     end
 end
@@ -553,10 +549,10 @@ def tie_3(white_numbers, black_numbers)
     #### compare the threes
 
     if white3 > black3
-        p "WHITE WINS!"
+        puts "WHITE WINS!"
         broke_tie = true
     else white3 < black3
-        p "BLACK WINS!"
+        puts "BLACK WINS!"
         broke_tie = true
     end
 end
@@ -580,11 +576,11 @@ def tie_4(white_numbers, black_numbers)
         ##### Time to compare, break the tie
 
     if white4 > black4
-        p "WHITE WINS!"
+        puts "WHITE WINS!"
         broke_tie = true
         return white_numbers
     else white4 < black4
-        p "BLACK WINS!"
+        puts "BLACK WINS!"
         broke_tie = true
         return black_numbers
     end
@@ -611,11 +607,11 @@ def tie_full(white_numbers, black_numbers)
 ### Now, it's time to compare and break that tie.
 
     if white_3part > black_3part
-        p "WHITE WINS!"
+        puts "WHITE WINS!"
         broke_tie = true
         return white_numbers
     else white_3part < black_3part
-        p "BLACK WINS!"
+        puts "BLACK WINS!"
         broke_tie = true
         return black_numbers
     end
@@ -639,14 +635,14 @@ def tie_straight(white_numbers, black_numbers)
         ## compare the highs
     
     if white_strhigh > black_strhigh
-        p "WHITE WINS!"
+        puts "WHITE WINS!"
         broke_tie = true
         return white_numbers
     elsif white_strhigh < black_strhigh
-        p "BLACK WINS!"
+        puts "BLACK WINS!"
         broke_tie = true
         return black_numbers
     else white_strhigh == black_strhigh
-        p "DEAD TIE."
+        puts "DEAD TIE."
     end
 end

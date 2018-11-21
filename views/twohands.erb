@@ -74,6 +74,8 @@
 }
 </style>
 
+<form method="post" action="play">
+<div class="twohands">
 
 <table class="tg" align="center" border="solid">
   <tr>
@@ -81,7 +83,8 @@
     <th class="tg-o2qf" id="rightblack">Black</th>
   </tr>
   <tr>
-    <td class="tg-3pmj" id="leftone">K Hearts</td>
+    <td class="tg-3pmj" id="leftone"><%= whitehand_display(white_numbers, white_suits)%>
+    </td>
     <td class="tg-0r6a" id="rightone">K Clubs</td>
   </tr>
   <tr>
@@ -100,17 +103,18 @@
     <td class="tg-3pmj" id="leftfive">6 Hearts</td>
     <td class="tg-0r6a" id="rightfive">6 Spades</td>
   </tr>
-</table>
+  </table>
+</div>
 
+<div class="sandbox" align="center" name="sandbox">
+
+</div>
 
 <div class="winner" align="center" width="30%">
 <h3>Somebody wins!</h3>
-<input type="submit" id="refresh" value="Refresh">
+<input type="submit" id="deal" value="Deal!">
 </div>
-
-
-
-
+</form>
 
 </body>
 </html>
