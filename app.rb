@@ -1,12 +1,12 @@
-# require_relative 'poker_func.rb'
-# require_relative 'second.rb'
-# require 'sinatra'
+require_relative 'poker_func.rb'
+require_relative 'second.rb'
+require 'sinatra'
 
 enable :sessions
 
 get '/' do
     deck = session[:deck]
-    shuffled = session[:shuffled]
+    dealt = session[:dealt]
     whitehand = session[:whitehand]
     whighlow = session[:whighlow]
     bhighlow = session[:bhighlow]
@@ -24,9 +24,11 @@ get '/' do
     w_4 = session[:w_4]
     w_full = session[:w_full]
     w_flush = session[:w_flush]
+    w_straight = session[:w_straight]
     w_3 = session[:w_3]
     w_2p = session[:w_2p]
     w_2 = session[:w_2]
+    w_pair = session[w_pair]
     w_high = session[:w_high]
     
     handrank_w = session[:handrank_w]
@@ -43,16 +45,17 @@ get '/' do
     b_3 = session[:b_3]
     b_2p = session[:b_2p]
     b_2 = session[:b_2]
+    b_pair = session[b_pair]
     b_high = session[:b_high]
     load 'second.rb'
 
-    erb :twohands
-    # , locals: {deck: deck, shuffled: shuffled, whitehand: whitehand, whighlow: whighlow, bhighlow: bhighlow, wconverted: wconverted, bconverted: bconverted, wnumbs: wnumbs, bnumbs: bnumbs, wsuits: wsuits, bsuits: bsuits, wdisplay: wdisplay, bdisplay: bdisplay, w_rf: w_rf, w_sf: w_sf, w_4: w_4, w_full: w_full, w_flush: w_flush, w_straight: w_straight, w_3: w_3, w_2b: w_2b, w_pair: w_pair, w_high: w_high, b_rf: b_rf, b_sf: b_sf, b_4: b_4, b_full: b_full, b_flush: b_flush, b_straight: b_straight, b_3: b_3, b_2b: b_2b, b_pair: b_pair, b_high: b_high} 
-
+    # erb :twohands
+    erb :twohands, :layout => :layout, locals:{deck: deck, dealt: dealt, whitehand: whitehand, whighlow: whighlow, bhighlow: bhighlow, wconverted: wconverted, bconverted: bconverted, wnumbs: wnumbs, bnumbs: bnumbs, wsuits: wsuits, bsuits: bsuits, wdisplay: wdisplay, bdisplay: bdisplay, w_rf: w_rf, w_sf: w_sf, w_4: w_4, w_full: w_full, w_flush: w_flush, w_straight: w_straight, w_3: w_3, w_2p: w_2p, w_pair: w_pair, w_high: w_high, b_rf: b_rf, b_sf: b_sf, b_4: b_4, b_full: b_full, b_flush: b_flush, b_straight: b_straight, b_3: b_3, b_2p: b_2p, b_pair: b_pair, b_high: b_high} 
 end
 
 post '/twohands' do
     session[:deck] = params[:deck]
+    session[:dealt] = params[:dealt]
     session[:shuffled] = params[:shuffled]
     session[:whitehand] = params[:blackhand]
     session[:whighlow] = params[:whighlow]
