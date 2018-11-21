@@ -42,6 +42,7 @@ get '/' do
     b_4 = session[:b_4]
     b_full = session[:b_full]
     b_flush = session[:b_flush]
+    b_straight = session[:b_straight]
     b_3 = session[:b_3]
     b_2p = session[:b_2p]
     b_2 = session[:b_2]

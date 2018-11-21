@@ -16,8 +16,7 @@ def deal_hands(shufcard_arr)
   black_avail = shufcard_arr
   blackcards_arr = black_avail.pop(5)
   bothhands = []
-  bothhands << whitecards_arr
-  bothhands << blackcards_arr
+  bothhands << whitecards_arr << blackcards_arr
   bothhands
 end
 
