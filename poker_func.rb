@@ -106,8 +106,7 @@ end
 #### These two functions will determine suits, using modulus
 
 def white_suits(white_added)
-	w = 0
-	white_suits = []
+	w, white_suits = 0, []
 	until white_added[w] == nil
         if white_added[w] % 4 == 0
             white_suits << "Clubs"
@@ -124,8 +123,7 @@ def white_suits(white_added)
 end    
     
 def black_suits(black_added)
-    w = 0
-    black_suits = []
+    w, black_suits = 0, []
     until black_added[w] == nil
         if black_added[w] % 4 == 0
             black_suits << "Clubs"
@@ -361,10 +359,8 @@ end
 ## tiebreaker for pair (a monster)
 
 def tie_pair(white_numbers, black_numbers)
-    broke_tie = false
-    white_paircards = []
-    white_kickers = []
-
+    broke_tie, white_paircards, white_kickers = false, [], []
+    
     if white_numbers[0] == white_numbers[1]
         white_paircards << white_numbers[0] << white_numbers[1]
         white_kickers << white_numbers[2] << white_numbers[3] << white_numbers[4]
@@ -379,8 +375,7 @@ def tie_pair(white_numbers, black_numbers)
         white_kickers << white_numbers[0] << white_numbers[1] << white_numbers[2]
     end 
     
-    black_paircards = []
-    black_kickers = []
+    black_paircards, black_kickers = [], []
     if black_numbers[0] == black_numbers[1]
         black_paircards << black_numbers[0] << black_numbers[1]
         black_kickers << black_numbers[2] << black_numbers[3] << black_numbers[4]
@@ -462,19 +457,15 @@ def tie_2pair(white_numbers, black_numbers)
     if white_firstp > black_firstp
         puts "WHITE WINS!"
         broketie = true
-        # return white_numbers
     elsif white_firstp < black_firstp
         puts "BLACK WINS!"
         broketie = true
-        # return black_numbers
     elsif white_secondp > black_secondp
         puts "WHITE WINS!"
         broketie = true
-        # return white_numbers
     elsif white_secondp < black_secondp
         puts "BLACK WINS!"
         broketie = true
-        # return black_numbers
     elsif white_kicker > black_kicker
         puts "WHITE WINS!"
         broketie = true
@@ -553,7 +544,6 @@ end
 
 def tie_full(white_numbers, black_numbers)
     white_3part, broke_tie = 0, false
-    # broke_tie = false
     if (white_numbers[0] == white_numbers[1]) && (white_numbers[1] == white_numbers[2])
         white_3part = white_numbers[0]
     else white_numbers[0] != white_numbers[2]
