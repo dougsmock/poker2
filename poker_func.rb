@@ -3,14 +3,14 @@
 #Then shovels two hands into a single array to pass as one
 
 def deal_hands()
-    card_arr, whitecards_arr, blackcards_arr, bothhands = [*1..52], [], [], []
+    card_arr, bothhands = [*1..52], []
     shufcard_arr = card_arr.shuffle
     whitecards_arr = shufcard_arr.pop(5)
     blackcards_arr = shufcard_arr.pop(5)
     bothhands << whitecards_arr << blackcards_arr
 end
 
-######## THE FOLLOWING WILL STEP ASIDE FOR HARD-CODED HANDS ######
+######## THE FOLLOWING 2 functions WILL comment out STEP ASIDE FOR HARD-CODED HANDS ######
 # This splits that 2-D array into the 5-card whitehand
 def whitehand(bothhands)
     whitehand = bothhands.shift(1)
@@ -26,7 +26,7 @@ end
 ### FOLLOWING IS HARD-CODING FOR TESTING HIGH HANDS
 
 # def whitehand(bothhands)
-#     whitehand = [19, 15, 11, 7, 1]
+#     whitehand = [50, 15, 11, 7, 1]
 #     whitehand
 # end
 
@@ -570,30 +570,11 @@ def tie_full(white_numbers, black_numbers)
     end
 end
 
-#### Now, the straight with that ace exception
+#### Now, the straight with that ace exception ... always a tie if both players have 5-high straight
+
 def tie_straight(white_numbers, black_numbers)
     white_strhigh, black_strhigh, broke_tie = 0, 0, false
-    if white_numbers[0] == 14 && white_numbers[1] == 5
-        white_strhigh = 5
-    else white_strhigh = white_numbers[0]
-    end 
-    
-    if black_numbers[0] == 14 && black_numbers[1] == 5
-        black_strhigh = 5
-    else black_strhigh = black_numbers[0]
-    end  
-
-        ## compare the highs
-    
-    if white_strhigh > black_strhigh
-        puts "WHITE WINS!"
-        broke_tie = true
-        return white_numbers
-    elsif white_strhigh < black_strhigh
-        puts "BLACK WINS!"
-        broke_tie = true
-        return black_numbers
-    else white_strhigh == black_strhigh
+    if (white_numbers[0] == 14 && white_numbers[1] == 5) && (black_numbers[0] == 14 && black_numbers[5])
         puts "DEAD TIE."
     end
 end
