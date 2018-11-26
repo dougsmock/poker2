@@ -187,7 +187,3 @@ post '/play' do
 # redirect '/'
 # end
 
-
-
-
-# Google polymorphism
