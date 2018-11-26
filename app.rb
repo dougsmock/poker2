@@ -1,67 +1,64 @@
-require_relative 'poker_func.rb'
 require_relative 'second.rb'
 require 'sinatra'
 
 enable :sessions
 
 get '/' do
-    deck = session[:deck]
-    dealt = session[:dealt]
-    whitehand = session[:whitehand]
-    blackhand = session[:blackhand]
-    whighlow = session[:whighlow]
-    bhighlow = session[:bhighlow]
-    wconverted = session[:wconverted]
-    bconverted = session[:bconverted]
-    white_numbers = session[:white_numbers]
-    white_suits = session[:white_suits]
-    black_numbers = session[:black_numbers]
-    black_suits = session[:black_suits]
+    # dealt = session[:dealt] 
+    # whitehand = session[:whitehand]
+    # blackhand = session[:blackhand]
+    # whighlow = session[:whighlow]
+    # bhighlow = session[:bhighlow]
+    # wconverted = session[:wconverted]
+    # bconverted = session[:bconverted]
+    # white_numbers = session[:white_numbers]
+    # white_suits = session[:white_suits]
+    # black_numbers = session[:black_numbers]
+    # black_suits = session[:black_suits]
 
-    # wnumbs = session[:wnumbs]
-    # bnumbs = session[:bnumbs]
-    # wsuits = session[:wsuits]
-    # bsuits = session[:bsuits]
-    wdisplay = session[:wdisplay]
-    bdisplay = session[:bdisplay]
+    # # wnumbs = session[:wnumbs]
+    # # bnumbs = session[:bnumbs]
+    # # wsuits = session[:wsuits]
+    # # bsuits = session[:bsuits]
+    # wdisplay = session[:wdisplay]
+    # bdisplay = session[:bdisplay]
     
-    w_rf = session[:w_rf]
-    w_sf = session[:w_sf]
-    w_4 = session[:w_4]
-    w_full = session[:w_full]
-    w_flush = session[:w_flush]
-    w_straight = session[:w_straight]
-    w_3 = session[:w_3]
-    w_2p = session[:w_2p]
-    w_2 = session[:w_2]
-    w_pair = session[w_pair]
-    w_high = session[:w_high]
+    # w_rf = session[:w_rf]
+    # w_sf = session[:w_sf]
+    # w_4 = session[:w_4]
+    # w_full = session[:w_full]
+    # w_flush = session[:w_flush]
+    # w_straight = session[:w_straight]
+    # w_3 = session[:w_3]
+    # w_2p = session[:w_2p]
+    # w_2 = session[:w_2]
+    # w_pair = session[w_pair]
+    # w_high = session[:w_high]
     
-    handrank_w = session[:handrank_w]
-    winner_w = session[:winner_w]
+    # handrank_w = session[:handrank_w]
+    # winner_w = session[:winner_w]
         
-    handrank_b = session[:handrank_b]
-    winner_b = session[:winner_b]
+    # handrank_b = session[:handrank_b]
+    # winner_b = session[:winner_b]
 
-    b_rf = session[:b_rf]
-    b_sf = session[:b_sf]
-    b_4 = session[:b_4]
-    b_full = session[:b_full]
-    b_flush = session[:b_flush]
-    b_straight = session[:b_straight]
-    b_3 = session[:b_3]
-    b_2p = session[:b_2p]
-    b_2 = session[:b_2]
-    b_pair = session[b_pair]
-    b_high = session[:b_high]
+    # b_rf = session[:b_rf]
+    # b_sf = session[:b_sf]
+    # b_4 = session[:b_4]
+    # b_full = session[:b_full]
+    # b_flush = session[:b_flush]
+    # b_straight = session[:b_straight]
+    # b_3 = session[:b_3]
+    # b_2p = session[:b_2p]
+    # b_2 = session[:b_2]
+    # b_pair = session[b_pair]
+    # b_high = session[:b_high]
     load 'second.rb'
 
-    # erb :twohands
-    erb :twohands, :layout => :layout, locals:{deck: deck, dealt: dealt, whitehand: whitehand, blackhand: blackhand, whighlow: whighlow, bhighlow: bhighlow, wconverted: wconverted, bconverted: bconverted, white_numbers: white_numbers, black_numbers: black_numbers, white_suits: white_suits, black_suits: black_suits, wdisplay: wdisplay, bdisplay: bdisplay, w_rf: w_rf, w_sf: w_sf, w_4: w_4, w_full: w_full, w_flush: w_flush, w_straight: w_straight, w_3: w_3, w_2p: w_2p, w_pair: w_pair, w_high: w_high, b_rf: b_rf, b_sf: b_sf, b_4: b_4, b_full: b_full, b_flush: b_flush, b_straight: b_straight, b_3: b_3, b_2p: b_2p, b_pair: b_pair, b_high: b_high} 
+    erb :twohands
+    # erb :twohands, :layout => :layout, locals:{dealt: dealt, whitehand: whitehand, blackhand: blackhand, whighlow: whighlow, bhighlow: bhighlow, wconverted: wconverted, bconverted: bconverted, white_numbers: white_numbers, black_numbers: black_numbers, white_suits: white_suits, black_suits: black_suits, wdisplay: wdisplay, bdisplay: bdisplay, w_rf: w_rf, w_sf: w_sf, w_4: w_4, w_full: w_full, w_flush: w_flush, w_straight: w_straight, w_3: w_3, w_2p: w_2p, w_pair: w_pair, w_high: w_high, b_rf: b_rf, b_sf: b_sf, b_4: b_4, b_full: b_full, b_flush: b_flush, b_straight: b_straight, b_3: b_3, b_2p: b_2p, b_pair: b_pair, b_high: b_high} 
 end
 
 post '/play' do
-    session[:deck] = params[:deck]
     session[:dealt] = params[:dealt]
     session[:shuffled] = params[:shuffled]
     session[:whitehand] = params[:blackhand]

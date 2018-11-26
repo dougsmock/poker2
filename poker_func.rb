@@ -308,7 +308,7 @@ end
 # Create display of each hand with numbers and suits
 def whitehand_display(white_numbers, white_suits)
     x = 0
-    puts "White hand"
+    puts "----White cards----"
     5.times do
         puts "#{white_numbers[x]} of #{white_suits[x]}"
         x += 1
@@ -317,7 +317,7 @@ end
 
 def blackhand_display(black_numbers, black_suits)
     x = 0
-    puts "Black hand"
+    puts "----Black cards----"
     5.times do
         puts "#{black_numbers[x]} of #{black_suits[x]}"
         x += 1
