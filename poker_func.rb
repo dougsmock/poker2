@@ -1,68 +1,57 @@
-# This is a deck of cards, numbered 1 through 52, and then shuffled.
-
-def cards()
-    card_arr = [*1..52]
-    shufcard_arr = card_arr.shuffle
-    shufcard_arr
-end
-
-#This pops into a 5-card whitecards_arr, then pops into blackcards_arr
+# This is a deck of cards, numbered 1 through 52, shuffled.
+# This pops into a 5-card whitecards_arr, then pops into blackcards_arr
 #Then shovels two hands into a single array to pass as one
 
-def deal_hands(shufcard_arr)
-  whitecards_arr, blackcards_arr = [], []
-  whitecards_arr = shufcard_arr.pop(5)
-  blackcards_arr = shufcard_arr.pop(5)
-  bothhands = []
-  bothhands << whitecards_arr << blackcards_arr
-  bothhands
+def deal_hands()
+    card_arr, whitecards_arr, blackcards_arr, bothhands = [*1..52], [], [], []
+    shufcard_arr = card_arr.shuffle
+    whitecards_arr = shufcard_arr.pop(5)
+    blackcards_arr = shufcard_arr.pop(5)
+    bothhands << whitecards_arr << blackcards_arr
 end
 
 ######## THE FOLLOWING WILL STEP ASIDE FOR HARD-CODED HANDS ######
 # This splits that 2-D array into the 5-card whitehand
-# def whitehand(bothhands)
-#     whitehand = bothhands.shift(1)
-#     whitehand = whitehand[0]
-#     whitehand
-# end
+def whitehand(bothhands)
+    whitehand = bothhands.shift(1)
+    whitehand = whitehand[0]
+end
 
-# # This recreates the 5-card blackhand
-# def blackhand(bothhands)
-#     blackhand = bothhands[0]
-#     blackhand
-# end
-########## END OF STRAIGHT RANDOM CODE
+# This recreates the 5-card blackhand
+def blackhand(bothhands)
+    blackhand = bothhands[0]
+end
+########## END OF simple RANDOM CODE
 
 ### FOLLOWING IS HARD-CODING FOR TESTING HIGH HANDS
 
-def whitehand(bothhands)
-    whitehand = [48, 47, 46, 45, 34]
-    whitehand
-end
+# def whitehand(bothhands)
+#     whitehand = [19, 15, 11, 7, 1]
+#     whitehand
+# end
 
-def blackhand(bothhands)
-    blackhand = [44, 43, 42, 41, 30]
-    blackhand
-end
+# def blackhand(bothhands)
+#     blackhand = [51, 16, 12, 8, 3]
+#     blackhand
+# end
 
 ##### end of hard coding
 
 ###### ###### This rearranges the cards in your hand from high to low
+##### As important a function as any.
 
 def white_high_low(whitehand)
     whitehigh = whitehand.sort { |x,y| y <=> x }
-    whitehigh
 end
 
 def black_high_low(blackhand)
     blackhigh = blackhand.sort { |x,y| y <=> x }
-    blackhigh
 end
 
-#this converts the dealt white cards into a modified hand (white)
-#adding 7 to all for an 8-through-59 deck
+#this converts the dealt WHITE cards into a modified hand (white)
+#renumbering from 1-through-52 to 8-through-59
 
-#ready for division into a card number and suit
+#That will be ready for division into a card number and suit
 #8 will be 2 of Clubs, or 2 modulus 0
 #59 will be 14 modulus 3, an Ace of Hearts.
 
@@ -73,13 +62,12 @@ def convert_white(whitehigh)
             w += 1
     end
     white_added = whitehigh
-    white_added
 end
 
-#this converts the dealt black cards into a modified hand (black)
-#adding 7 to all for an 8-through-59 deck
+#this converts the dealt BLACK cards into a modified hand (white)
+#renumbering from 1-through-52 to 8-through-59
 
-#ready for division into a card number and suit
+#That will be ready for division into a card number and suit
 #8 will be 2 of Clubs, or 2 modulus 0
 #59 will be 14 modulus 3, an Ace of Hearts.
 
@@ -90,16 +78,13 @@ def convert_black(blackhigh)
             w += 1
     end
     black_added = blackhigh
-    black_added
 end
 
 # Now, we assign numbers to cards 
 # (10, 11, 12, 13, 14 will be renamed T, J, Q, K, A on the front end.)
 
 def white_numbers(white_added)
-    w = 0
-    y = 0
-    white_numbers = []
+    w, y, white_numbers = 0, 0, []
     until white_added[w] == nil
         white_numbers[y] = white_added[w] / 4
         w += 1
@@ -109,9 +94,7 @@ def white_numbers(white_added)
 end
 
 def black_numbers(black_added)
-    b = 0
-    c = 0
-    black_numbers = []
+    b, c, black_numbers = 0, 0, []
     until black_added[b] == nil
         black_numbers[c] = black_added[b] / 4
         b += 1
@@ -353,7 +336,7 @@ def declare_winner(handrank_w, handrank_b)
     end
 end
 
-######### Breaking a tiebreaker with high card, flush, full house, straight flush
+######### Breaking tiebreakers of high cards, flushes, full houses, straight flushes, straights
 
 def tie_high(white_numbers, black_numbers)
     x = 0
@@ -371,7 +354,7 @@ def tie_high(white_numbers, black_numbers)
         x += 1
     end
     if broke_tie == false
-        puts "DEAD TIE!"
+        puts "DEAD TIE."
     end
 end
 
@@ -437,7 +420,7 @@ def tie_pair(white_numbers, black_numbers)
     end
 
     if broke_tie == false
-        puts "DEAD TIE!"
+        puts "DEAD TIE."
     end
 end
 
@@ -500,16 +483,15 @@ def tie_2pair(white_numbers, black_numbers)
         broketie = true
     else
         if broke_tie == false
-            puts "DEAD TIE!"
+            puts "DEAD TIE."
         end
     end
 end
 
-####### Now we set up to compare three of a kind, if needed 
+####### Now we set up to break tie for three of a kinds 
 
 def tie_3(white_numbers, black_numbers)
     broke_tie, white3 = false, 0
-    # white3 = 0
     if white_numbers[0] == white_numbers[1]
         white3 = white_numbers[0]
     elsif white_numbers[1] == white_numbers[2]
@@ -519,7 +501,6 @@ def tie_3(white_numbers, black_numbers)
     end
 
     black_extras, black3 = [], 0
-    # black3 = 0
     if black_numbers[0] == black_numbers[1]
         black3 = black_numbers[0]
     elsif black_numbers[1] == black_numbers[2]
@@ -539,7 +520,7 @@ def tie_3(white_numbers, black_numbers)
     end
 end
 
-##### Let's work on the fours
+##### Let's break a fours tie
     
 def tie_4(white_numbers, black_numbers)
     broke_tie = false
@@ -602,8 +583,6 @@ end
 #### Now, the straight with that ace exception
 def tie_straight(white_numbers, black_numbers)
     white_strhigh, black_strhigh, broke_tie = 0, 0, false
-    # black_strhigh = 0
-    # broke_tie = false
     if white_numbers[0] == 14 && white_numbers[1] == 5
         white_strhigh = 5
     else white_strhigh = white_numbers[0]

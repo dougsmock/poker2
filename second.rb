@@ -1,7 +1,6 @@
 require_relative 'poker_func.rb'
 
-deck = cards()
-dealt = deal_hands(deck)
+dealt = deal_hands()
 
 whitehand = whitehand(dealt)
 blackhand = blackhand(dealt)
