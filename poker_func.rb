@@ -325,6 +325,7 @@ def blackhand_display(black_numbers, black_suits)
 end
 
 ################ We start to declare a winner here, based on card level
+######### If this fails, pull out whowins value
 
 def declare_winner(handrank_w, handrank_b)
     if handrank_w < handrank_b
@@ -393,7 +394,7 @@ def tie_pair(white_numbers, black_numbers)
     if white_paircards[0] > black_paircards[0]
         puts "WHITE WINS!"
         broke_tie = true
-        return white_numbers
+        return white_numbers 
     elsif white_paircards[0] < black_paircards[0]
         puts "BLACK WINS!"
         broke_tie = true
@@ -505,9 +506,11 @@ def tie_3(white_numbers, black_numbers)
     if white3 > black3
         puts "WHITE WINS!"
         broke_tie = true
+        return white_numbers
     else white3 < black3
         puts "BLACK WINS!"
         broke_tie = true
+        return black_numbers
     end
 end
 
@@ -531,6 +534,7 @@ def tie_4(white_numbers, black_numbers)
 
     if white4 > black4
         puts "WHITE WINS!"
+        whowins = "WHITE WINS!"
         broke_tie = true
         return white_numbers
     else white4 < black4

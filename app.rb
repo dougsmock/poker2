@@ -4,6 +4,8 @@ require 'sinatra'
 enable :sessions
 
 get '/' do
+    whowins = session[:whowins]  
+
     dealt = session[:dealt] 
     whitehand = session[:whitehand]
     blackhand = session[:blackhand]
@@ -59,6 +61,8 @@ get '/' do
 end
 
 post '/play' do
+    session[:whowins] = params[:whowins]
+  
     session[:dealt] = params[:dealt]
     session[:shuffled] = params[:shuffled]
     session[:whitehand] = params[:blackhand]
