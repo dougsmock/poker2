@@ -67,8 +67,6 @@
     vertical-align:top
 }
 </style>
-
-<form method="post" action="play">
 <div class="twohands">
 
 
@@ -80,8 +78,8 @@
   </tr>
     
   <tr>
-    <th class="tg-3pmj" id="left"><%= Hello <%= wnumbs = white_numbers(wconverted) %></th>
-    <th class="tg-0r6a" id="right">3 of diamonds</th>
+    <td class="tg-3pmj" id="left">Hello <%= wnumbs.class %></td>
+    <td class="tg-0r6a" id="right">3 of diamonds</td>
 
   </tr>
   <tr>
@@ -92,18 +90,6 @@
     <td class="tg-0r6a" id="right[]"></td>
   </tr>
     </table>
-</div>
-</form>
-
-<div>
-<h2>Somebody wins</h2>
-</div>
-
-<form method="post" action="reset">
-
-  <input type="button" id="deal" value="Deal!"><br><br>
-
-</form>
 </div>
 
 </body>
