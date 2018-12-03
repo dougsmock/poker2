@@ -167,7 +167,7 @@ end
 
 ######## now we declare winners where tiebreakers are needed
 
-whowins = declare_winner(handrank_w, handrank_b)
+winner = declare_winner(handrank_w, handrank_b)
 
 if (handrank_w == 10 && handrank_b == 10) || (handrank_w == 5 && handrank_b == 5)  
     tiebreaker = tie_high(wnumbs, bnumbs)

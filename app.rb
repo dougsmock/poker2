@@ -4,7 +4,8 @@ require 'sinatra'
 enable :sessions
 
 get '/' do
-    whowins = session[:whowins]  
+    whitecards_arr = session[:whitecards_arr] 
+    blackcards_arr = session[:blackcards_arr] 
 
     dealt = session[:dealt] 
     whitehand = session[:whitehand]
@@ -13,10 +14,12 @@ get '/' do
     bhighlow = session[:bhighlow]
     wconverted = session[:wconverted]
     bconverted = session[:bconverted]
-    # white_numbers = session[:white_numbers]
-    # white_suits = session[:white_suits]
-    # black_numbers = session[:black_numbers]
-    # black_suits = session[:black_suits]
+    white_numbers = session[:white_numbers]
+    white_suits = session[:white_suits]
+    black_numbers = session[:black_numbers]
+    black_suits = session[:black_suits]
+
+    whitenumbers = session[:whitenumbers]
 
     wnumbs = session[:wnumbs]
     bnumbs = session[:bnumbs]
@@ -57,11 +60,10 @@ get '/' do
     load 'second.rb'
 
     # erb :twohands
-    erb :twohands, locals:{dealt: dealt, whitehand: whitehand, blackhand: blackhand, whighlow: whighlow, bhighlow: bhighlow, wconverted: wconverted, bconverted: bconverted, wnumbs: wnumbs, bnumbs: bnumbs, wsuits: wsuits, bsuits: bsuits, wdisplay: wdisplay, bdisplay: bdisplay, w_rf: w_rf, w_sf: w_sf, w_4: w_4, w_full: w_full, w_flush: w_flush, w_straight: w_straight, w_3: w_3, w_2p: w_2p, w_pair: w_pair, w_high: w_high, b_rf: b_rf, b_sf: b_sf, b_4: b_4, b_full: b_full, b_flush: b_flush, b_straight: b_straight, b_3: b_3, b_2p: b_2p, b_pair: b_pair, b_high: b_high} 
+    erb :twohands, locals:{whitenumbers: whitenumbers, whitecards_arr: whitecards_arr, blackcards_arr: blackcards_arr, dealt: dealt, whitehand: whitehand, blackhand: blackhand, whighlow: whighlow, bhighlow: bhighlow, wconverted: wconverted, bconverted: bconverted, wnumbs: wnumbs, bnumbs: bnumbs, wsuits: wsuits, bsuits: bsuits, wdisplay: wdisplay, bdisplay: bdisplay, w_rf: w_rf, w_sf: w_sf, w_4: w_4, w_full: w_full, w_flush: w_flush, w_straight: w_straight, w_3: w_3, w_2p: w_2p, w_pair: w_pair, w_high: w_high, b_rf: b_rf, b_sf: b_sf, b_4: b_4, b_full: b_full, b_flush: b_flush, b_straight: b_straight, b_3: b_3, b_2p: b_2p, b_pair: b_pair, b_high: b_high} 
 end
 
 post '/play' do
-    session[:whowins] = params[:whowins]
   
     session[:dealt] = params[:dealt]
     session[:shuffled] = params[:shuffled]
@@ -70,12 +72,13 @@ post '/play' do
     session[:bhighlow] = params[:bhighlow]
     session[:wconverted] = params[:wconverted]
     session[:bconverted] = params[:bconverted]
-    # session[white_numbers] = params[:white_numbers]
-    # session[white_suits] = params[:white_suits]
-    # session[black_numbers] = params[:black_numbers]
-    # session[black_suits] = params[:black_suits]
+    session[white_numbers] = params[:white_numbers]
+    session[white_suits] = params[:white_suits]
+    session[black_numbers] = params[:black_numbers]
+    session[black_suits] = params[:black_suits]
 
 
+    session[:whitenumbers] = params[:whitenumbers]
     session[:wnumbs] = params[:wnumbs]
     session[:bnumbs] = params[:bnumbs]
     session[:wsuits] = params[:wsuits]

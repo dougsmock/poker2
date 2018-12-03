@@ -1,12 +1,6 @@
 <html>
 <head>
 </head>
-<style>
-
-
-
-</style>
-
 <body>
 <style type="text/css">
 .tg  {
@@ -77,40 +71,85 @@
 <form method="post" action="play">
 <div class="twohands">
 
+<%card_arr= [*1..52]%>
+<%shufcard_arr = card_arr.shuffle%>
+<%whitecards_arr = shufcard_arr.pop(5)%>
+<%blackcards_arr = shufcard_arr.pop(5)%>
+
+<%x, whitenumbers, whitesuits = 0, [], []%>
+<%5.times do%>
+  <%whitecards_arr[x] += 7%>
+  <%whitenumbers[x] = whitecards_arr[x] / 4%>
+  <%whitesuits[x] = whitecards_arr[x] % 4%>
+    <%if whitesuits[x] == 0%>
+      <%whitesuits[x] = "Clubs"%>
+    <%elsif whitesuits[x] == 1%>
+      <%whitesuits[x] = "Spades"%>
+    <%elsif whitesuits[x] == 2%>
+      <%whitesuits[x] = "Diamonds"%>
+    <%elsif whitesuits[x] == 3%>
+      <%whitesuits[x] = "Hearts"%>
+    <%end%>
+  <%x += 1%>
+<%end%>
+
+
+<%x, blacknumbers, blacksuits = 0, [], []%>
+<%5.times do%>
+  <%blackcards_arr[x] += 7%>
+  <%blacknumbers[x] = blackcards_arr[x] / 4%>
+  <%blacksuits[x] = blackcards_arr[x] % 4%>
+    <%if blacksuits[x] == 0%>
+      <%blacksuits[x] = "Clubs"%>
+    <%elsif blacksuits[x] == 1%>
+      <%blacksuits[x] = "Spades"%>
+    <%elsif blacksuits[x] == 2%>
+      <%blacksuits[x] = "Diamonds"%>
+    <%elsif blacksuits[x] == 3%>
+      <%blacksuits[x] = "Hearts"%>
+    <%end%>
+  <%x += 1%>
+<%end%>
+
+
+
 <table class="tg" align="center" border="solid">
   <tr>
     <th class="tg-kzq8" id="leftwhite">White</th>
     <th class="tg-o2qf" id="rightblack">Black</th>
   </tr>
   <tr>
-    <td class="tg-3pmj" id="leftone"></td>
-    <td class="tg-0r6a" id="rightone"></td>
+    <td class="tg-3pmj" id="leftone"><%= whitenumbers[0]%> of <%= whitesuits[0]%></td>
+    <td class="tg-0r6a" id="rightone"><%= blacknumbers[0]%> of <%= blacksuits[0]%></td>
   </tr>
   <tr>
-    <td class="tg-3pmj" id="lefttwo">Example</td>
-    <td class="tg-0r6a" id="righttwo">Example</td>
+    <td class="tg-3pmj" id="lefttwo"><%= whitenumbers[1]%> of <%= whitesuits[1]%></td>
+    <td class="tg-0r6a" id="righttwo"><%= blacknumbers[1]%> of <%= blacksuits[1]%></td>
   </tr>
   <tr>
-    <td class="tg-3pmj" id="leftthree"></td>
-    <td class="tg-0r6a" id="rightthree"></td>
+    <td class="tg-3pmj" id="leftthree"><%= whitenumbers[2]%> of <%= whitesuits[2]%></td>
+    <td class="tg-0r6a" id="rightthree"><%= blacknumbers[2]%> of <%= blacksuits[2]%></td>
   </tr>
   <tr>
-    <td class="tg-3pmj" id="leftfour"></td>
-    <td class="tg-0r6a" id="righthree"></td>
+    <td class="tg-3pmj" id="leftfour"><%= whitenumbers[3]%> of <%= whitesuits[3]%></td>
+    <td class="tg-0r6a" id="righthree"><%= blacknumbers[3]%> of <%= blacksuits[3]%></td>
   </tr>
   <tr>
-    <td class="tg-3pmj" id="leftfive"></td>
-    <td class="tg-0r6a" id="rightfive"></td>
+    <td class="tg-3pmj" id="leftfive"><%= whitenumbers[4]%> of <%= whitesuits[4]%></td>
+    <td class="tg-0r6a" id="rightfive"><%= blacknumbers[4]%> of <%= blacksuits[4]%></td>
   </tr>
   </table>
 </div>
 </form>
 
-<br><br>
-<form> 
-  <input type="button" value="Deal!">
-<br><br>
+<div>
 <h2>Somebody wins</h2>
+</div>
+
+<form method="get" action="reset">
+
+  <input type="button" id="deal" value="Deal!"><br><br>
+
 </form>
 </div>
 
