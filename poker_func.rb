@@ -1,3 +1,8 @@
+def say_winner()
+    saythis = "BLACK WINS"
+end
+
+
 # This is a deck of cards, numbered 1 through 52, shuffled.
 # This pops into a 5-card whitecards_arr, then pops into blackcards_arr
 #Then shovels two hands into a single array to pass as one

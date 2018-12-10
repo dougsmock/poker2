@@ -13,7 +13,6 @@ wconverted = convert_white(whighlow)
 bconverted = convert_black(bhighlow)
 
 wnumbs = white_numbers(wconverted)
-p "This is second.rb wnumbs #{wnumbs}."
 bnumbs = black_numbers(bconverted)
 
 wsuits = white_suits(wconverted)

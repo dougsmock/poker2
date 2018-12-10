@@ -17,7 +17,7 @@ get '/' do
   #   b_pair = session[b_pair]
   #   b_high = session[:b_high]
 
-    erb :twohands, locals: {white_numbers: session[:white_numbers], white_suits: session[:white_suits], black_numbers: session[:black_numbers], black_suits: session[:black_suits]} 
+    erb :twohands, locals: {whitehand: session[:whitehand], white_numbers: session[:white_numbers], white_suits: session[:white_suits], black_numbers: session[:black_numbers], black_suits: session[:black_suits]} 
 end
 
 post '/play' do
@@ -30,13 +30,11 @@ post '/play' do
     # session[:wconverted] = params[:wconverted]
     # session[:bconverted] = params[:bconverted]
     
-    wdisplay = whitehand_display(white_numbers, white_suits)
-    puts "We shall have a #{wdisplay}."
-
     session[white_numbers] = params[:white_numbers]
     session[white_suits] = params[:white_suits]
     session[black_numbers] = params[:black_numbers]
     session[black_suits] = params[:black_suits]
+    session[:whitehand] = params[:whitehand]
 
 
     # session[:whitenumbers] = params[:whitenumbers]
@@ -73,5 +71,10 @@ post '/play' do
     # session[:b_2] = params[:b_2]
     # session[:b_high] = params[:b_high]
     redirect '/'
+
+    post '/reset' do
+        "Hello World"
+    end
+  
   end
 
