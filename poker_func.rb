@@ -1,12 +1,10 @@
-#TEST to call on page
 
 require_relative 'second.rb'
 
-
+#TEST function for front end
 def say_winner()
     saythis = "BLACK WINS"
 end
-
 
 # This is a deck of cards, numbered 1 through 52, shuffled.
 # This pops into a 5-card whitecards_arr, then pops into blackcards_arr
@@ -165,22 +163,20 @@ def white_pair(white_numbers)
     x = 0
     while x < 4
         if white_numbers[x] == white_numbers[x + 1]
-            w_pair = "Pair of #{white_numbers[x]}s."
+            return w_pair = "Pair of #{white_numbers[x]}s."
         end
         x += 1
     end
-    w_pair
 end
 
 def black_pair(black_numbers)
     x = 0
     while x < 4
         if black_numbers[x] == black_numbers[x + 1]
-            b_pair = "Pair of #{black_numbers[x]}s."
+            return b_pair = "Pair of #{black_numbers[x]}s."
         end
         x += 1
     end
-    b_pair
 end
 
 ## Here is the test for two pair
@@ -338,13 +334,13 @@ end
 ######### If this fails, pull out whowins value
 
 def declare_winner(handrank_w, handrank_b)
-    w_wins, b_wins = ""
+    whowins = ""
     if handrank_w < handrank_b
         puts "WHITE WINS!"
-        return w_wins = "WHITE WINS!"
+        whowins = "WHITE WINS!"
     elsif handrank_w > handrank_b
         puts "BLACK WINS!"
-        return b_wins = "BLACK WINS!"
+        whowins = "BLACK WINS!"
     end
 end
 
@@ -552,6 +548,7 @@ def tie_4(white_numbers, black_numbers)
         return white_numbers
     else white4 < black4
         puts "BLACK WINS!"
+        whowins = "BLACK WINS!"
         broke_tie = true
         return black_numbers
     end
