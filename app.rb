@@ -16,8 +16,9 @@ get '/' do
   #   b_2 = session[:b_2]
   #   b_pair = session[b_pair]
   #   b_high = session[:b_high]
+  saythis = "BLACK WINS!!!"
 
-    erb :twohands, locals: {whitehand: session[:whitehand], white_numbers: session[:white_numbers], white_suits: session[:white_suits], black_numbers: session[:black_numbers], black_suits: session[:black_suits]} 
+    erb :twohands, locals: {saythis: session[:saythis], whitehand: session[:whitehand], white_numbers: session[:white_numbers], white_suits: session[:white_suits], black_numbers: session[:black_numbers], black_suits: session[:black_suits], winner: session[:winner]} 
 end
 
 post '/play' do
@@ -30,11 +31,15 @@ post '/play' do
     # session[:wconverted] = params[:wconverted]
     # session[:bconverted] = params[:bconverted]
     
-    session[white_numbers] = params[:white_numbers]
-    session[white_suits] = params[:white_suits]
-    session[black_numbers] = params[:black_numbers]
-    session[black_suits] = params[:black_suits]
+    session[:white_numbers] = params[:white_numbers]
+    session[:white_suits] = params[:white_suits]
+    session[:black_numbers] = params[:black_numbers]
+    session[:black_suits] = params[:black_suits]
     session[:whitehand] = params[:whitehand]
+    session[:blackhand] = params[:blackhand]
+    # session[:saythis] = params[:saythis]
+
+
 
 
     # session[:whitenumbers] = params[:whitenumbers]
@@ -43,7 +48,7 @@ post '/play' do
     # session[:wsuits] = params[:wsuits]
     # session[:bsuits] = params[:bsuits]
     session[:wdisplay] = params[:wdisplay]
-    # session[:bdisplay] = params[:bdisplay]
+    session[:bdisplay] = params[:bdisplay]
     
     # session[:w_rf] = params[:w_rf]
     # session[:w_sf] = params[:w_sf]
@@ -61,6 +66,9 @@ post '/play' do
     # session[:handrank_b] = params[:handrank_b]
     # session[:winner_b] = params[:winner_b]
 
+    session[:winner] = params[:winner]
+
+
     # session[:b_rf] = params[:b_rf]
     # session[:b_sf] = params[:b_sf]
     # session[:b_4] = params[:b_4]
@@ -72,9 +80,10 @@ post '/play' do
     # session[:b_high] = params[:b_high]
     redirect '/'
 
-    post '/reset' do
-        "Hello World"
-    end
-  
+    get '/' do
+        erb :twohands
+      end
+
+
   end
 

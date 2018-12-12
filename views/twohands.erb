@@ -3,9 +3,13 @@
 </head>
 <body>
 
-<% saythis = "Somebody wins!" %>
-<% card_arr, bothhands = [*1..52], [] %>
-<% shufcard_arr = card_arr.shuffle %>
+<% bothhands = deal_hands() %>
+<% whitehand = whitehand(bothhands) %>
+<% blackhand = blackhand(bothhands) %>
+<% whitehigh = white_high_low(whitehand) %>
+<% blackhigh = black_high_low(blackhand) %>
+<% white_added = convert_white(whitehigh) %>
+<% black_added = convert_black(blackhigh) %>
 
 <style type="text/css">
 .tg  {
@@ -74,78 +78,6 @@
 }
 </style>
 
-<% whitecards_arr = shufcard_arr.pop(5) %>
-<% blackcards_arr = shufcard_arr.pop(5) %>
-<% whitehigh = whitecards_arr.sort { |x,y| y <=> x } %>
-<% blackhigh = blackcards_arr.sort { |x,y| y <=> x } %>
-
-<% w, y, white_numbers, white_suits = 0, 0, [], [] %>
-<% until whitehigh[w] == nil %>
-  <% white_numbers[y] = (whitehigh[w] + 7) / 4 %>
-  <% white_suits[y] = (whitehigh[w] + 7) % 4 %>
-  <% w += 1 %>
-  <% y += 1 %>
-<% end %>
-
-<% b, c, black_numbers, black_suits = 0, 0, [], [] %>
-<% until blackhigh[b] == nil %>
-  <% black_numbers[c] = (blackhigh[b] + 7) / 4 %>
-  <% black_suits[c] = (blackhigh[b] + 7) % 4 %>
-  <% b += 1 %>
-  <% c += 1 %>
-<% end %>
-
-<% x = 0 %>
-<% while x < 5 %>
-  <% if white_numbers[x] == 14 %>
-    <% white_numbers[x] = "Ace" %>
-  <% elsif white_numbers[x] == 13 %>
-    <% white_numbers[x] = "King" %>
-  <% elsif white_numbers[x] == 12 %>
-    <% white_numbers[x] = "Queen" %>
-  <% elsif white_numbers[x] == 11 %>
-    <% white_numbers[x] = "Jack" %>
-  <% end %>
-
-  <% if white_suits[x] == 0 %>
-    <% white_suits[x] = "Clubs" %>
-  <% elsif white_suits[x] == 1 %>
-    <% white_suits[x] = "Spades" %>
-  <% elsif white_suits[x] == 2 %>
-    <% white_suits[x] = "Diamonds" %>
-  <% elsif white_suits[x] == 3 %>
-    <% white_suits[x] = "Hearts" %>
-  <% end %>
-
-<% x += 1 %>
-<% end %>
-
-<% d = 0 %>
-<% while d < 5 %>
-  <% if black_numbers[d] == 14 %>
-    <% black_numbers[d] = "Ace" %>
-  <% elsif black_numbers[d] == 13 %>
-    <% black_numbers[d] = "King" %>
-  <% elsif black_numbers[d] == 12 %>
-    <% black_numbers[d] = "Queen" %>
-  <% elsif black_numbers[d] == 11 %>
-    <% black_numbers[d] = "Jack" %>
-  <% end %>
-
-  <% if black_suits[d] == 0 %>
-    <% black_suits[d] = "Clubs" %>
-  <% elsif black_suits[d] == 1 %>
-    <% black_suits[d] = "Spades" %>
-  <% elsif black_suits[d] == 2 %>
-    <% black_suits[d] = "Diamonds" %>
-  <% elsif black_suits[d] == 3 %>
-    <% black_suits[d] = "Hearts" %>
-  <% end %>
-<% d += 1 %>
-<% end %>
-
-
-
 <form method="post" action="play">
 <div class="twohands">
 
@@ -157,48 +89,57 @@
   </tr>
   
   <tr>
-    <td class="tg-3pmj" id="left[0]"><%= white_numbers[0] %> of <%= white_suits[0] %></td>
-    <td class="tg-0r6a" id="right[0]"><%= black_numbers[0] %> of <%= black_suits[0] %></td>
+    <td class="tg-3pmj" id="left[0]"><%= white_numbers = white_numbers(white_added)[0] %> of <%= white_suits = white_suits(white_added)[0]%></td>
+    <td class="tg-0r6a" id="right[0]"><%= black_numbers = black_numbers(black_added)[0] %> of <%= black_suits = black_suits(black_added)[0]%></td>
   </tr>
 
   <tr>
-      <td class="tg-3pmj" id="left[1]"><%= white_numbers[1] %> of <%= white_suits[1] %></td>
-      <td class="tg-0r6a" id="right[1]"><%= black_numbers[1] %> of <%= black_suits[1] %></td>
+      <td class="tg-3pmj" id="left[1]"><%= white_numbers = white_numbers(white_added)[1] %> of <%= white_suits = white_suits(white_added)[1]%></td>
+      <td class="tg-0r6a" id="right[1]"><%= black_numbers = black_numbers(black_added)[1] %> of <%= black_suits = black_suits(black_added)[1]%></td>
   </tr>
   
   <tr>
-      <td class="tg-3pmj" id="left[2]"><%= white_numbers[2] %> of <%= white_suits[2] %></td>
-      <td class="tg-0r6a" id="right[2]"><%= black_numbers[2] %> of <%= black_suits[2] %></td>
+      <td class="tg-3pmj" id="left[2]"><%= white_numbers = white_numbers(white_added)[2] %> of <%= white_suits = white_suits(white_added)[2]%></td>
+      <td class="tg-0r6a" id="right[2]"><%= black_numbers = black_numbers(black_added)[2] %> of <%= black_suits = black_suits(black_added)[2]%></td>
   </tr>
 
   <tr>
-      <td class="tg-3pmj" id="left[3]"><%= white_numbers[3] %> of <%= white_suits[3] %></td>
-      <td class="tg-0r6a" id="right[3]"><%= black_numbers[3] %> of <%= black_suits[3] %></td>
+      <td class="tg-3pmj" id="left[3]"><%= white_numbers = white_numbers(white_added)[3] %> of <%= white_suits = white_suits(white_added)[3]%></td>
+      <td class="tg-0r6a" id="right[3]"><%= black_numbers = black_numbers(black_added)[3] %> of <%= black_suits = black_suits(black_added)[3]%></td>
   </tr>
 
   <tr>
-    <td class="tg-3pmj" id="left[4]"><%= white_numbers[4] %> of <%= white_suits[4] %></td>
-    <td class="tg-0r6a" id="right[4]"><%= black_numbers[4] %> of <%= black_suits[4] %></td>
+    <td class="tg-3pmj" id="left[4]"><%= white_numbers = white_numbers(white_added)[4] %> of <%= white_suits = white_suits(white_added)[4]%></td>
+    <td class="tg-0r6a" id="right[4]"><%= black_numbers = black_numbers(black_added)[4] %> of <%= black_suits = black_suits(black_added)[4]%></td>
   </tr>    
 </table>
 </div>
 </form>
 
 <div>
-<h2><%= saythis%></h2>
+
+<h2><%if white_numbers = white_numbers(white_added)[0] > black_numbers = black_numbers(black_added)[0]%>
+      White wins!
+    <%elsif white_numbers = white_numbers(white_added)[0] < black_numbers = black_numbers(black_added)[0]%>
+      Black wins!
+    <%else%>
+      Tie game.
+    <%end%>
+
+
+
+
+
+</h2>
+
+
+
 </div>
 
-<form method="post" action="reset">
+<div>
 
-  <button onclick="myFunction()" id="deal">Deal!</button>
+  <button value="Refresh Page" onClick="window.location.reload()">Deal!</button>
 
-  <script>
-    function myFunction() {
-        location.reload();
-    }
-  </script>
-
-</form>
 </div>
 
 </body>

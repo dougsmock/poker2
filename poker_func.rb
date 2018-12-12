@@ -1,3 +1,8 @@
+#TEST to call on page
+
+require_relative 'second.rb'
+
+
 def say_winner()
     saythis = "BLACK WINS"
 end
@@ -333,10 +338,13 @@ end
 ######### If this fails, pull out whowins value
 
 def declare_winner(handrank_w, handrank_b)
+    w_wins, b_wins = ""
     if handrank_w < handrank_b
         puts "WHITE WINS!"
+        return w_wins = "WHITE WINS!"
     elsif handrank_w > handrank_b
         puts "BLACK WINS!"
+        return b_wins = "BLACK WINS!"
     end
 end
 
