@@ -118,20 +118,15 @@
 
 <div>
 
-<h2><%if white_numbers = white_numbers(white_added)[0] > black_numbers = black_numbers(black_added)[0]%>
-      White wins!
-    <%elsif white_numbers = white_numbers(white_added)[0] < black_numbers = black_numbers(black_added)[0]%>
-      Black wins!
+  <h2>
+    <%if (white_numbers = white_numbers(white_added)[0]) > (black_numbers = black_numbers(black_added)[0])%>
+    White wins!
+    <%elsif (white_numbers = white_numbers(white_added)[0]) < (black_numbers = black_numbers(black_added)[0])%>
+    Black wins!
     <%else%>
-      Tie game.
+    Tie game.
     <%end%>
-
-
-
-
-
-</h2>
-
+  </h2>  
 
 
 </div>

@@ -18,7 +18,7 @@ get '/' do
   #   b_high = session[:b_high]
   saythis = "BLACK WINS!!!"
 
-    erb :twohands, locals: {saythis: session[:saythis], whitehand: session[:whitehand], white_numbers: session[:white_numbers], white_suits: session[:white_suits], black_numbers: session[:black_numbers], black_suits: session[:black_suits], winner: session[:winner]} 
+    erb :twohands, locals: {whitehand: session[:whitehand], white_numbers: session[:white_numbers], white_suits: session[:white_suits], black_numbers: session[:black_numbers], black_suits: session[:black_suits], winner: session[:winner]} 
 end
 
 post '/play' do
@@ -37,7 +37,8 @@ post '/play' do
     session[:black_suits] = params[:black_suits]
     session[:whitehand] = params[:whitehand]
     session[:blackhand] = params[:blackhand]
-    # session[:saythis] = params[:saythis]
+    session[:wlevel] = params[:wlevel]
+    session[:blevel] = params[:blevel]
 
 
 
