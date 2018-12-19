@@ -137,14 +137,16 @@ High cards are the same.
 <% white_five = white_numbers(white_added)[4] %>
 
 <% if (white_one == white_two) || (white_two == white_three) || (white_three == white_four) || (white_four == white_five) %>
-White has a pair.
+White pair.
 <% end %>
 
-<% if (white_one == white_three) %>
-White has three of a kind.
+<% if ((white_one == white_two) && (white_three == white_four || white_four == white_five)) || (white_two == white_three && white_four == white_five) %>
+White two pair.
 <% end %>
 
-
+<% if (white_one == white_three) || (white_two == white_four) || (white_three == white_five) %>
+White three of a kind.
+<% end %>
 
 
 
