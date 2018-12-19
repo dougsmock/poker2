@@ -138,27 +138,113 @@ High cards are the same.
 
 <% if (white_one == white_two) || (white_two == white_three) || (white_three == white_four) || (white_four == white_five) %>
 White pair.
+<%= whiterank = 1 %>
 <% end %>
 
 <% if ((white_one == white_two) && (white_three == white_four || white_four == white_five)) || (white_two == white_three && white_four == white_five) %>
 White two pair.
+<%= whiterank = 2 %>
 <% end %>
 
 <% if (white_one == white_three) || (white_two == white_four) || (white_three == white_five) %>
 White three of a kind.
+<%= whiterank = 3 %>
 <% end %>
 
+<% if (white_one - 4 == white_five) && (white_one - 3 == white_four) && (white_one - 2 == white_three) && (white_one - 1 == white_two) %>
+White straight.
+<%= whiterank = 4 %>
+<% end %>
 
+<% if (white_one == white_four) || (white_two == white_five) %>
+White four of a kind.
+<%= whiterank = 7 %>
+<% end %>
 
+<% white_onest = white_suits(white_added)[0] %>
+<% white_twost = white_suits(white_added)[1] %>
+<% white_threest = white_suits(white_added)[2] %>
+<% white_fourst = white_suits(white_added)[3] %>
+<% white_fivest = white_suits(white_added)[4] %>
 
-
+<% if (white_onest == white_twost) && (white_twost == white_threest) &&(white_threest == white_fourst) && (white_fourst == white_fivest) %>
+  White flush.
+<%= whiterank = 5 %>
+<% end %>
 </h4>
+</div>
+
+<div>
+  <h4>
+
+    <% black_one = black_numbers(black_added)[0] %>
+    <% black_two = black_numbers(black_added)[1] %>
+    <% black_three = black_numbers(black_added)[2] %>
+    <% black_four = black_numbers(black_added)[3] %>
+    <% black_five = black_numbers(black_added)[4] %>
+    
+    <% if (black_one == black_two) || (black_two == black_three) || (black_three == black_four) || (black_four == black_five) %>
+    Black pair.
+    <%= blackrank = 1 %>
+    <% end %>
+    
+    <% if ((black_one == black_two) && (black_three == black_four || black_four == black_five)) || (black_two == black_three && black_four == black_five) %>
+    Black two pair.
+    <%= blackrank = 2 %>
+    <% end %>
+    
+    <% if (black_one == black_three) || (black_two == black_four) || (black_three == black_five) %>
+    Black three of a kind.
+    <%= blackrank = 3 %>
+    <% end %>
+    
+    <% if (black_one - 4 == black_five) && (black_one - 3 == black_four) && (black_one - 2 == black_three) && (black_one - 1 == black_two) %>
+    Black straight.
+    <%= blackrank = 4 %>
+    <% end %>
+    
+    <% if (black_one == black_four) || (black_two == black_five) %>
+    Black four of a kind.
+    <%= blackrank = 7 %>
+    <% end %>
+    
+    <% black_onest = black_suits(black_added)[0] %>
+    <% black_twost = black_suits(black_added)[1] %>
+    <% black_threest = black_suits(black_added)[2] %>
+    <% black_fourst = black_suits(black_added)[3] %>
+    <% black_fivest = black_suits(black_added)[4] %>
+    
+    <% if (black_onest == black_twost) && (black_twost == black_threest) && (black_threest == black_fourst) && (black_fourst == black_fivest) %>
+      Black flush.
+    <%= blackrank = 5 %>
+    <% end %>
+  
+  </h4>
+
+
+
+
+
 
 
 </div>
 
-<div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div>
   <button value="Refresh Page" onClick="window.location.reload()">Deal!</button>
 
 </div>
