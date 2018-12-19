@@ -117,15 +117,6 @@
 </form>
 
 
-
-    
-   
-
-
-
-
-
-
 <div>
 <h2>
 <% if (white_numbers = white_numbers(white_added)[0]) > (black_numbers = black_numbers(black_added)[0]) %>
@@ -137,11 +128,28 @@ High cards are the same.
 <% end %>
 </h2>
 
-
-
-
 <h4>
- <%= saythis = say_winner() %>
+
+<% white_one = white_numbers(white_added)[0] %>
+<% white_two = white_numbers(white_added)[1] %>
+<% white_three = white_numbers(white_added)[2] %>
+<% white_four = white_numbers(white_added)[3] %>
+<% white_five = white_numbers(white_added)[4] %>
+
+<% if (white_one == white_two) || (white_two == white_three) || (white_three == white_four) || (white_four == white_five) %>
+White has a pair.
+<% end %>
+
+<% if (white_one == white_three) %>
+White has three of a kind.
+<% end %>
+
+
+
+
+
+
+
 </h4>
 
 

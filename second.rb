@@ -67,7 +67,7 @@ if w_str != nil && winner_w != true
     winner_w = true
 end
 
-w_3 = black_three(wnumbs)
+w_3 = white_three(wnumbs)
 if w_3 != nil && winner_w != true
     handrank_w = 7
     p w_3
