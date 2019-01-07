@@ -125,15 +125,11 @@
     <% white_four = white_numbers(white_added)[3] %>
     <% white_five = white_numbers(white_added)[4] %>
 
-
     <% black_one = black_numbers(black_added)[0] %>
     <% black_two = black_numbers(black_added)[1] %>
     <% black_three = black_numbers(black_added)[2] %>
     <% black_four = black_numbers(black_added)[3] %>
     <% black_five = black_numbers(black_added)[4] %>
-
-    
-
 </h2>
 
 <h4>
@@ -141,7 +137,7 @@
   <% whiterank = 1 %>
 <% end %>
 
-<% if ((white_one == white_two) && (white_three == white_four || white_four == white_five)) || (white_two == white_three && white_four == white_five) %>
+<% if (white_one == white_two && white_three == white_four) || white_two == white_three && white_four == white_five %>
   <% whiterank = 2 %>
 <% end %>
 
@@ -169,15 +165,15 @@
   <% whiterank = 5 %>
 <% end %>
 
-<% if (white_one == white_two && white_one == white_three && white_four == white-five) || (white_three == white_four && white_three == white_five && white_one == white_two) %>
+<% if (white_one == white_two && white_one == white_three && white_four == white_five) || (white_three == white_four && white_three == white_five && white_one == white_two) %>
   <% whiterank = 6 %>
 <% end %>
 
-<% if whitestraight == true && whitestraight == true %>
+<% if whitestraight == true && whiteflush == true %>
   <% whiterank = 8 %>
 <% end %>
 
-<% if (whitestraight == true && whitestraight == true) && (white_one == 14) %>
+<% if (whitestraight == true && whiteflush == true) && (white_one == 14) %>
   <% whiterank = 9 %>
 <% end %>
 
@@ -200,13 +196,9 @@
 <% elsif whiterank == 1 %>
   White pair.
 <% else %>
+  <% whiterank = 0 %>
   White high card.
 <% end %>
-
-
-
-
-
 
 </h4>
 </div>
@@ -214,30 +206,26 @@
 <div>
   <h4>
    
-    <% if (black_one == black_two) || (black_two == black_three) || (black_three == black_four) || (black_four == black_five) %>
-    Black pair.
+  <% if (black_one == black_two) || (black_two == black_three) || (black_three == black_four) || (black_four == black_five) %>
     <% blackrank = 1 %>
-    <% end %>
+  <% end %>
     
-    <% if ((black_one == black_two) && (black_three == black_four || black_four == black_five)) || (black_two == black_three && black_four == black_five) %>
-    Black two pair.
+  <% if (black_one == black_two && black_three == black_four) || black_two == black_three && black_four == black_five %>
     <% blackrank = 2 %>
-    <% end %>
+  <% end %>
     
-    <% if (black_one == black_three) || (black_two == black_four) || (black_three == black_five) %>
-    Black three of a kind.
+  <% if (black_one == black_three) || (black_two == black_four) || (black_three == black_five) %>
     <% blackrank = 3 %>
-    <% end %>
+  <% end %>
     
-    <% if (black_one - 4 == black_five) && (black_one - 3 == black_four) && (black_one - 2 == black_three) && (black_one - 1 == black_two) %>
-    Black straight.
+  <% if (black_one - 4 == black_five) && (black_one - 3 == black_four) && (black_one - 2 == black_three) && (black_one - 1 == black_two) %>
+    <% blackstraight = true %>
     <% blackrank = 4 %>
-    <% end %>
+  <% end %>
     
-    <% if (black_one == black_four) || (black_two == black_five) %>
-    Black four of a kind.
+  <% if (black_one == black_four) || (black_two == black_five) %>
     <% blackrank = 7 %>
-    <% end %>
+  <% end %>
     
     <% black_onest = black_suits(black_added)[0] %>
     <% black_twost = black_suits(black_added)[1] %>
@@ -245,24 +233,122 @@
     <% black_fourst = black_suits(black_added)[3] %>
     <% black_fivest = black_suits(black_added)[4] %>
     
-    <% if (black_onest == black_twost) && (black_twost == black_threest) && (black_threest == black_fourst) && (black_fourst == black_fivest) %>
-      Black flush.
+  <% if (black_onest == black_twost) && (black_twost == black_threest) && (black_threest == black_fourst) && (black_fourst == black_fivest) %>
+    <% blackflish = true %>
     <% blackrank = 5 %>
-    <% end %>
+  <% end %>
+
+  <% if (black_one == black_two && black_one == black_three && black_four == black_five) || (black_three == black_four && black_three == black_five && black_one == black_two) %>
+    <% blackrank = 6 %>
+  <% end %>
   
-  </h4>
+  <% if blackstraight == true && blackflush == true %>
+    <% blackrank = 8 %>
+  <% end %>
+  
+  <% if (blackstraight == true && blackflush == true) && (black_one == 14) %>
+    <% blackrank = 9 %>
+  <% end %>
+  
+  <% if blackrank == 9 %>
+    Black royal flush!
+  <% elsif blackrank == 8 %>
+    Black straight flush!
+  <% elsif blackrank == 7 %>
+    Black four of a kind!
+  <% elsif blackrank == 6 %>
+    Black full house!
+  <% elsif blackrank == 5 %>
+    Black flush!
+  <% elsif blackrank == 4 %>
+    Black straight.
+  <% elsif blackrank == 3 %>
+    Black three of a kind.
+  <% elsif blackrank == 2 %>
+    Black two pair.
+  <% elsif blackrank == 1 %>
+    Black pair.
+  <% else %>
+    <% blackrank = 0 %>
+    Black high card.
+  <% end %>
+    
+</h4>
+</div>
 
+<div>
+<h2>
+<% tied = false %>
+<% if whiterank > blackrank %>
+  WHITE WINS!
+<% elsif whiterank < blackrank %>
+  BLACK WINS!
+<% else %>
+  <% tied = true %>
+  Go to tiebreaker.
+<% end %>
+</h2>
+</div>
 
+<div>
+  <h2>
+  <% if tied == true && whiterank == 0 %>
+  <% if white_one > black_one %>
+    <% tied = false %>
+      WHITE WINS!
+    <% elsif white_one < black_one %>
+    <% tied = false %>
+      BLACK WINS!
+    <% end %>
 
+    <% if tied == true && white_two > black_two %>
+      <% tied = false %>
+      WHITE WINS!
+      <% elsif white_two < black_two %>
+      <% tied = false %>
+      BLACK WINS!
+    <% end %>
 
+    <% if tied == true && white_three > black_three %>
+      <% tied = false %>
+      WHITE WINS!
+      <% elsif white_three < black_three %>
+      <% tied = false %>
+      BLACK WINS!
+    <% end %>
 
+    <% if tied == true && white_four > black_four %>
+      <% tied = false %>
+      WHITE WINS!
+    <% elsif white_four < black_four %>
+    <% tied = false %>
+      BLACK WINS!
+    <% end %>
 
-
-
+    <% if tied == true && white_five > black_five %>
+      <% tied = false %>
+        WHITE WINS!
+      <% elsif white_five < black_five %>
+        <% tied = false %>
+        BLACK WINS!
+    <% end %>
+  <% end %>
+  </h2>
 </div>
 
 
+<div>
+<h2>
+  <% if tied == true && whiterank == 0 %>
+    
 
+  <% end %>
+
+
+
+
+</h2>
+</div>
 
 
 
