@@ -364,9 +364,7 @@
       <% white_paircard = white_four %>
       <% white_topcard = white_one %>
     <% end %>
-  <% end %>
       
-  <% if tied == true && blackrank == 1 %>
     <% if black_one == black_two %>
       <% black_paircard = black_one %>
       <% black_topcard = black_three %>
@@ -413,9 +411,7 @@
       <% white_secondp = white_four %>
       <% white_topcard = white_one %> 
     <% end %>
-  <% end %>
 
-  <% if tied == true && blackrank == 2 %>
     <% if (black_one == black_two) && (black_three == black_four) %>
       <% black_firstp = black_one %>
       <% black_secondp = black_three %>
@@ -431,21 +427,67 @@
     <% end %>
   <% end %>
 
-  <% if (tied == true) && white_firstp < black_firstp %>
+  <% if (tied == true) && white_firstp > black_firstp %>
     WHITE WINS!
-  <% elsif (tied == true) && white_firstp > black_firstp %>
+  <% elsif (tied == true) && white_firstp < black_firstp %>
     BLACK WINS!
-  <% elsif (tied == true) && white_secondp < black_secondp %>
-    WHITE WINS!
   <% elsif (tied == true) && white_secondp > black_secondp %>
-    BLACK WINS!
-  <% elsif (tied == true) && white_topcard < black_topcard %>
     WHITE WINS!
+  <% elsif (tied == true) && white_secondp < black_secondp %>
+    BLACK WINS!
   <% elsif (tied == true) && white_topcard > black_topcard %>
+    WHITE WINS!
+  <% elsif (tied == true) && white_topcard < black_topcard %>
     BLACK WINS! 
   <% elsif tied == true %>
     DEAD TIE.
   <% end %> 
+
+</h2>
+</div>
+
+
+
+<div>
+<h2>
+  <% if (tied == true) && (whiterank == 3) %>
+    <% if white_one == white_two %>
+      <% white_threecard = white_one %>
+      <% white_topcard = white_four %> 
+    <% elsif white_two == white_four %>
+      <% white_threecard = white_two %>
+      <% white_topcard = white_one %> 
+    <% elsif white_three == white_five %>
+      <% white_threecard = white_three %>
+      <% white_topcard = white_one %> 
+    <% end %>
+
+    <% if black_one == black_two %>
+      <% black_threecard = black_one %>
+      <% black_topcard = black_four %> 
+    <% elsif black_two == black_four %>
+      <% black_threecard = black_two %>
+      <% black_topcard = black_one %> 
+    <% elsif black_three == black_five %>
+      <% black_threecard = black_three %>
+      <% black_topcard = black_one %> 
+    <% end %>
+
+    <% if (tied == true) && white_threecard > black_threecard %>
+      WHITE WINS!
+    <% elsif (tied == true) && white_threecard < black_threecard %>
+      BLACK WINS!
+    <% elsif (tied == true) && white_topcard > black_topcard %>
+      WHITE WINS!
+    <% elsif (tied == true) && white_topcard < black_topcard %>
+      BLACK WINS!
+    <% end %>
+  <% end %>
+
+
+
+
+
 
 </h2>
 </div>
