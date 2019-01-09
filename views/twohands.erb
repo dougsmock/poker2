@@ -397,6 +397,7 @@
 </h2>
 </div>
 
+<div>
 <h2>
   <% if tied == true && whiterank == 2 %>
     <% if (white_one == white_two) && (white_three == white_four) %>
@@ -430,21 +431,22 @@
     <% end %>
   <% end %>
 
-  <% if tied == true && white_firstp > black_firstp %>
+  <% if (tied == true) && white_firstp < black_firstp %>
     WHITE WINS!
-  <% elsif tied == true && white_firstp < black_firstp %>
+  <% elsif (tied == true) && white_firstp > black_firstp %>
     BLACK WINS!
-  <% elsif tied == true && white_secondp > black_secondp %>
+  <% elsif (tied == true) && white_secondp < black_secondp %>
     WHITE WINS!
-  <% elsif tied == true && white_secondp < black_secondp %>
+  <% elsif (tied == true) && white_secondp > black_secondp %>
     BLACK WINS!
-  <% elsif tied == true && white_topcard > black_topcard %>
+  <% elsif (tied == true) && white_topcard < black_topcard %>
     WHITE WINS!
-  <% elsif tied == true && white_topcard > black_topcard %>
-    BLACK WINS!
+  <% elsif (tied == true) && white_topcard > black_topcard %>
+    BLACK WINS! 
   <% elsif tied == true %>
     DEAD TIE.
   <% end %> 
+
 </h2>
 </div>
 
