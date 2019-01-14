@@ -1,7 +1,7 @@
 require_relative 'poker_func.rb'
 
 dealt = deal_hands()
-p "This is second.rb #{dealt}."
+p "This is #{dealt}."
 
 whitehand = whitehand(dealt)
 blackhand = blackhand(dealt)
@@ -185,3 +185,7 @@ elsif (handrank_w == 4 && handrank_b == 4)
 elsif (handrank_w == 3 && handrank_b == 3)
     tiebreaker = tie_4(wnumbs, bnumbs)
 end
+
+# # and now, convert to aces and stuff
+
+# convert_aces(white_numbers, black_numbers)

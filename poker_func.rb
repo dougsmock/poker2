@@ -2,9 +2,9 @@
 require_relative 'second.rb'
 
 #TEST function for front end
-def say_winner()
-    saythis = "BLACK WINS"
-end
+# def say_winner()
+#     saythis = "BLACK WINS"
+# end
 
 # This is a deck of cards, numbered 1 through 52, shuffled.
 # This pops into a 5-card whitecards_arr, then pops into blackcards_arr
@@ -89,7 +89,6 @@ def convert_black(blackhigh)
 end
 
 # Now, we assign numbers to cards 
-# (10, 11, 12, 13, 14 will be renamed T, J, Q, K, A on the front end.)
 
 def white_numbers(white_added)
     w, y, white_numbers = 0, 0, []
@@ -312,6 +311,7 @@ def black_four(black_numbers)
 end
 
 # Create display of each hand with numbers and suits
+# Converts 14 to Aces, etc.
 def whitehand_display(white_numbers, white_suits)
     x = 0
     puts "----White cards----"
@@ -592,3 +592,10 @@ def tie_straight(white_numbers, black_numbers)
         puts "DEAD TIE."
     end
 end
+
+# def convert_aces(white_numbers)
+
+
+
+#     # puts "White has#{(white_hand.gsub(/10/, "Ten").gsub(/12/, "Queen")}
+# end

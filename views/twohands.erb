@@ -364,13 +364,13 @@
     <% end %>
   <% end %>
   
-  <% if tied == true && white_paircard > black_paircard %>
+  <% if tied == true && (white_paircard > black_paircard) %>
         WHITE WINS!
-  <% elsif tied == true && white_topcard > black_topcard %>
+  <% elsif tied == true && (white_topcard > black_topcard) %>
         WHITE WINS!
-  <% elsif tied == true && white_paircard < black_paircard %>
+  <% elsif tied == true && (white_paircard < black_paircard) %>
         BLACK WINS!
-  <% elsif tied == true && white_topcard < black_topcard %>
+  <% elsif tied == true && (white_topcard < black_topcard) %>
         BLACK WINS!
   <% elsif tied == true %>
         DEAD TIE.
@@ -411,17 +411,17 @@
     <% end %>
   <% end %>
 
-  <% if (tied == true) && white_firstp > black_firstp %>
+  <% if (tied == true) && (white_firstp > black_firstp) %>
     WHITE WINS!
-  <% elsif (tied == true) && white_secondp > black_secondp %>
+  <% elsif (tied == true) && (white_secondp > black_secondp) %>
     WHITE WINS!
-  <% elsif (tied == true) && white_firstp < black_firstp %>
+  <% elsif (tied == true) && (white_firstp < black_firstp) %>
     BLACK WINS!
-  <% elsif (tied == true) && white_secondp < black_secondp %>
+  <% elsif (tied == true) && (white_secondp < black_secondp) %>
     BLACK WINS!
-  <% elsif (tied == true) && white_topcard > black_topcard %>
+  <% elsif (tied == true) && (white_topcard > black_topcard) %>
     WHITE WINS!
-  <% elsif (tied == true) && white_topcard < black_topcard %>
+  <% elsif (tied == true) && (white_topcard < black_topcard) %>
     BLACK WINS! 
   <% elsif tied == true %>
     DEAD TIE.
@@ -429,7 +429,7 @@
 
 </h2>
 </div>
-
+ 
 <div>
 <h2>
   <% if (tied == true) && (whiterank == 3) %>
