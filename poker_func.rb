@@ -311,7 +311,7 @@ def black_four(black_numbers)
 end
 
 # Create display of each hand with numbers and suits
-# Converts 14 to Aces, etc.
+
 def whitehand_display(white_numbers, white_suits)
     x = 0
     puts "----White cards----"
@@ -593,9 +593,7 @@ def tie_straight(white_numbers, black_numbers)
     end
 end
 
-# def convert_aces(white_numbers)
 
+    # puts "White has #{(white_hand.gsub(/14/, "Ace").gsub(/13/, "King")}"
 
-
-#     # puts "White has#{(white_hand.gsub(/10/, "Ten").gsub(/12/, "Queen")}
-# end
+     

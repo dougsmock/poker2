@@ -186,6 +186,4 @@ elsif (handrank_w == 3 && handrank_b == 3)
     tiebreaker = tie_4(wnumbs, bnumbs)
 end
 
-# # and now, convert to aces and stuff
 
-# convert_aces(white_numbers, black_numbers)
