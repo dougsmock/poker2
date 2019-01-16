@@ -16,7 +16,6 @@
     border-collapse:collapse;border-spacing:0;
     width:40%
 }
-
 .tg td {
     font-family:Arial, sans-serif;
     font-size:14px;
@@ -26,7 +25,6 @@
     word-break:normal;
     border-color:black;
 }
-
 .tg th {
     font-family:Arial, sans-serif;
     font-size:14px;
@@ -37,7 +35,6 @@
     word-break:normal;
     border-color:black;
 }
-
 .tg .tg-0r6a {
     font-weight:bold;
     font-size:24px;
@@ -47,7 +44,6 @@
     border-color:inherit;
     text-align:center;
     vertical-align:top}
-
 .tg .tg-kzq8 {
     font-weight:bold;
     font-size:36px;
@@ -56,7 +52,6 @@
     text-align:center;
     vertical-align:top
 }
-
 .tg .tg-o2qf {
     font-weight:bold;
     font-size:36px;
@@ -67,7 +62,6 @@
     text-align:center;
     vertical-align:top
 }
-
 .tg .tg-3pmj {
     font-weight:bold;
     font-size:24px;
@@ -284,49 +278,61 @@
 
 <div>
 <h2>
-<% tied = false %>
 <% if whiterank > blackrank %>
   WHITE WINS!
 <% elsif whiterank < blackrank %>
   BLACK WINS!
 <% else %>
-  <% tied = true %>
   Go to tiebreaker.
-<% end %>
+  <% end %>
 </h2>
 </div>
 
+
+<!-- Trouble is here -->
+
+
 <div>
   <h2>
-  <% if tied == true && whiterank == 0 %>
+  <% tied = true %>
+  <% if tied == true && (whiterank == 0 && blackrank == 0) %>
     <% if white_one > black_one %>
       WHITE WINS!
+      <% tied = false %>
     <% elsif white_one < black_one %>
       BLACK WINS!
+      <% tied = false %>
     <% end %>
 
     <% if tied == true && white_two > black_two %>
       WHITE WINS!
-      <% elsif tied == true && white_two < black_two %>
+      <% tied = false %>
+    <% elsif tied == true && white_two < black_two %>
       BLACK WINS!
+      <% tied = false %>
     <% end %>
 
     <% if tied == true && white_three > black_three %>
       WHITE WINS!
-      <% elsif tied == true && white_three < black_three %>
+      <% tied = false %>
+    <% elsif tied == true && white_three < black_three %>
       BLACK WINS!
     <% end %>
 
     <% if tied == true && white_four > black_four %>
     WHITE WINS!
+      <% tied = false %>
     <% elsif tied == true && white_four < black_four %>
     BLACK WINS!
+      <% tied = false %>
     <% end %>
 
     <% if tied == true && white_five > black_five %>
       WHITE WINS!
+      <% tied = false %>
     <% elsif tied == true && white_five < black_five %>
       BLACK WINS!
+      <% tied = false %>
     <% end %>
   <% end %>
   </h2>
